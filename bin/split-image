@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import subprocess
+
+def dividir_areas(largura, altura, area_largura, area_altura, linhas, colunas):
+    '''
+    >>> dividir_areas(200, 100, 60, 10, 1, 3) # gap_largura = 10, gap_altura = 0
+    [(0, 0, 60, 10), (70, 0, 60, 10), (140, 0, 60, 10)]
+    >>> dividir_areas(200, 100, 60, 10, 3, 1) # gap_altura = 0, gap_altura = 35
+    [(0, 0, 60, 10), (0, 45, 60, 10), (0, 90, 60, 10)]
+    '''
+    gap_largura = 0 if colunas == 1 else (largura - area_largura * colunas) // (colunas - 1)
+    gap_altura = 0 if linhas == 1 else (altura - area_altura * linhas) // (linhas - 1)
+    r = [0, 0, area_largura, area_altura]
+    areas = []
+    for i in range(linhas):
+        areas.append(tuple(r))
+        for j in range(colunas - 1):
+            r[0] += area_largura + gap_largura
+            areas.append(tuple(r))
+        r[0] = 0
+        r[1] += area_altura + gap_altura
+    return areas
+
+def trim_area(area, largura, altura):
+    '''
+    area = (left, top, width, height)
+    return = (left, bottom, right, top)
+    >>> trim_area((40, 30, 50, 60), 200, 100)
+    (40, 10, 110, 30)
+    '''
+    return (area[0], altura - area[1] - area[3], largura - area[0] - area[2], area[1])
+
+def trim_areas(largura, altura, area_largura, area_altura, linhas, colunas):
+    areas = dividir_areas(largura, altura, area_largura, area_altura, linhas, colunas)
+    return list([trim_area(a, largura, altura) for a in areas])
+
+def get_pdf_size(pdf):
+    info = str(subprocess.check_output('pdfinfo "%s" | grep "Page size"' % (pdf), shell=True)).split()
+    return int(info[2]), int(info[4])
+
+def create_range(dim):
+    return [dim] if dim > 0 else [r - dim for r in range(-10, 11)]
+
+def basename(f):
+    name, _ = os.path.splitext(os.path.basename(f))
+    return name
+
+def main():
+    if len(sys.argv) != 6 and len(sys.argv) != 7:
+        print('Número de parâmetros inválido')
+        print('Modo de usar: %s arquivo [-]area_largura [-]area_altura linhas colunas [options]')
+        sys.exit(1)
+    pdf = sys.argv[1]
+
+    area_largura, area_altura, linhas, colunas = map(int, sys.argv[2:6])
+
+    options = '' if len(sys.argv) != 7 else sys.argv[6]
+
+    largura, altura = get_pdf_size(pdf)
+
+    f = basename(pdf)
+
+    area_larguras = create_range(area_largura)
+    area_alturas = create_range(area_altura)
+
+    print('---')
+    print('template: slide.tex')
+    print('---')
+    for area_largura in area_larguras:
+        print()
+        for area_altura in area_alturas:
+            s = [\
+              '![]([trim=%dpt %dpt %dpt %dpt,clip,%s]%s)' % (area[0], area[1], area[2], area[3], options, f) \
+              for area in trim_areas(largura, altura, area_largura, area_altura, linhas, colunas)]
+        print('# largura: %d altura: %d' % (area_largura, area_altura))
+        print('\n\n###\n')
+        print('\n\n###\n\n'.join(s))
+
+if __name__ == '__main__':
+    main()

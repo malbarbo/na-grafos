@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while true; do
+    inotifywait -r -e close_write,moved_to,create 0* templates bin
+    scons
+done
