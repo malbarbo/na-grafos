@@ -221,7 +221,7 @@ $\rightarrow$
 -   Em um grafo não orientado
 
     -   Um caminho $\langle v_0, v_1, \dots, v_k \rangle$ forma um **ciclo** se
-        $k \ge 3$ e $v_0 = v_k$
+        $k > 0$, $v_0 = v_k$ e todas as arestas do caminho são distintas
 
     -   O ciclo é **simples** se $v_1, v_2, \dots, v_k$ são distintos
 
