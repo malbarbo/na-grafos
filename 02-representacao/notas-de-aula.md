@@ -189,13 +189,13 @@ Veja o arquivo 02-representacao-exemplo.zip
 
 ### Resolução 22.1-1
 
-```python
+```
 computa-graus-de-saida(G)
-  for u in G.V
-    u.grau-de-saida = 0
-  for u in G.V
-    for v in G.Adj[u]
-        u.grau-de-saida += 1
+ 1 for u in G.V
+ 2   u.grau-de-saida = 0
+ 3 for u in G.V
+ 4   for v in G.Adj[u]
+ 5       u.grau-de-saida += 1
 ```
     
 \pause
@@ -216,15 +216,15 @@ computa-graus-de-saida(G)
         é $\Theta(V + E)$
 
 
-### Solução 22.1-1
+### Resolução 22.1-1
 
-```python
+```
 computa-graus-de-entrada(G)
-  for u in G.V
-    u.grau-de-entrada = 0
-  for u in G.V
-    for v in G.Adj[u]
-      v.grau-de-entrada += 1
+ 1 for u in G.V
+ 2   u.grau-de-entrada = 0
+ 3 for u in G.V
+ 4   for v in G.Adj[u]
+ 5     v.grau-de-entrada += 1
 ```
 
 -   Análise do tempo de execução
@@ -232,11 +232,13 @@ computa-graus-de-entrada(G)
     -   Mesmo do procedimento `computa-graus-de-saida`
 
 
+<!-- TODO: Adicionar exemplo de pseudo código de matriz de adjacência (exercício 22.1-3)  !-->
+
 # Referências
 
 ### Referências
 
--   Thomas H. Cormen et al. Introduction to Algorithms. edition. Capítulo 22.1.
+-   Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.1.
 
 
 <!-- vim: set spell spelllang=pt_br: -->
