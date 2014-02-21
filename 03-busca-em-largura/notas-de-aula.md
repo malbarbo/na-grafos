@@ -7,6 +7,11 @@ template: slide.tex
 
 ### Introdução
 
+<!--
+Dica: apresentar o conceito do número de Erdös
+      e o problema associado
+!-->
+
 -   Dado um grafo $G = (V, E)$ e um vértice de origem $s$, a busca em largura
     explora sistematicamente as arestas de $G$ até descobrir cada vértice
     acessível a partir de $s$
@@ -25,57 +30,39 @@ template: slide.tex
 
 ### Exemplo de execução
 
-<!-- Gerado com o comando bin/split-image clrs/Chapter\ 22/Fig-22-3.pdf -1000 400 2 3 !-->
-
-\vspace{2.75cm}
+<!-- Gerado com o comando bin/split-image clrs/Chapter\ 22/Fig-22-3.pdf 1500 470 5 2 height=2.5cm !-->
 
 ![]([trim=0pt 2259pt 1807pt 0pt,clip,height=2.5cm]Fig-22-3)
 
 ### Exemplo de execução
 
-![]([trim=0pt 2259pt 1807pt 0pt,clip,height=2.5cm]Fig-22-3)
-
 ![]([trim=1807pt 2259pt 0pt 0pt,clip,height=2.5cm]Fig-22-3)
 
 ### Exemplo de execução
-
-![]([trim=1807pt 2259pt 0pt 0pt,clip,height=2.5cm]Fig-22-3)
 
 ![]([trim=0pt 1695pt 1807pt 564pt,clip,height=2.5cm]Fig-22-3)
 
 ### Exemplo de execução
 
-![]([trim=0pt 1695pt 1807pt 564pt,clip,height=2.5cm]Fig-22-3)
-
 ![]([trim=1807pt 1695pt 0pt 564pt,clip,height=2.5cm]Fig-22-3)
 
 ### Exemplo de execução
-
-![]([trim=1807pt 1695pt 0pt 564pt,clip,height=2.5cm]Fig-22-3)
 
 ![]([trim=0pt 1131pt 1807pt 1128pt,clip,height=2.5cm]Fig-22-3)
 
 ### Exemplo de execução
 
-![]([trim=0pt 1131pt 1807pt 1128pt,clip,height=2.5cm]Fig-22-3)
-
 ![]([trim=1807pt 1131pt 0pt 1128pt,clip,height=2.5cm]Fig-22-3)
 
 ### Exemplo de execução
-
-![]([trim=1807pt 1131pt 0pt 1128pt,clip,height=2.5cm]Fig-22-3)
 
 ![]([trim=0pt 567pt 1807pt 1692pt,clip,height=2.5cm]Fig-22-3)
 
 ### Exemplo de execução
 
-![]([trim=0pt 567pt 1807pt 1692pt,clip,height=2.5cm]Fig-22-3)
-
 ![]([trim=1807pt 567pt 0pt 1692pt,clip,height=2.5cm]Fig-22-3)
 
 ### Exemplo de execução
-
-![]([trim=1807pt 567pt 0pt 1692pt,clip,height=2.5cm]Fig-22-3)
 
 ![]([trim=0pt 3pt 1807pt 2256pt,clip,height=2.5cm]Fig-22-3)
 
@@ -132,6 +119,8 @@ bfs(G, s)
 
 ### Árvore primeiro na extensão
 
+<!-- FIXME: usar árvore primeiro na extensão ou árvore primeiro na largura? !-->
+
 -   `bfs` constrói uma árvore primeiro na extensão
 
 -   A árvore é definida pelo campo pai ($\pi$) em cada vértice
@@ -150,7 +139,8 @@ bfs(G, s)
     -   $V_\pi$ consiste nos vértices acessíveis a partir de $s$
 
     -   Para todo $v \in V_\pi$, existe um caminho único simples desde $s$ até
-        $v$ em $G_\pi$, que também é o caminho mais curto de $s$ até $v$ em $G$
+        $v$ em $G_\pi$, que também é um caminho mais curto de $s$ até $v$ em
+        $G$
 
 -   Uma árvore primeiro na extensão é de fato uma árvore, pois é conexa e
     $|E_\pi| = |V_\pi| - 1$
@@ -172,77 +162,11 @@ imprimir-caminho(G, s, v)
     pois cada chamada recursiva é feita para um caminho com um vértice menor que
     o atual
 
-# Exercícios
-
-### Exercícios
-
--   Os números dos exercícios referem-se a $3^\circ$ edição
-
--   Entre parênteses está o número do exercício correspondente na $2^\circ$
-    edição
-
--   Se não existe informação entre parênteses, significa que o exercício é o
-    mesmo nas duas edições
-
--   22.2-1, 22.2-2, 22.2-3 (não presente), 22.2-4 (22.2-3), 22.2-5 (22.2-4),
-    22.2-6 (22.2-5), 22.2-7 (22.2-6), 22.2-9 (22.2-8)
-
-### Exercícios
-
--   Mostre os valores de $d$ e $\pi$ que resultam da execução da busca em
-    largura sobre o grafo orientado da figura 22.2(a), usando o vértice 3 como
-    origem.
-
--   Mostre os valores de $d$ e $\pi$ que resultam da execução da busca em
-    largura sobre o grafo não-orientado da figura 22.3, usando o vértice u como
-    origem.
-
--   Mostre que usar apenas um bit para armazenar a cor de cada vértice é
-    suficiente argumento que o procedimento `bfs` irá produzir o mesmo resultado
-    se as linhas 5 e 14 forem removidas.
-
--   Qual o tempo de execução de `bfs` se o grafo de entrada é representado pos
-    uma matriz de adjacências e o algoritmo é modificado para manipular essa
-    forma de entrada?
-
-### Exercícios
-
--   Argumente que na busca em largura, o valor `u.d` atribuído ao vértice `u` é
-    independente da ordem que os vértices aparecem na lista de adjacência.
-    Usando a figura 22.3 como exemplo, mostre que a busca em largura computada
-    pelo `bfs` pode depender da ordem dos vértices na lista de adjacências.
-
--   Forneça um exemplo de um grafo orientado $G=(V, E)$, um vértice de origem
-    $s \in V$ e um conjunto de arestas de árvore $E_\pi \subseteq E$ tal que,
-    para cada vértice $v \in V$, o caminho único em $(V, E_\pi)$ de $s$ até $v$
-    é um caminho mais curto em $G$, ainda que o conjunto de arestas $E_\pi$ não
-    possa ser produzido pela execução de `bfs` sobre $G$, não importando o modo
-    como os vértices estão ordenados em cada lista de adjacências.
-
-### Exercícios
-
--   Existem dois tipos de lutadores profissionais: “bons sujeitos” e “maus
-    sujeitos”. Entre qualquer par de lutadores profissionais pode ou não haver
-    uma rivalidade. Suponha que temos $n$ lutadores profissionais e temos uma
-    lista de $r$ pares de lutadores para os quais existem rivalidades. Dê um
-    algoritmo de tempo $O(n + r)$ que determine se é possível designar alguns
-    dos lutadores como bons sujeitos e os restantes como maus sujeitos, de tal
-    forma que a rivalidade ocorra em cada caso entre um bom sujeito e um mau
-    sujeito. Se for possível realizar tal designação, seu algoritmo deve
-    produzi-la.
-
-### Exercícios
-
--   Seja $G = (V, E)$ um grafo conexo não orientado. Forneça um algoritmo de
-    tempo $O(V + E)$ para calcular um caminho em $G$ que percorra cada aresta de
-    $E$ exatamente uma vez em cada sentido. Descreva como você pode encontrar a
-    saída de uma labirinto se receber uma grande provisão de moedas de centavos.
-
 # Referências
 
 ### Referências
 
--   Thomas H. Cormen et al. Introduction to Algorithms. edition. Capítulo 22.2.
+-   Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.2.
 
 
 <!-- vim: set spell spelllang=pt_br: -->
