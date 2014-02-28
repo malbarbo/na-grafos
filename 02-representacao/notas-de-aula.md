@@ -233,6 +233,7 @@ computa-graus-de-entrada(G)
 
 
 <!-- TODO: Adicionar exemplo de pseudo código de matriz de adjacência (exercício 22.1-3)  !-->
+<!-- TODO: Falar sobre tipo abstrado de dados para Grafos  !-->
 
 # Referências
 
