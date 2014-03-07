@@ -20,10 +20,11 @@ template: exercicios.tex
 
 #.  Exercício 22.2-9 CLRS3 ou 22.2-8 CLRS2.
 
+
 # Referências
 
-- [CLRS2] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{2} edition. Capítulo 22.2.
+-   [CLRS2] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{2} edition. Capítulo 22.2.
 
-- [CLRS3] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.2.
+-   [CLRS3] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.2.
 
 <!-- vim: set spell spelllang=pt_br: -->
