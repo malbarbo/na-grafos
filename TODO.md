@@ -9,4 +9,8 @@
 
 -   Permitir a reordenação dos capítulos
 
+-   Centralizar imagens
+
+-   Adicionar números as figuras (mesmo da original)
+
 <!-- vim: set spell spelllang=pt_br: !-->
