@@ -23,3 +23,5 @@ template: exercicios.tex
 -   [CLRS2] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{2} edition. Capítulo 22.5.
 
 -   [CLRS3] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.5.
+
+<!-- vim: set spell spelllang=pt_br: -->
