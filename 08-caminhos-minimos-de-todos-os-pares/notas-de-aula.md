@@ -236,7 +236,7 @@ multiplicação de matriz !-->
 \texttt{13 \ \ \ \ \ \ if $d_{ij} > d_{ik} + d_{kj}$}\
 \texttt{14 \ \ \ \ \ \ \ \ $d_{ij} = d_{ik} + d_{kj}$}\
 \texttt{15 \ \ \ \ \ \ \ \ $\pi_{ij} = \pi_{kj}$}\
-\texttt{16 return $D$}
+\texttt{16 return $D$, $\Pi$}
 
 
 ## Agoritmo de Johnson para grafos esparsos
