@@ -9,6 +9,6 @@ build() {
 
 build
 while true; do
-    inotifywait -q -q -r -e close_write,moved_to,create 0* templates bin
+    inotifywait -q -q -r -e close_write,moved_to,create 0* 1* conf.yaml templates bin
     build
 done

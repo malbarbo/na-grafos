@@ -1,6 +1,6 @@
 sources:
-    - '0*/*.md'
-    - '0*/imagens/*'
+    - '[0|1]*/*.md'
+    - '[0|1]*/imagens/*'
     - 'clrs/*/*'
 
 target_dir: target
