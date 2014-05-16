@@ -75,9 +75,10 @@ def main():
             s = [\
               '![]([trim=%dpt %dpt %dpt %dpt,clip,%s]%s)' % (area[0], area[1], area[2], area[3], options, f) \
               for area in trim_areas(largura, altura, area_largura, area_altura, linhas, colunas)]
-        print('# largura: %d altura: %d' % (area_largura, area_altura))
-        print('\n\n###\n')
-        print('\n\n###\n\n'.join(s))
+            print('# largura: %d altura: %d' % (area_largura, area_altura))
+            print('\n\n###\n')
+            print('\n\n###\n\n'.join(s))
+            print('\n\n')
 
 if __name__ == '__main__':
     main()
