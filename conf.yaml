@@ -2,6 +2,7 @@ sources:
     pdf:
         - '[0|1]*/*.md'
         - '[0|1]*/imagens/*.png'
+        - '[0|1]*/imagens/*.svg'
         - '[0|1]*/imagens/*.pdf'
         - 'clrs/*/*'
 
