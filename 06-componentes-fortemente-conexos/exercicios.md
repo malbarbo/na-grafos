@@ -1,6 +1,6 @@
 ---
 title: Componentes fortemente conexos
-num: 6
+num: "6"
 template: exercicios.tex
 ---
 

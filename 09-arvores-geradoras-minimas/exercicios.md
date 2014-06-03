@@ -1,6 +1,6 @@
 ---
 title: Árvores geradoras mínimas
-num: 9
+num: "9"
 template: exercicios.tex
 ---
 

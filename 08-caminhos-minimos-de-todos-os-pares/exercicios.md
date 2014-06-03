@@ -1,6 +1,6 @@
 ---
 title: Caminhos mínimos de todos os pares
-num: 8
+num: "8"
 template: exercicios.tex
 ---
 

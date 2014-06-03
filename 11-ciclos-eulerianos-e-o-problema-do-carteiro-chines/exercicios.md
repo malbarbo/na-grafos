@@ -1,6 +1,6 @@
 ---
 title: Ciclos eulerianos e o problema do carteiro chinês
-num: 11
+num: "11"
 template: exercicios.tex
 ---
 

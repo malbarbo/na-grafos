@@ -1,6 +1,6 @@
 ---
 title: Ordenação topológica
-num: 5
+num: "5"
 template: exercicios.tex
 ---
 

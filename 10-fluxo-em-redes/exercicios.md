@@ -1,6 +1,6 @@
 ---
 title: Fluxo em redes
-num: 10
+num: "10"
 template: exercicios.tex
 ---
 

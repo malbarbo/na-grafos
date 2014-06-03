@@ -1,6 +1,6 @@
 ---
 title: Caminhos mínimos de única origem
-num: 7
+num: "7"
 template: exercicios.tex
 ---
 
