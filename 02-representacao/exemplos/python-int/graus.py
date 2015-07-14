@@ -8,7 +8,7 @@ def calcular_graus_de_saida(adj):
     return grau_saida
 
 def mostrar_graus_de_saida(grau_saida):
-    for v in range(len(grau_saida)): 
+    for v in range(len(grau_saida)):
         print "Vertice(%d).grauSaida = %d" % (v, grau_saida[v])
 
 adj = [

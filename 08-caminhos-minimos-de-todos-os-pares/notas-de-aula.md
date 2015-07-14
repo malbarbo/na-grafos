@@ -200,7 +200,7 @@ multiplicação de matriz !-->
 
     -   Quando $k = 0$, um caminho mínimo de $i$ até $j$ não tem nenhum vértice
         intermediário, então
- 
+
         $$\pi_{ij}^{(0)} = \begin{cases}
                 \text{nil} & \text{se } i = j \text{ ou } w_{ij} = \infty\\
                 i          & \text{se } i \not = j \text{ e } w_{ij} < \infty

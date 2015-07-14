@@ -155,7 +155,7 @@ máximo** consiste em encontrar um fluxo em $G$ de valor máximo.
       \end{cases}$$
 
 -   A **rede residual** de $G$ induzida por $f$ é $G_f = (V, E_f)$, onde
-    $$E = \{(u, v) \in V \times V : c_f(u, v) > 0\}$$ e $|E_f| \le 2 |E|$
+    $$E_f = \{(u, v) \in V \times V : c_f(u, v) > 0\}$$ e $|E_f| \le 2 |E|$
 
 ### Exemplo de rede residual
 

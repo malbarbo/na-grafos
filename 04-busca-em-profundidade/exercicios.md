@@ -6,7 +6,7 @@ template: exercicios.tex
 
 #. Exercício 22.3-1 do CLRS3 ou CLRS2.
 
-#. Exercício 22.3-2 do CLRS3 ou CLRS2. 
+#. Exercício 22.3-2 do CLRS3 ou CLRS2.
 
 #. Exercício 22.3-3 do CLRS3 ou CLRS2.
 

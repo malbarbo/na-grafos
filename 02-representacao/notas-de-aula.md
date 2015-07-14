@@ -197,7 +197,7 @@ computa-graus-de-saida(G)
  4   for v in G.Adj[u]
  5       u.grau-de-saida += 1
 ```
-    
+
 \pause
 
 -   Análise do tempo de execução
