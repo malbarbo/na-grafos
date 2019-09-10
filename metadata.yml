@@ -1,0 +1,38 @@
+author: |
+    Marco A L Barbosa
+    \newline
+    \href{http://malbarbo.pro.br}{malbarbo.pro.br}
+institute: |
+    \href{http://din.uem.br}{Departamento de Informática}
+    \newline
+    \href{http://www.uem.br}{Universidade Estadual de Maringá}
+lang: pt-BR
+header-includes: |
+    \usepackage{caption}
+    \captionsetup[figure]{labelformat=empty}
+    \usepackage{ccicons}
+    \usepackage[super]{nth}
+    \usepackage{tikz}
+    \usetikzlibrary{positioning}
+    \AtBeginDocument{
+      \letcs\oig{@orig\string\includegraphics}
+      \renewcommand<>\includegraphics[2][]{
+        \only#3{
+          {\centering\oig[{#1}]{#2}\par}
+        }
+      }
+    }
+license: |
+  \begin{tikzpicture}[overlay, remember picture]
+    \linespread{0.75}
+    \node[above =0.1cm of current page.south, align=center] {
+        \href{http://creativecommons.org/licenses/by-sa/4.0/}{\ccbysa}\\
+        \vspace{-0.1cm}
+        \tiny Este trabalho está licenciado com uma Licença Creative Commons -
+        Atribuição-CompartilhaIgual 4.0 Internacional.\\
+        \tiny \url{http://github.com/malbarbo/na-grafos}
+    };
+  \end{tikzpicture}
+toc-title: Conteúdo
+theme: metropolis
+themeoptions: numbering=fraction,sectionpage=simple

@@ -1,0 +1,11 @@
+author:
+    - Marco A L Barbosa
+    - \href{http://malbarbo.pro.br}{malbarbo.pro.br}
+header-includes: |
+    \usepackage{caption}
+    \captionsetup[figure]{labelformat=empty}
+    \usepackage[super]{nth}
+lang: pt-BR
+toc-title: Conteúdo
+theme: metropolis
+themeoptions: numbering=fraction,sectionpage=simple
