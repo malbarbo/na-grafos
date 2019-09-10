@@ -1,6 +1,6 @@
 ---
+# vim: set spell spelllang=pt_br:
 title: Introdução
-template: slide.tex
 ---
 
 # Histórico
@@ -24,11 +24,11 @@ template: slide.tex
 -   Euler formulou o problema em termos abstratos
 
 
-![]([inline,width=3cm]konigsberg-1) \pause
+![](imagens/konigsberg-1.png){width=3cm} \pause
 $\rightarrow$
-![]([inline,width=3cm]konigsberg-2) \pause
+![](imagens/konigsberg-2.pdf){width=3cm} \pause
 $\rightarrow$
-![]([inline,width=3cm]konigsberg-3)
+![](imagens/konigsberg-3.pdf){width=3cm}
 
 
 ### Histórico
@@ -68,7 +68,7 @@ $\rightarrow$
 
 ### Definições e propriedades
 
-![B-2](Fig-B-2)
+![B-2](imagens/Fig-B-2.pdf)
 
 -   Na figura B-2-a, qual é o conjunto de vértices e o conjunto de arestas?
 
@@ -83,7 +83,7 @@ $\rightarrow$
 
 ### Definições e propriedades
 
-![B-2](Fig-B-2)
+![B-2](imagens/Fig-B-2.pdf)
 
 -   Observações
 
@@ -277,7 +277,7 @@ $\rightarrow$
 
 ### Isomorfismo
 
-![B-3](Fig-B-3)
+![B-3](imagens/Fig-B-3.pdf)
 
 ### Isomorfismo
 
@@ -403,6 +403,3 @@ $\rightarrow$
     Königsberg](https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg)
 
 -   Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo B.4.
-
-
-<!-- vim: set spell spelllang=pt_br: -->

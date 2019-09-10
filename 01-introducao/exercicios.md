@@ -1,7 +1,6 @@
 ---
-title: Introdução
-num: "1"
-template: exercicios.tex
+# vim: set spell spelllang=pt_br:
+title: 01 - Introdução
 ---
 
 #.  Usando a definição de caminho, justifique a afirmativa: sempre existe um
@@ -31,6 +30,3 @@ template: exercicios.tex
         três conceitos $a$, $b$ e $c$, e duas dependências $a \rightarrow b$
         e $b \rightarrow c$, então $a$ não tem dependência, $b$ tem uma
         dependência, e $c$ tem duas dependências.
-
-
-<!-- vim: set spell spelllang=pt_br: -->
