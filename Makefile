@@ -14,6 +14,7 @@ EX_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix -exercicios.pdf, $(EX)))
 PANDOC=$(DEST)/bin/pandoc
 PANDOC_VERSION=2.7.3
 PANDOC_CMD=$(PANDOC) \
+		-V mathspec \
 		--pdf-engine tectonic \
 		--metadata-file ../metadata.yml \
 		--template ../templates/default.latex \
