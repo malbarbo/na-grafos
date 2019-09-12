@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: Introdução
+title: Conceitos e definições
 ---
 
 ## Grafos
