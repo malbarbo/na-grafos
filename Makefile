@@ -4,6 +4,7 @@ SHELL=/bin/bash
 DEST=target
 DEST_PDF=$(DEST)/pdfs
 DEST_PDF_HANDOUT=$(DEST)/pdfs/handout
+DEST_ZIP=$(DEST)/zips
 DEST_TEX=$(DEST)/tex
 IGNORAR=README.md
 NA=$(patsubst %/,%,$(dir $(shell ls */notas-de-aula.md)))
@@ -11,6 +12,8 @@ NA_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix .pdf, $(NA)))
 NA_PDF_HANDOUT=$(addprefix $(DEST_PDF_HANDOUT)/, $(addsuffix .pdf, $(NA)))
 EX=$(patsubst %/,%,$(dir $(shell ls */exercicios.md)))
 EX_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix -exercicios.pdf, $(EX)))
+EXS=$(patsubst %/,%,$(dir $(shell ls -d */exemplos)))
+EXS_ZIP=$(addprefix $(DEST_ZIP)/, $(addsuffix -exemplos.zip, $(EXS)))
 PANDOC=$(DEST)/bin/pandoc
 PANDOC_VERSION=2.7.3
 PANDOC_CMD=$(PANDOC) \
@@ -25,7 +28,7 @@ default:
 	@echo Executando make em paralelo [$(shell nproc) tarefas]
 	@make -s -j $(shell nproc) all
 
-all: pdf handout ex
+all: pdf handout ex zip
 
 pdf: $(NA_PDF)
 
@@ -33,14 +36,16 @@ handout: $(NA_PDF_HANDOUT)
 
 ex: $(EX_PDF)
 
-$(DEST_PDF)/%.pdf: %/notas-de-aula.md templates/default.latex metadata.yml $(PANDOC) Makefile
+zip: $(EXS_ZIP)
+
+$(DEST_PDF)/%.pdf: %/notas-de-aula.md templates/default.latex metadata.yml $(PANDOC)
 	@mkdir -p $(DEST_PDF)
 	@echo $@
 	@cd $$(dirname $<) && \
 		../$(PANDOC_CMD) \
 		-o ../$@ notas-de-aula.md
 
-$(DEST_PDF_HANDOUT)/%.pdf: %/notas-de-aula.md templates/default.latex metadata.yml $(PANDOC) Makefile
+$(DEST_PDF_HANDOUT)/%.pdf: %/notas-de-aula.md templates/default.latex metadata.yml $(PANDOC)
 	@mkdir -p $(DEST_PDF_HANDOUT)
 	@echo $@
 	@cd $$(dirname $<) && \
@@ -48,7 +53,7 @@ $(DEST_PDF_HANDOUT)/%.pdf: %/notas-de-aula.md templates/default.latex metadata.y
 		-V classoption:handout \
 		-o ../$@ notas-de-aula.md
 
-$(DEST_PDF)/%-exercicios.pdf: %/exercicios.md templates/default.latex metadata-ex.yml $(PANDOC) Makefile
+$(DEST_PDF)/%-exercicios.pdf: %/exercicios.md templates/default.latex metadata-ex.yml $(PANDOC)
 	@mkdir -p $(DEST_PDF)
 	@echo $@
 	@cd $$(dirname $<) && \
@@ -57,8 +62,13 @@ $(DEST_PDF)/%-exercicios.pdf: %/exercicios.md templates/default.latex metadata-e
 			--metadata-file ../metadata-ex.yml \
 			-V papersize=a4 \
 			-V geometry='margin=1.5cm' \
-			-V fontsize=12pt \
+			-V fontsize=11pt \
 			-o ../$@ exercicios.md
+
+$(DEST_ZIP)/%-exemplos.zip: %/exemplos/*
+	@mkdir -p $(DEST_ZIP)
+	@zip -o $@ -r $$(dirname $<)
+	@touch $@
 
 $(PANDOC):
 	mkdir -p $(DEST)
