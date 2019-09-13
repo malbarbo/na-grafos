@@ -1,3 +1,4 @@
+<!-- % vim: set spell spelllang=pt_br: -->
 # Notas de aula de Algoritmos em Grafos
 
 Estas notas de aula são baseadas no livro "Algoritmos: Teoria e Prática"
@@ -17,55 +18,12 @@ está licenciado com uma Licença
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
 Creative Commons - Atribuição-CompartilhaIgual 4.0 Internacional</a>.
 
-# Requisitos
+As imagens foram retiradas do livro e redistribuídas aqui, o que consideramos uso razoável.
 
--   `pandoc` (>= 12), `texlive`, `texlive-fonts-extra`,
-    `texlive-lang-portuguese`, `lmodern`, `latex-beamer`, `scons`,
-    `python-yaml`, `python3-yaml` `python3-pygments`,
-    `python3-pip`,`inotify-tools`, `imagemagick`, `inkscape`, `pandocfilters`
+# Geração dos pdfs
 
-# Gerar os pdfs
+Execute o comando `make pdf`. Os arquivos pdfs serão gerados no diretório `target/pdfs`.
 
-## Sistemas baseados no Debian
-
--   Habilite o repositório `testing`
-
-    ```bash
-    sudo bash -c "echo 'deb http://http.debian.net/debian/ testing main' > /etc/apt/sources.list.d/testing.list"
-    ```
-
--   Instale as dependências
-
-    ```bash
-    sudo bin/install-debian-deps
-    ```
-
--   Desabilite o repositório `testing`
-
-    ```bash
-    sudo rm /etc/apt/sources.list.d/testing.list
-    ```
-
--   Gere os pdfs
-
-    ```bash
-    scons
-    ```
-
-## Outros sistemas
-
--   Instale o [pandoc](http://johnmacfarlane.net/pandoc/installing.html)
-
--   Instale o [pandocfilters](https://github.com/jgm/pandocfilters) usando o python3
-
--   Instale as outras dependências
-
--   Gere os pdfs
-
-    ```bash
-    scons
-    ```
-
-<!-- TODO: informar extensões do pandoc em bin/filter --!>
-
-<!-- % vim: set spell spelllang=pt_br: -->
+É necessário o [pandoc](https://pandoc.org/) e o
+[tectonic](http://tectonic-typesetting.github.io/). O pandoc é baixado
+automaticamente enquanto o tectonic precisa ser instalado.
