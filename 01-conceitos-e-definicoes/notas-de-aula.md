@@ -198,6 +198,8 @@ title: Conceitos e definições
 
     - Um caminho $\langle v_0, v_1, \dots, v_k \rangle$ forma um **ciclo** se
       $k > 0$, $v_0 = v_k$ e todas as arestas do caminho são distintas
+      \footnote{Esta definição é diferente em algumas versões do Cormen. Vamos
+      considerar correta a definição que estamos apresentando aqui}
 
     - O ciclo é **simples** se $v_1, v_2, \dots, v_k$ são distintos
 
@@ -207,10 +209,10 @@ title: Conceitos e definições
 - Um grafo sem ciclo é **acíclico**
 
 
-## Conexidade
+## Conectividade
 
-- Um grafo não orientado é **conexo** se cada vértice é acessível a partir de
-  todos os outros \pause
+- Um grafo não orientado é **conexo** \footnote{conectado} se cada vértice
+  é acessível a partir de todos os outros \pause
 
 - Os **componentes conexos** de um grafo são as classes de equivalência de
   vértices sob a relação “é acessível a partir de”
@@ -221,7 +223,7 @@ title: Conceitos e definições
 - Um grafo não orientado é conexo se tem exatamente um componente conexo
 
 
-## Conexidade
+## Conectividade
 
 - Um grafo orientado é **fortemente conexo** se para cada par de vértices $(u,
   v)$, $v$ é acessível a partir de $u$
@@ -300,8 +302,6 @@ title: Conceitos e definições
 
 ## Versões orientada e não orientada
 
-<!-- TODO: colocar exemplo !-->
-
 - Dado um grafo não orientado $G=(V, E)$, a **versão orientada** de $G$
   é o grafo orientado $G'=(V, E')$, onde $(u, v) \in E'$ se e somente se $(u,
   v) \in E$
@@ -344,8 +344,6 @@ title: Conceitos e definições
 
 
 ## Grafo completo
-
-<!-- TODO: colocar exemplo !-->
 
 - **Grafo completo** é um grafo não orientado no qual todo par de vértices
   é adjacente
