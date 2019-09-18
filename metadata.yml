@@ -9,6 +9,7 @@ institute: |
 lang: pt-BR
 header-includes: |
     \usepackage{caption}
+    \usepackage{clrscode3e}
     \captionsetup[figure]{labelformat=empty}
     \usepackage{ccicons}
     \usepackage[super]{nth}

@@ -172,7 +172,7 @@ title: Representações computacionais
 Veja o arquivo 02-representacao-exemplo.zip
 
 
-## Exercícios
+## Exercício
 
 [22.1-1] Dada uma representação de lista de adjacências de um grafo orientado,
 qual o tempo necessário para computar o grau de saída de todo o vértice? Qual o
@@ -180,54 +180,62 @@ tempo necessário para computar os graus de entrada?
 
 ## Resolução 22.1-1
 
-- Antes de fazer a análise do tempo de execução é necessário escrever o pseudo
-  código do algoritmo
+Antes de fazer a análise do tempo de execução é necessário escrever o pseudo
+código do algoritmo
 
 ## Resolução 22.1-1
 
-```
-computa-graus-de-saida(G)
- 1 for u in G.V
- 2   u.grau-de-saida = 0
- 3 for u in G.V
- 4   for v in G.Adj[u]
- 5       u.grau-de-saida += 1
-```
+\begin{codebox}
+  \Procname{$\proc{graus-de-saida(G)}$}
+  \li \For $v \in \attrib{G}{V}$ \Do
+  \li   $\attrib{v}{grau-de-saida} \gets 0$
+      \End
+  \li \For $u \in G.V$ \Do
+  \li   \For $v \in \attrib{G}{Adj}[u]$ \Do
+  \li     $\attrib{u}{grau-de-saida} \gets \attrib{u}{grau-de-saida} + 1$
+        \End
+      \End
+\end{codebox}
 
 \pause
 
-- Análise do tempo de execução
+\small
 
-    - O laço das linhas 2 a 3 demora $\Theta(V)$
+Análise do tempo de execução
 
-    - O laço da linha 4 (sem contar as linhas 5 e 6) demora $\Theta(V)$
-
-    - A cada interação do laço da linha 4, o laço das linhas 5 a 6 é executado
-      $|G.Adj[u]|$ vezes, como o laço da linha 4 é executado uma vez para cada
-      vértices, temos que o laço das linhas 5 a 6 é executado $\sum_{u \in G.V}
-      |G.Adj[u]| = |E|$. Ou seja, o tempo de execução das linha 5 e 6 é
-      $\Theta(E)$
-
-    - Portanto, o tempo de execução do procedimento `computa-graus-saida`
-        é $\Theta(V + E)$
+- O laço das linhas 1 a 2 tem tempo de execução $\Theta(V)$
+- A cada interação do laço da linha 3, o laço das linha 4 a 5 é executado
+  $|\attrib{G}{Adj}[u]|$ vezes, como o laço das linha 4 a 5 é executado uma vez
+  para cada vértice, temos que seu tempo de execução é $\sum_{u \in
+  \attrib{G}{V}} |\attrib{G}{Adj}[u]| = |E|$. Ou seja, o tempo de execução das
+  linhas 3 a 5 é $\Theta(V + E)$
+- Portanto, o tempo de execução do procedimento $\proc{graus-de-saida}$ é
+  $\Theta(V + E)$
 
 
 ## Resolução 22.1-1
 
-```
-computa-graus-de-entrada(G)
- 1 for u in G.V
- 2   u.grau-de-entrada = 0
- 3 for u in G.V
- 4   for v in G.Adj[u]
- 5     v.grau-de-entrada += 1
-```
+\begin{codebox}
+  \Procname{$\proc{graus-de-entrada(G)}$}
+  \li \For $u \in \attrib{G}{V}$ \Do
+  \li   $\attrib{u}{grau-de-entrada} \gets 0$
+      \End
+  \li \For $u \in G.V$ \Do
+  \li   \For $v \in \attrib{G}{Adj}[u]$ \Do
+  \li     $\attrib{v}{grau-de-entrada} \gets \attrib{v}{grau-de-entrada} + 1$
+        \End
+      \End
+\end{codebox}
 
-- Análise do tempo de execução
+\pause
 
-    - Mesmo do procedimento `computa-graus-de-saida`
+Análise do tempo de execução
+
+- Mesmo do procedimento $\proc{graus-de-saida}$
 
 
 ## Referências
 
 - Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.1.
+
+- \href{https://networkx.github.io/documentation/stable/tutorial.html}{\texttt{networkx}, um exemplo de uma biblioteca de grafos em Python}
