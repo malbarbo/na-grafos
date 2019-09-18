@@ -38,7 +38,7 @@ ex: $(EX_PDF)
 
 zip: $(EXS_ZIP)
 
-$(DEST_PDF)/%.pdf: %/notas-de-aula.md templates/default.latex metadata.yml $(PANDOC)
+$(DEST_PDF)/%.pdf: %/notas-de-aula.md %/imagens/* templates/default.latex metadata.yml $(PANDOC)
 	@mkdir -p $(DEST_PDF)
 	@echo $@
 	@cd $$(dirname $<) && \
