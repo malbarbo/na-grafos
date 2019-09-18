@@ -12,9 +12,9 @@ Características não implementadas
     - testar se dois vértices são adjacentes
     - muitas outras coisas...
 
-Cada exemplo foi implementado em Java e Python. Como o propósito dos exemplos é
-dar uma ideia de como a estrutura de um grafo pode ser implementada questões de
-encapsulamento foram desconsideradas.
+Cada exemplo foi implementado em C (apenas exemplo 1), Java e Python. Como o
+propósito dos exemplos é dar uma ideia de como a estrutura de um grafo pode ser
+implementada questões de encapsulamento foram desconsideradas.
 
 Exemplo 1 (int)
     - os vértices são representados por inteiros de 0 .. |V|-1
@@ -28,7 +28,6 @@ Exemplo 1 (int)
         * atributos podem ser criados sobre demanda
     - desvantagens
         * baixo nível de abstração
-        * o código é mais difícil de ler
 
 Exemplo 2 (class)
     - os vértices são representados pela classe Vertice. A classe Vertice tem
@@ -37,7 +36,7 @@ Exemplo 2 (class)
     - um grafo é representado pela classe Grafo. A classe Grafo contém a lista
       de vértices
     - vantagens
-        * o código é mais fácil de ler
+        * o código dos algoritmos pode ficar mais parecido com o pseudo código
     - desvantagens
         * implementação mais trabalhosa no início
         * cada atributo necessário deve ser declarado na classe

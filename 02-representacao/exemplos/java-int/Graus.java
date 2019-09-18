@@ -17,10 +17,6 @@ public class Graus {
         int[] grauSaida = new int[adj.length];
 
         for (int v = 0; v < adj.length; v++) {
-            grauSaida[v] = 0;
-        }
-
-        for (int v = 0; v < adj.length; v++) {
             for (int u : adj[v]) {
                 grauSaida[v] += 1;
             }

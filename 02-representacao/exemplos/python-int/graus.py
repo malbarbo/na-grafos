@@ -1,24 +1,40 @@
-#!/usr/bin/python2
+def graus_de_saida(adj):
+    '''
+    Exemplos
+    >>> adj = [
+    ...     [1, 3],
+    ...     [4],
+    ...     [5, 4],
+    ...     [1],
+    ...     [3],
+    ...     [5]
+    ... ]
+    >>> graus_de_saida(adj)
+    [2, 1, 2, 1, 1, 1]
+    '''
+    graus = [0] * len(adj)
+    for u in range(0, len(adj)):
+       for _ in adj[u]:
+          graus[u] += 1
+    return graus
 
-def calcular_graus_de_saida(adj):
-    grau_saida = [0] * len(adj)
-    for v in range(0, len(adj)):
-       for u in adj[v]:
-          grau_saida[v] += 1
-    return grau_saida
 
-def mostrar_graus_de_saida(grau_saida):
-    for v in range(len(grau_saida)):
-        print "Vertice(%d).grauSaida = %d" % (v, grau_saida[v])
-
-adj = [
-  [1, 3],
-  [4],
-  [5, 4],
-  [1],
-  [3],
-  [5]
-]
-
-grau_saida = calcular_graus_de_saida(adj)
-mostrar_graus_de_saida(grau_saida)
+def graus_de_entrada(adj):
+    '''
+    Exemplos
+    >>> adj = [
+    ...     [1, 3],
+    ...     [4],
+    ...     [5, 4],
+    ...     [1],
+    ...     [3],
+    ...     [5]
+    ... ]
+    >>> graus_de_entrada(adj)
+    [0, 2, 0, 2, 2, 2]
+    '''
+    graus = [0] * len(adj)
+    for u in range(0, len(adj)):
+       for v in adj[u]:
+          graus[v] += 1
+    return graus
