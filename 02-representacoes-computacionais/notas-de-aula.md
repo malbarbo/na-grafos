@@ -169,7 +169,7 @@ title: Representações computacionais
 
 ## Exemplos de implementação
 
-Veja o arquivo 02-representacao-exemplo.zip
+Veja na página da disciplina.
 
 
 ## Exercício

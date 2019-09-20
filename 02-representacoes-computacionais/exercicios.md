@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: 02 - Representação
+title: 02 - Representações computacionais
 ---
 
 #.  Exercício 22.1-2 de CLRS3 ou CLRS2.
