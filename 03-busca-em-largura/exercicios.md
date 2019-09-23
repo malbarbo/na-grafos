@@ -1,7 +1,6 @@
 ---
-title: Busca em largura
-num: "3"
-template: exercicios.tex
+# vim: set spell spelllang=pt_br:
+title: 03 - Busca em largura
 ---
 
 #.  Exercício 22.2-1 de CLRS3 ou CLRS2.
@@ -26,5 +25,3 @@ template: exercicios.tex
 -   [CLRS2] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{2} edition. Capítulo 22.2.
 
 -   [CLRS3] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.2.
-
-<!-- vim: set spell spelllang=pt_br: -->
