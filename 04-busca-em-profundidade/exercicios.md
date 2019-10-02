@@ -1,7 +1,6 @@
 ---
-title: Busca em profundiade
-num: "4"
-template: exercicios.tex
+# vim: set spell spelllang=pt_br:
+title: 04 - Busca em profundiade
 ---
 
 #. Exercício 22.3-1 do CLRS3 ou CLRS2.
@@ -10,7 +9,8 @@ template: exercicios.tex
 
 #. Exercício 22.3-3 do CLRS3 ou CLRS2.
 
-#. Exercício 22.3-4 do CLRS3.
+#. Exercício 22.3-4 do CLRS3. (De acordo com a errata, considere a remoção da
+   linha 8 e não da linha 3)
 
 #. Exercício 22.3-7 do CLRS3 ou 22.3-6 CLRS2.
 
@@ -30,5 +30,3 @@ template: exercicios.tex
 -   [CLRS2] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{2} edition. Capítulo 22.3.
 
 -   [CLRS3] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.3.
-
-<!-- vim: set spell spelllang=pt_br: -->
