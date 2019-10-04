@@ -126,7 +126,7 @@ title: Busca em profundidade
 \scriptsize
 
 \begin{codebox}
-  \Procname{$\proc{DFS(G)}$}
+  \Procname{$\proc{DFS}(G)$}
   \li \For $u \in \attrib{G}{V}$ \Do
   \li   $\attrib{u}{cor} \gets \const{branco}$
   \li   $\attrib{u}{\pi} \gets \const{nil}$
@@ -140,7 +140,7 @@ title: Busca em profundidade
 \end{codebox}
 
 \begin{codebox}
-  \Procname{$\proc{DFS-Visit(G, u)}$}
+  \Procname{$\proc{DFS-Visit}(G, u)$}
   \li $\id{tempo} \gets \id{tempo} + 1$
   \li $\attrib{u}{d} \gets \id{tempo}$
   \li $\attrib{u}{cor} \gets \const{cinza}$
@@ -237,7 +237,7 @@ Podemos definir quadro tipos de arestas em termos da floresta $G_\pi$
   a um ancestral $v$ em uma árvore DFS (consideramos laços como arestas de
   retorno)
 
-- **Arestas para frente** são as arestas $(u, v)$ que não são arestas da árvore
+- **Arestas diretas** são as arestas $(u, v)$ que não são arestas da árvore
   e conectam o vértice $u$ a um descendente $v$ em uma árvore DFS
 
 - **Arestas cruzadas** são todas as outras arestas
@@ -252,7 +252,7 @@ de aresta: \pause
 
 - \const{cinza} \pause - aresta de retorno, e
 
-- \const{preto} \pause - aresta para frente ou cruzada
+- \const{preto} \pause - aresta direta ou cruzada
 
 
 ## Classificação das arestas para grafos não orientados
