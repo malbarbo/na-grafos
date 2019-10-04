@@ -3,6 +3,7 @@ author:
     - \href{http://malbarbo.pro.br}{malbarbo.pro.br}
 header-includes: |
     \usepackage{caption}
+    \usepackage{clrscode3e}
     \captionsetup[figure]{labelformat=empty}
     \usepackage[super]{nth}
 lang: pt-BR
