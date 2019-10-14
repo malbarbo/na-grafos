@@ -20,21 +20,34 @@
     - Cabeça e cauda
 
 - 03
-    - prova de corretude
+    - Usar o termo árvore BFS como sinônimo de árvore da busca em largura
 
--   Trocar o termo acessível por atingível
+- 04
+    - Deixar a parte inicial semelhante ao BFS
+    - Simplificar a análise
+    - Colocar a figura 22-5-c como exemplo para tipos de arestas
+    - Adicionar Teorema do caminho branco?
+    - Revisar o uso do termo árvore DFS
 
--   Escrever os códigos usando o pacote clrscode3e (não dá para usar os
-    arquivos pdf de código pois eles não tem número de linhas)
+- 05
+    - Começar com exemplos mais interessantes e destacar a motivação
+    - Falar das duas abordagens: adicionar os vértices do início para o final
+      e do final para o início. Vértices sumidouros vs fontes.
 
--   Gerar os arquivos zip automaticamente
+- Adicionar links para vídeo aulas
 
--   Adicionar mais exercícios resolvidos
+- Colocar exercícios em todos os slides! Em 01 tem bastante, nos outros muito
+  poucos.
 
--   Permitir a reordenação dos capítulos
+- Trocar o termo acessível por atingível
 
--   Centralizar imagens
+- Escrever os códigos usando o pacote clrscode3e (não dá para usar os
+  arquivos pdf de código pois eles não tem número de linhas)
 
--   Adicionar números as figuras (mesmo da original)
+- Adicionar mais exercícios resolvidos
 
--   Adicionar versão curta para respostas (a longa é mais didática)
+- Permitir a reordenação dos capítulos
+
+- Adicionar números as figuras (mesmo da original)
+
+- Adicionar versão curta para respostas (a longa é mais didática)
