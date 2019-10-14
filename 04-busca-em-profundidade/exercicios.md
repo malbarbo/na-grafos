@@ -100,8 +100,8 @@ grafos não orientados.
 Utilizamos uma variável $\id{cc}$ no procedimento \proc{DFS} que armazena o
 número de componentes. Quando um vértice $u$ com cor \const{branco} é
 identificado incrementamos \id{cc}, para indicar mais um componente conexo, e
-fazemos $\attrib{v}{cc} \gets \id{cc}$. Em \proc{DFS-Visit} todos os vértices
-receberem o mesmo número do componente do seu pai (linha 6). Desta forma, todos
+fazemos $\attrib{u}{cc} \gets \id{cc}$. Em \proc{DFS-Visit} todos os vértices
+recebem o mesmo número do componente do seu pai (linha 6). Desta forma, todos
 vértices de um mesmo componente têm o mesmo valor do atributo \id{cc}.
 
 \begin{codebox}
