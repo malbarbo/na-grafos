@@ -1,7 +1,6 @@
 ---
-title: Componentes fortemente conexos
-num: "6"
-template: exercicios.tex
+# vim: set spell spelllang=pt_br:
+title: 06 - Componentes fortemente conexos
 ---
 
 #. Exercício 22.5-1 do CLRS3 ou CLRS2.
@@ -23,5 +22,3 @@ template: exercicios.tex
 -   [CLRS2] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{2} edition. Capítulo 22.5.
 
 -   [CLRS3] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.5.
-
-<!-- vim: set spell spelllang=pt_br: -->
