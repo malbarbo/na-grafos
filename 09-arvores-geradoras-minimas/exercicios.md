@@ -1,7 +1,6 @@
 ---
-title: Árvores geradoras mínimas
-num: "9"
-template: exercicios.tex
+# vim: set spell spelllang=pt_br:
+title: 09 - Árvores geradoras mínimas
 ---
 
 #. Exercício 23.1-2 do CLRS3 ou CLRS2.
@@ -28,5 +27,3 @@ template: exercicios.tex
 -   [CLRS2] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{2} edition. Capítulo 23.
 
 -   [CLRS3] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 23.
-
-<!-- vim: set spell spelllang=pt_br: -->
