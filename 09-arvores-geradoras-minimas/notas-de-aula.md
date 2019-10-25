@@ -164,12 +164,59 @@ Tomamos $S = V_C$ no teorema 23.1
 
 ## Algoritmo de Kruskal
 
-![](imagens/Fig-23-4-L.pdf){width=9cm}
-
+\includegraphics[trim=0pt 2371pt 1920pt 0pt,clip,]{imagens/Fig-23-4-L.pdf}
 
 ## Algoritmo de Kruskal
 
-![](imagens/Fig-23-4-R.pdf){width=9cm}
+\includegraphics[trim=1920pt 2371pt 0pt 0pt,clip,]{imagens/Fig-23-4-L.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=0pt 1581pt 1920pt 790pt,clip,]{imagens/Fig-23-4-L.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=1920pt 1581pt 0pt 790pt,clip,]{imagens/Fig-23-4-L.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=0pt 791pt 1920pt 1580pt,clip,]{imagens/Fig-23-4-L.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=1920pt 791pt 0pt 1580pt,clip,]{imagens/Fig-23-4-L.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=0pt 1pt 1920pt 2370pt,clip,]{imagens/Fig-23-4-L.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=1920pt 1pt 0pt 2370pt,clip,]{imagens/Fig-23-4-L.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=10pt 1582pt 1919pt 60pt,clip,]{imagens/Fig-23-4-R.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=1929pt 1582pt 0pt 60pt,clip,]{imagens/Fig-23-4-R.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=10pt 791pt 1919pt 851pt,clip,]{imagens/Fig-23-4-R.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=1929pt 791pt 0pt 851pt,clip,]{imagens/Fig-23-4-R.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=10pt 0pt 1919pt 1642pt,clip,]{imagens/Fig-23-4-R.pdf}
+
+## Algoritmo de Kruskal
+
+\includegraphics[trim=1929pt 0pt 0pt 1642pt,clip,]{imagens/Fig-23-4-R.pdf}
 
 
 ## Algoritmo de Kruskal
@@ -244,7 +291,39 @@ Tomamos $S = V_C$ no teorema 23.1
 
 ## Algoritmo de Prim
 
-![](imagens/Fig-23-5.pdf){width=7cm}
+\includegraphics[trim=0pt 3164pt 1920pt 0pt,clip,]{imagens/Fig-23-5.pdf}
+
+## Algoritmo de Prim
+
+\includegraphics[trim=1920pt 3164pt 0pt 0pt,clip,]{imagens/Fig-23-5.pdf}
+
+## Algoritmo de Prim
+
+\includegraphics[trim=0pt 2373pt 1920pt 791pt,clip,]{imagens/Fig-23-5.pdf}
+
+## Algoritmo de Prim
+
+\includegraphics[trim=1920pt 2373pt 0pt 791pt,clip,]{imagens/Fig-23-5.pdf}
+
+## Algoritmo de Prim
+
+\includegraphics[trim=0pt 1582pt 1920pt 1582pt,clip,]{imagens/Fig-23-5.pdf}
+
+## Algoritmo de Prim
+
+\includegraphics[trim=1920pt 1582pt 0pt 1582pt,clip,]{imagens/Fig-23-5.pdf}
+
+## Algoritmo de Prim
+
+\includegraphics[trim=0pt 791pt 1920pt 2373pt,clip,]{imagens/Fig-23-5.pdf}
+
+## Algoritmo de Prim
+
+\includegraphics[trim=1920pt 791pt 0pt 2373pt,clip,]{imagens/Fig-23-5.pdf}
+
+## Algoritmo de Prim
+
+\includegraphics[trim=0pt 0pt 1920pt 3164pt,clip,]{imagens/Fig-23-5.pdf}
 
 
 ## Algoritmo de Prim
