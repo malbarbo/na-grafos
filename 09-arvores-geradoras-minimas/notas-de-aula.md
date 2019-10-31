@@ -336,7 +336,7 @@ Tomamos $S = V_C$ no teorema 23.1
         \End
     \li $\attrib{r}{chave} = 0$
     \li $Q = \attrib{G}{V}$
-    \li \While $Q \not = \empty$ \Do
+    \li \While $Q \not = \emptyset$ \Do
     \li   $u = \proc{extract-min}(Q)$
     \li   \For $v \in \attrib{G}{Adj}[u]$ \Do
     \li     \If $v \in Q$ e $w(u, v) < \attrib{v}{chave}$ \Then
