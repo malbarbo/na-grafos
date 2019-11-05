@@ -6,7 +6,7 @@ title: Árvores geradoras mínimas
 ## Introdução
 
 - Dado um grafo conexo não orientado $G = (V, E)$ e uma função peso $w: E
-  \rightarrow R$, queremos encontrar um subconjunto acíclico $T \subseteq E$
+  \rightarrow \mathbb{R}$, queremos encontrar um subconjunto acíclico $T \subseteq E$
   que conecte todos os vértices de $G$ e cujo peso total
 
   $$
