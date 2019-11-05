@@ -1,5 +1,7 @@
 ---
 # vim: set spell spelllang=pt_br:
+# TODO: falar da implementação de conjuntos disjuntos
+# TODO: falar das implementações das filas de prioridades
 title: Árvores geradoras mínimas
 ---
 
@@ -113,7 +115,7 @@ a aresta $(u, v)$ é segura para $A$.
 
 ## Ideia da prova
 
-![](imagens/Fig-23-3.pdf){width=5cm}
+![](imagens/Fig-23-3.pdf){width=4.5cm}
 
 - Seja $T$ uma AGM que inclui $A$
 
@@ -240,17 +242,17 @@ Tomamos $S = V_C$ no teorema 23.1
 
 ## Análise do algoritmo de Kruskal
 
-- A ordenação das arestas na linha 4 demora $O(E \lg E)$
+- A ordenação das arestas na linha 4 tem tempo $O(E \lg E)$
 
 - Operações com conjuntos disjuntos (depende da implementação, supomos a
   implementação da seção 21.3)
 
-    - O laço das linhas 5 a 8 executa $O(E)$ \proc{find-set} e \proc{union}.
-      Juntamente com as $|V|$ operações \proc{make-set}, elas demoram $O((V
-      + E)\alpha(V))$, onde $\alpha$ é uma função de crescimento muito lento
+    - O laço das linhas 5 a 8 executa $O(E)$ vezes \proc{find-set}
+      e \proc{union}. Juntamente com as $|V|$ operações \proc{make-set}, elas
+      têm tempo $O((V + E)\alpha(V))$, onde $\alpha$ é uma função de crescimento muito lento
 
-    - Pelo fato de $G$ ser supostamente conexo, temos que $|E| \ge |V| - 1$,
-      portanto o tempo com operações com conjuntos disjuntos é $O(E\alpha(V))$
+    - Pelo fato de $G$ ser conexo, temos que $|E| \ge |V| - 1$, portanto
+      o tempo com operações com conjuntos disjuntos é $O(E\alpha(V))$
 
     - Além disso, $\alpha(|V|) = O(\lg V) = O(\lg E)$, e portanto o tempo total
       das operações com conjuntos disjuntos é $O(E\lg E)$
@@ -328,6 +330,9 @@ Tomamos $S = V_C$ no teorema 23.1
 
 ## Algoritmo de Prim
 
+<div class="columns">
+<div class="column" width="40%">
+\footnotesize
 \begin{codebox}
     \Procname{$\proc{MST-Prim}(G, w, r)$}
     \li \For $u \in \attrib{G}{V}$ \Do
@@ -346,43 +351,60 @@ Tomamos $S = V_C$ no teorema 23.1
           \End
         \End
 \end{codebox}
+</div>
+<div class="column" width="60%">
+\footnotesize
+\pause
+Análise do tempo de execução
+\pause
 
-
-## Análise do algoritmo de Prim
-
-\small
-
-- Depende de como a fila de prioridade é implementada
-
-- Se a fila for implementada como um heap mínimo, o algoritmo \proc{build-min-heap}
-  é utilizado na inicialização nas linhas 1 a 5 no tempo $O(V)$
-
-- O corpo do laço while é executado $|V|$ vezes, como cada operação
-  \proc{extract-min} demora $O(\lg V)$, o tempo total para todas as chamadas de
-  \proc{extract-min} é $O(V \lg V)$
-
+- A inicialização nas linhas de 1 a 3 tem tempo $O(V)$
+- A inicialização da fila na linha 4 requer $|V|$ operações \proc{insert} na
+  fila (ou pode ser feito com uma única operação \proc{create})
+- A operação \proc{extract-min} é executada uma vez para cada vértice
 - O laço for das linhas 8 a 11 é executado no total $O(E)$ vezes
-
-- O teste de pertinência da linha 9 pode ser implementa em tempo constante
-
-- A atribuição na linha 11 envolve uma operação implícita de
-  \proc{decrease-key}, que demora $O(\lg V)$, o tempo para todas as chamadas de
-  \proc{decrease-key} é $O(E \lg V)$
-
-- Portanto, o tempo total do algoritmo é $(V \lg V + E \lg V) = O(E \lg V)$
+    - \footnotesize O teste de pertinência da linha 9 pode ser implementa em
+      tempo constante usando um atributo no vértice
+    - A atribuição na linha 11 envolve uma operação implícita de
+      \proc{decrease-key}
+- Portanto, o tempo de execução total é $O(V) \times O(\proc{insert}) + O(V) \times O(\proc{extract-min)} + O(E) \times O(\proc{decrease-key})$
+</div>
+</div>
 
 
 ## Análise do algoritmo de Prim
 
-- Se heap de Fibonacci for usando o tempo de execução assintótico pode ser
-  melhorado
+Podemos utilizar diversas implementação para a fila de prioridades
 
-- \proc{extract-min} é executado em tempo amortizado de $O(\lg V)$
+- Arranjo
+    - \proc{create} inicializa um arranho com todos os vértices, $O(V)$
+    - \proc{decrease-key} não faz nada, portanto $O(1)$
+    - \proc{extract-min}, faz uma busca linear no arranjo e remove o vértice
+      com menor chave, tempo $O(V)$ \pause
 
-- \proc{decrease-key} é executado em tempo amortizado de $O(1)$
+- Heap (Seção 6.5) \pause
 
-- Tempo total do algoritmo melhora para $O(E + V \lg V)$
+- Heap de Fibonacci (Capítulo 19)
+    - Interesse teórico, na prática é superado pelo Heap
 
+
+## Análise do algoritmo de Prim
+
+Tempos das operações
+
+Operação           | Arranjo  | Heap           | Heap de Fibonacci
+-------------------|----------|----------------|------------------
+\proc{create}      | $O(V)$   |   $O(V)$       | $O(V)$
+\proc{extract-min} | $O(V)$   | $O(\lg V)$     | $O(\lg V)$ (amortizado)
+\proc{decrease-key}| $O(1)$   | $O(\lg V)$     | $O(1)$ (amortizado)
+
+
+Tempo de \proc{MST-Prim}
+
+Tempo              | Arranjo  | Heap           | Heap de Fibonacci
+-------------------|----------|----------------|------------------
+Grafo qualquer     | $O(V^2)$ | $O(E \lg V)$   | $O(E + V \lg V)$
+Grafo denso        | $O(V^2)$ | $O(V^2 \lg V)$ | $O(V^2)$
 
 ## Referências
 
