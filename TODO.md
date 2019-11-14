@@ -15,6 +15,7 @@
     - Expandir a parte de caminhos e ciclos para incluir passeio, circuito
       e trilha?
     - Simplificar as definições (veja o livro Algorithm Design)
+        - Evitar o termo classe de equivalência
     - Nó (nodes) usado para vértice por muito autores
     - Extremos (ends)
     - Cabeça e cauda
@@ -28,11 +29,21 @@
     - Colocar a figura 22-5-c como exemplo para tipos de arestas
     - Adicionar Teorema do caminho branco?
     - Revisar o uso do termo árvore DFS
+    - Simplificar atribuição cc (exercicio)
 
 - 05
     - Começar com exemplos mais interessantes e destacar a motivação
     - Falar das duas abordagens: adicionar os vértices do início para o final
       e do final para o início. Vértices sumidouros vs fontes.
+
+- 09
+    - Adicionar aplicações e problemas reais
+    - Passa a passo para as imagens...
+
+
+- Atualizar os termos utilizando a tradução da 3a. edição
+
+- Os atributos devem ser escritos em português ou inglês?
 
 - Adicionar links para vídeo aulas
 
