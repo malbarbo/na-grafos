@@ -156,7 +156,7 @@ caminho é mínimo!
         - Diminui conforme o algoritmo progride, mas sempre mantém a
           propriedade $\attrib{v}{d} \ge \delta(s, v)$
 
-        - Vamos chamar $v.d$ de **estimativa do caminho mínimo**
+        - Vamos chamar $\attrib{v}{d}$ de **estimativa do caminho mínimo**
 
     - $\attrib{v}{\pi} =$ predecessor de $v$ no caminho mínimo a partir de $s$
 
@@ -171,10 +171,10 @@ caminho é mínimo!
 \begin{codebox}
     \Procname{$\proc{initialize-single-source}(G, s)$}
     \li \For $v \in \attrib{G}{V}$ \Do
-    \li     $v.d = \infty$
+    \li     $\attrib{v}{d} = \infty$
     \li     $\attrib{v}{\pi} = \const{nil}$\
         \End
-    \li $s.d = 0$
+    \li $\attrib{s}{d} = 0$
 \end{codebox}
 
 
@@ -191,7 +191,7 @@ seguindo $(u, v)$?
 \begin{codebox}
     \Procname{$\proc{relax}(u, v, w)$}
     \li \If $\attrib{v}{d} > \attrib{u}{d} + w(u, v)$ \Then
-    \li     $\attrib{v.d} = \attrib{u}{d} + w(u, v)$
+    \li     $\attrib{v}{d} = \attrib{u}{d} + w(u, v)$
     \li     $\attrib{v}{\pi} = u$
         \End
 \end{codebox}
@@ -208,7 +208,7 @@ seguindo $(u, v)$?
 
     - O grafo é inicializado com uma chamada a \proc{initialize-single-source}
 
-    - O único modo de modificar $v.d$ e $v.\pi$ (para qualquer vértice) e pela
+    - O único modo de modificar $\attrib{v}{d}$ e $\attrib{v}{\pi}$ (para qualquer vértice) e pela
       chamada de \proc{relax}
 
 
@@ -216,14 +216,14 @@ seguindo $(u, v)$?
 
 - Propriedade do limite superior (Lema 24.11)
 
-    - Sempre temos $v.d \ge \delta(s, v)$ para todo $v$. Uma vez que
-      $v.d = \delta(s, v)$, ele nunca muda
+    - Sempre temos $\attrib{v}{d} \ge \delta(s, v)$ para todo $v$. Uma vez que
+      $\attrib{v}{d} = \delta(s, v)$, ele nunca muda
 
     \pause
 
 - Propriedade de nenhum caminho (Corolário 24.12)
 
-    - Se $\delta(s, v) = \infty$, então sempre $v.d = \infty$
+    - Se $\delta(s, v) = \infty$, então sempre $\attrib{v}{d} = \infty$
 
 
 ## Propriedades
@@ -290,7 +290,7 @@ seguindo $(u, v)$?
 \begin{codebox}
     \Procname{$\proc{bellman-ford}(G, w, s)$}
     \li $\proc{initialize-single-source}(G, s)$
-    \li \For $i \gets 1$ \To $|G.V| - 1$ \Do
+    \li \For $i \gets 1$ \To $|\attrib{G}{V}| - 1$ \Do
     \li     \For $(u, v) \in \attrib{G}{E}$ \Do
     \li         $\proc{relax}(u, v, w)$
             \End
@@ -377,7 +377,7 @@ Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x
         - A $k$-ésima iteração relaxa $(v_{k-1}, v_k)$
 
     - Pela propriedade de relaxamento de caminho
-        $v.d = v_k.d = \delta(s, v_k) = \delta(s, v)$
+        $\attrib{v}{d} = \attrib{v_k}{d} = \delta(s, v_k) = \delta(s, v)$
 
 <!-- TODO: e o valor true/false? !-->
 
@@ -527,7 +527,7 @@ Análise do tempo de execução
 
         - Ao invés de uma fila FIFO, usa uma fila de prioridades
 
-        - As chaves são os valores $v.d$
+        - As chaves são os valores $\attrib{v}{d}$
 
     - Mantém dois conjuntos de vértices
 
@@ -653,15 +653,15 @@ Análise do tempo de execução
 
 - Porque este algoritmo funciona?
 
-    - Invariante de laço: no início de cada iteração do laço while,
-    $v.d = \delta(s, v)$ para todos $v \in S$
+    - Invariante de laço: no início de cada iteração do laço \While,
+    $\attrib{v}{d} = \delta(s, v)$ para todos $v \in S$
 
     - Inicialização: $S = \emptyset$, então é verdadeiro
 
     - Término: No final,
-    $Q = \emptyset \Rightarrow S = V \Rightarrow v.d = \delta(s, v)$, para todo $v \in V$
+    $Q = \emptyset \Rightarrow S = V \Rightarrow \attrib{v}{d} = \delta(s, v)$, para todo $v \in V$
 
-    - Manutenção: precisamos mostrar que $u.d = \delta(s, u)$ quando $u$ é
+    - Manutenção: precisamos mostrar que $\attrib{u}{d} = \delta(s, u)$ quando $u$ é
       adicionado a $S$ em cada iteração (Comentado em sala, veja o livro para a
       prova completa)
 
