@@ -244,6 +244,12 @@ seguindo $(u, v)$?
       (v_1, v_2), \dots, (v_{k-1}, v_k)$, mesmo que intercalada com outros
       relaxamentos, então $\attrib{v_k}{d} = \delta(s, v_k)$
 
+## Propriedades
+
+- Propriedade do subgrafo-predecessor
+
+    - Uma vez que $\attrib{v}{d} = \delta(s, v)$ for todo $v \in V$, o subgrafo
+      predecessor é uma árvore de caminhos mínimos enraizada em $s$
 
 
 ## Ideia dos algoritmos
@@ -265,10 +271,12 @@ seguindo $(u, v)$?
 
 - Resolve o problema para o caso geral, as arestas podem ter pesos negativos
 
-- Detecta ciclos negativos acessíveis a partir da origem e devolve \const{false},
-  caso contrário, devolve \const{true}
+    - Se ciclos negativos acessíveis a partir da origem forem encontrados
+      o algoritmo devolve \const{false}, caso contrário, devolve \const{true}
 
-- Calcula $\attrib{v}{d}$ e $\attrib{v}{\pi}$ para todo $v \in V$
+    - Calcula $\attrib{v}{d}$ e $\attrib{v}{\pi}$ para todo $v \in V$
+
+\pause
 
 - Ideia
 
@@ -316,10 +324,34 @@ Análise do tempo de execução
 
 ## Algoritmo de Bellman-Ford
 
-![](imagens/Fig-24-4.pdf)
+Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
 
-As arestas foram relaxadas na ordem
-$(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
+\includegraphics[width=7cm,trim=0pt 1016pt 2484pt 0pt,clip,]{imagens/Fig-24-4.pdf}
+
+## Algoritmo de Bellman-Ford
+
+Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
+
+\includegraphics[width=7cm,trim=1242pt 1016pt 1242pt 0pt,clip,]{imagens/Fig-24-4.pdf}
+
+## Algoritmo de Bellman-Ford
+
+Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
+
+\includegraphics[width=7cm,trim=2484pt 1016pt 0pt 0pt,clip,]{imagens/Fig-24-4.pdf}
+
+## Algoritmo de Bellman-Ford
+
+Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
+
+\includegraphics[width=7cm,trim=0pt 0pt 2484pt 1016pt,clip,]{imagens/Fig-24-4.pdf}
+
+## Algoritmo de Bellman-Ford
+
+Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
+
+\includegraphics[width=7cm,trim=1242pt 0pt 1242pt 1016pt,clip,]{imagens/Fig-24-4.pdf}
+
 
 
 ## Algoritmo de Bellman-Ford
@@ -330,9 +362,9 @@ $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
 
     - Propriedade de relaxamento de caminho
 
-    - Seja $v$ acessível a partir de $s$, e seja $p = \langle v_0, v_1, \dots,
-      v_k \rangle$ um caminho mínimo acíclico entre $s = v_0$ e $v = v_k$. $p$
-      tem no máximo $|V| - 1$ arestas, e portanto $k \le |V| - 1$
+    - Seja $p = \langle v_0, v_1, \dots, v_k \rangle$ um caminho mínimo
+      acíclico entre $s = v_0$ e $v = v_k$. O caminho $p$ tem no máximo $|V| -
+      1$ arestas, e portanto $k \le |V| - 1$
 
     - Cada iteração do laço da linha 2 relaxa todas as arestas
 
@@ -356,14 +388,12 @@ $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
 
 ## Algoritmo para gaos
 
-- Grafo acíclico orientado (gao) ponderado
-
-- Caminhos mínimos são sempre bem definidos em um gao, pois não existem ciclos
-  (de peso negativo)
+- Em grafo acíclico orientado (gao), os caminhos mínimos são sempre bem
+  definidos (não existem ciclos de peso negativo) \pause
 
 - Ideia
 
-    - Relaxar as arestas em uma ordem topológica de seus vértices
+    - Relaxar as arestas em uma ordem topológica dos vértices
 
 
 ## Caminhos mínimos de única origem em gaos
@@ -386,12 +416,12 @@ $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
 Análise do tempo de execução
 \pause
 
-- A ordenação topológica da linha 1 demora $\Theta(V + E)$
+- A ordenação topológica da linha 1 tem tempo $\Theta(V + E)$
 
-- \proc{initialize-single-source} na linha 2 demora $\Theta(V)$
+- \proc{initialize-single-source} na linha 2 tem tempo $\Theta(V)$
 
 - Nos laços das linhas 2 e 3 a lista de adjacências de cada vértices é visitada
-  apenas uma, totalizando $V + E$ (análise agregada), como o relaxamento de
+  apenas uma vez, totalizando $V + E$ (análise agregada), como o relaxamento de
   cada aresta custa $O(1)$, o tempo total é $\Theta(E)$
 
 - Portanto, o tempo de execução do algoritmo é $\Theta(V + E)$
@@ -401,7 +431,31 @@ Análise do tempo de execução
 
 ## Caminhos mínimos de única origem em gaos
 
-![](imagens/Fig-24-5.pdf)
+\includegraphics[trim=0pt 2032pt 1920pt 0pt,clip,]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=1920pt 2032pt 0pt 0pt,clip,]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=0pt 1355pt 1920pt 677pt,clip,]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=1920pt 1355pt 0pt 677pt,clip,]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=0pt 678pt 1920pt 1354pt,clip,]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=1920pt 678pt 0pt 1354pt,clip,]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=0pt 1pt 1920pt 2031pt,clip,]{imagens/Fig-24-5.pdf}
 
 
 ## Caminhos mínimos de única origem em gaos
@@ -431,11 +485,11 @@ Análise do tempo de execução
 
 ## Aplicação
 
-- Um caminho através desse gao: sequencia de serviços
+- Um caminho através desse gao: sequência de serviços
 
 - Caminho crítico: é um caminho mais longo pelo gao
 
-    - Tempo mais longo para execução de uma sequencia ordenada
+    - Tempo mais longo para execução de uma sequência ordenada
 
 - O peso de um caminho crítico é um limite inferior sobre o tempo total para
   execução de todos os serviços
@@ -506,7 +560,27 @@ Análise do tempo de execução
 
 ## Algoritmo de Dijkstra
 
-![](imagens/Fig-24-6.pdf)
+\includegraphics[width=7cm,trim=0pt 903pt 2484pt 0pt,clip,]{imagens/Fig-24-6.pdf}
+
+## Algoritmo de Dijkstra
+
+\includegraphics[width=7cm,trim=1242pt 903pt 1242pt 0pt,clip,]{imagens/Fig-24-6.pdf}
+
+## Algoritmo de Dijkstra
+
+\includegraphics[width=7cm,trim=2484pt 903pt 0pt 0pt,clip,]{imagens/Fig-24-6.pdf}
+
+## Algoritmo de Dijkstra
+
+\includegraphics[width=7cm,trim=0pt 0pt 2484pt 903pt,clip,]{imagens/Fig-24-6.pdf}
+
+## Algoritmo de Dijkstra
+
+\includegraphics[width=7cm,trim=1242pt 0pt 1242pt 903pt,clip,]{imagens/Fig-24-6.pdf}
+
+## Algoritmo de Dijkstra
+
+\includegraphics[width=7cm,trim=2484pt 0pt 0pt 903pt,clip,]{imagens/Fig-24-6.pdf}
 
 
 ## Algoritmo de Dijkstra
