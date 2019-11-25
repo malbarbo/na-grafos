@@ -33,7 +33,7 @@ title: Ordenação topológica
 \begin{codebox}
   \Procname{$\proc{topological-sort}(G)$}
   \li chamar $\proc{DFS}(G)$ para calcular o
-  \zi     tempo de término $v.f$ para cada vértice
+  \zi     tempo de término $\attrib{v}{f}$ para cada vértice
   \li à medida que cada vértice é finalizado,
   \zi     inserir o vértice à frente de uma lista ligada
   \li \Return a lista ligada de vértices
@@ -87,7 +87,7 @@ orientado $G$.
 
 \pause
 
-Precisamos mostrar que se $(u, v) \in E$, então $v.f < u.f$.
+Precisamos mostrar que se $(u, v) \in E$, então $\attrib{v}{f} < \attrib{u}{f}$.
 
 
 ## Corretude
@@ -107,14 +107,14 @@ Precisamos mostrar que se $(u, v) \in E$, então $v.f < u.f$.
     - $v$ é branco? \pause
 
         - Então $v$ torna-se um descendente de $u$. Pelo teorema do parênteses
-          $u.d < v.d < \mathbf{v.f < u.f}$
+          $\attrib{u}{d} < \attrib{v}{d} < \mathbf{\attrib{v}{f} < \attrib{u}{f}}$
 
     \pause
 
     - $v$ é preto? \pause
 
         - Então $v$ já foi finalizado. Como a aresta $(u, v)$ está sendo
-          explorada, $u$ não foi finalizado, logo $v.f < u.f$
+          explorada, $u$ não foi finalizado, logo $\attrib{v}{f} < \attrib{u}{f}$
 
 
 ## Referências

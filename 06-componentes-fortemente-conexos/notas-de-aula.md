@@ -79,7 +79,7 @@ e $v'$ são acessíveis um a partir do outro, e não podem estar em SCC separado
 \begin{codebox}
     \Procname{$\proc{strongly-connected-components}(G)$}
     \li chamar $\proc{DFS}(G)$ para calcular o
-    \zi     tempo de término $v.f$ de cara vértice
+    \zi     tempo de término $\attrib{v}{f}$ de cara vértice
     \li calcular $G^T$
     \li chamar $\proc{DFS}(G^T)$ mas, no laço principal
     \zi     de $\proc{DFS}$, considerar os vértices
