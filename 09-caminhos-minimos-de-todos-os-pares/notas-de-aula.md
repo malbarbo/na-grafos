@@ -20,15 +20,15 @@ multiplicação de matriz !-->
 
     - Dijkstra (sem arestas com pesos negativos)
 
-        - Arranjo linear: $O(V^3 + VE) = O(V^3)$
+        - Arranjo linear: \pause $O(V^3 + VE) = O(V^3)$ \pause
 
-        - Heap binário: $O(V E \lg V)$, se o grafo é denso $O(V^3 \lg V)$
+        - Heap binário: \pause $O(V E \lg V)$, se o grafo é denso $O(V^3 \lg V)$ \pause
 
-        - Heap de fibonacci: $O(V^2 \lg V + V E)$, se o grafo é denso $O(V^3)$
+        - Heap de Fibonacci: \pause $O(V^2 \lg V + V E)$, se o grafo é denso $O(V^3)$ \pause
 
-    - Bellman-Ford (grafos gerais)
+    - Bellman-Ford (grafos gerais) \pause
 
-        - $O(V^2E)$, se o grafo é denso $O(V^4)$
+        - $O(V^2E)$, se o grafo é denso $O(V^4)$ \pause
 
 - Veremos um algoritmo $O(V^3)$ que não usa nenhuma estrutura de dados especial
 
@@ -46,7 +46,7 @@ multiplicação de matriz !-->
 
 - Entrada
 
-    - Uma matriz $W n \times n$ que representa os pesos das arestas. Isto é,
+    - Uma matriz $n \times n\ W$ que representa os pesos das arestas. Isto é,
       $W = w_{ij}$, onde
 
       $$w_{ij} = \begin{cases}
@@ -57,11 +57,11 @@ multiplicação de matriz !-->
 
 - Saída
 
-    - Matriz $D n \times n = d_{ij}$, onde a entrada $d_{ij}$ contém o peso do
+    - Matriz $n \times n\ D = d_{ij}$, onde a entrada $d_{ij}$ contém o peso do
       caminho mínimo do vértice $i$ até o vértice $j$, ou seja, $d_{ij}
       = \delta(i, j)$
 
-    - Matriz predecessora $\Pi n \times n = \pi_{ij}$, onde $\pi_{ij}$
+    - Matriz predecessora $n \times n\ \Pi = \pi_{ij}$, onde $\pi_{ij}$
       é o vértice predecessor de $j$ em um caminho mínimo a partir de $i$
 
 
@@ -77,7 +77,10 @@ multiplicação de matriz !-->
 - Ideia
 
     - O caminho mínimo pode ser calculado baseado nos caminhos mínimos para
-      subproblemas já calculados e memorizados \pause
+      subproblemas já calculados e memorizados
+
+
+## O algoritmo de Floyd-Warshall
 
 - Etapas para resolver um problema com programação dinâmica
 
@@ -95,38 +98,48 @@ multiplicação de matriz !-->
 - Para um caminho $p = \langle v_1, v_2, \dots, v_l \rangle$, um **vértice
   intermediário** é qualquer vértice de $p$ que não seja $v_1$ ou $v_l$
 
-- Lembramos que $n = |V|$
+<!-- TODO: Quais são os subproblemas? -->
 
 
 ## Caracterização da estrutura da solução ótima
 
 - Considere um caminho mínimo $i \stackrel{p}{\leadsto} j$ com todo os vértices
-  intermediários em $\{1, 2, \dots, k\}$
+  intermediários em $\{1, 2, \dots, k\}$, temos duas possibilidades
 
-    - Se $k$ não é um vértice intermediário de $p$, então, todos os vértices
-      intermediários de $p$ estão em $\{1, 2, \dots, k - 1\}$. Deste modo, um
-      caminho mínimo $i \leadsto j$ com todo os vértices intermediários no
-      conjunto $\{1, 2, \dots, k - 1\}$, também é um caminho mínimo $i \leadsto
-      j$ com todos os vértices intermediários no conjunto $\{1, 2, \dots, k\}$
+    - $k$ é ou não é um vértice intermediário de $p$
 
-    - Se $k$ é um vértice intermediário do caminho $p$, então desmembramos
-      o caminho $p$ em $i \stackrel{p_1}{\leadsto} k \stackrel{p_2}{\leadsto}
-      j$. $p_1$ é um caminho mínimo de $i$ até $k$, com todos os vértices
-      intermediários no conjunto $\{1, 2, \dots, k - 1\}$. A mesma ideia se
-      aplica a $p_2$
 
-      ![](imagens/Fig-25-3.pdf)
+## Caracterização da estrutura da solução ótima
+
+- Se $k$ não é um vértice intermediário de $p$, então, todos os vértices
+  intermediários de $p$ estão em $\{1, 2, \dots, k - 1\}$. Deste modo, um
+  caminho mínimo $i \leadsto j$ com todo os vértices intermediários no conjunto
+  $\{1, 2, \dots, k - 1\}$, também é um caminho mínimo $i \leadsto j$ com todos
+  os vértices intermediários no conjunto $\{1, 2, \dots, k\}$
+
+
+## Caracterização da estrutura da solução ótima
+
+- Se $k$ é um vértice intermediário do caminho $p$, então desmembramos o
+  caminho $p$ em $i \stackrel{p_1}{\leadsto} k \stackrel{p_2}{\leadsto} j$.
+  $p_1$ é um caminho mínimo de $i$ até $k$, com todos os vértices
+  intermediários no conjunto $\{1, 2, \dots, k - 1\}$. A mesma ideia se aplica
+  a $p_2$
+
+  ![](imagens/Fig-25-3.pdf)
 
 
 ## Definição recursiva do custo da solução ótima
 
 - Seja $d_{ij}^{(k)}$ o peso de um caminho mínimo $i \leadsto j$ com todos os
-  vértices intermediários em $\{1, 2, \dots, k\}$
+  vértices intermediários em $\{1, 2, \dots, k\}$ \pause
 
     $$d_{ij}^{(k)} = \begin{cases}
            w_{ij} & \text{se } k = 0 \\
            \min(d_{ij}^{(k-1)}, d_{ik}^{(k - 1)} + d_{kj}^{(k - 1)})) & \text{se } k \ge 1
         \end{cases}$$
+
+    \pause
 
 - Observe que  a matriz $D^{(n)} = (d_{ij}^{(n)})$ fornece a reposta desejada:
   $d_{ij}^{(n)} = \delta(i, j)$ para todo $i, j \in V$, isto porque para
