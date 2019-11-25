@@ -224,19 +224,19 @@ Tomamos $S = V_C$ no teorema 23.1
 ## Algoritmo de Kruskal
 
 \begin{codebox}
-    \Procname{$\proc{MST-Kruskal}(G, w)$}
-    \li $A = \emptyset$
-    \li \For $v \in \attrib{G}{V}$ \Do
-    \li   $\proc{make-set(v)}$
+  \Procname{$\proc{MST-Kruskal}(G, w)$}
+  \li $A = \emptyset$
+  \li \For $v \in \attrib{G}{V}$ \Do
+  \li   $\proc{make-set(v)}$
+      \End
+  \li ordenar em ordem não decrescente as arestas de $E$ pelo peso $w$
+  \li \For $(u, v) \in E$, na ordem obtida anteriormente \Do
+  \li   \If $\proc{find-set}(u) \not = \proc{find-set}(v)$ \Then
+  \li     $A = A \cup \{ (u, v) \}$
+  \li     $\proc{union}(u, v)$
         \End
-    \li ordenar em ordem não decrescente as arestas de $E$ pelo peso $w$
-    \li \For $(u, v) \in E$, na ordem obtida anteriormente \Do
-    \li   \If $\proc{find-set}(u) \not = \proc{find-set}(v)$ \Then
-    \li     $A = A \cup \{ (u, v) \}$
-    \li     $\proc{union}(u, v)$
-          \End
-        \End
-    \li \Return $A$
+      \End
+  \li \Return $A$
 \end{codebox}
 
 
@@ -334,22 +334,22 @@ Tomamos $S = V_C$ no teorema 23.1
 <div class="column" width="40%">
 \footnotesize
 \begin{codebox}
-    \Procname{$\proc{MST-Prim}(G, w, r)$}
-    \li \For $u \in \attrib{G}{V}$ \Do
-    \li   $\attrib{u}{chave} = \infty$
-    \li   $\attrib{u}{\pi} = \const{nil}$
-        \End
-    \li $\attrib{r}{chave} = 0$
-    \li $Q = \attrib{G}{V}$
-    \li \While $Q \not = \emptyset$ \Do
-    \li   $u = \proc{extract-min}(Q)$
-    \li   \For $v \in \attrib{G}{Adj}[u]$ \Do
-    \li     \If $v \in Q$ e $w(u, v) < \attrib{v}{chave}$ \Then
-    \li       $\attrib{v}{\pi} = u$
-    \li       $\attrib{v}{chave} = w(u, v)$
-            \End
+  \Procname{$\proc{MST-Prim}(G, w, r)$}
+  \li \For $u \in \attrib{G}{V}$ \Do
+  \li   $\attrib{u}{chave} = \infty$
+  \li   $\attrib{u}{\pi} = \const{nil}$
+      \End
+  \li $\attrib{r}{chave} = 0$
+  \li $Q = \attrib{G}{V}$
+  \li \While $Q \not = \emptyset$ \Do
+  \li   $u = \proc{extract-min}(Q)$
+  \li   \For $v \in \attrib{G}{Adj}[u]$ \Do
+  \li     \If $v \in Q$ e $w(u, v) < \attrib{v}{chave}$ \Then
+  \li       $\attrib{v}{\pi} = u$
+  \li       $\attrib{v}{chave} = w(u, v)$
           \End
         \End
+      \End
 \end{codebox}
 </div>
 <div class="column" width="60%">
