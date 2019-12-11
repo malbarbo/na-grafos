@@ -1,7 +1,6 @@
 ---
+# vim: set spell spelllang=pt_br:
 title: Fluxo em redes
-num: "10"
-template: exercicios.tex
 ---
 
 #. Exercício 26.1-6 do CLRS3.
@@ -26,5 +25,3 @@ template: exercicios.tex
 # Referências
 
 -   [CLRS3] - Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 26.
-
-<!-- vim: set spell spelllang=pt_br: -->

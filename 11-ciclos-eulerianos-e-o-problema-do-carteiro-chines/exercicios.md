@@ -1,7 +1,6 @@
 ---
+# vim: set spell spelllang=pt_br:
 title: Ciclos eulerianos e o problema do carteiro chinês
-num: "11"
-template: exercicios.tex
 ---
 
 #.  Execute os procedimentos `hierholzer-1` e `hierholzer-2` para o grafo
@@ -15,6 +14,3 @@ template: exercicios.tex
 
 #.  Prove ou conteste: Se um grafo orientado é euleriano então ele é fortemente
     conexo.
-
-
-<!-- vim: set spell spelllang=pt_br: -->

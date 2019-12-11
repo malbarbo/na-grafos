@@ -1,7 +1,6 @@
 ---
+# vim: set spell spelllang=pt_br:
 title: Coloração de grafos
-num: "14"
-template: exercicios.tex
 ---
 
 #.  Faça a análise do tempo de execução do algoritmo maior grau primeiro.
@@ -10,5 +9,3 @@ template: exercicios.tex
     exemplo do material?
 
 #.  Elabore uma heurística melhorativa para o problema de coloração de grafos.
-
-<!-- vim: set spell spelllang=pt_br: -->
