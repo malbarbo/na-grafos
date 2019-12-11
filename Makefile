@@ -1,6 +1,6 @@
 .PHONY: default all pdf handout tex clean
 
-SHELL=/bin/bash
+SHELL=bash
 DEST=target
 DEST_PDF=$(DEST)/pdfs
 DEST_PDF_HANDOUT=$(DEST)/pdfs/handout
