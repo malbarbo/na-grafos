@@ -69,6 +69,8 @@ multiplicação de matriz !-->
 
 - Não estudaremos este algoritmo
 
+<!-- TODO: falar do algoritmo -->
+
 
 ## O algoritmo de Floyd-Warshall
 
@@ -255,8 +257,7 @@ Análise do tempo de execução
     \li     \For $j = 1$ \To $n$ \Do
     \li         \If $i = j$ ou $w_{ij} = \infty$ \Then
     \li             $\pi_{ij} = \const{nil}$
-                \End
-    \li         \If $i \not = j$ e $w_{ij} < \infty$ \Then
+    \li         \Else
     \li             $\pi_{ij} = i$
                 \End
             \End
