@@ -22,23 +22,33 @@
 
 - 03
     - Usar o termo árvore BFS como sinônimo de árvore da busca em largura
+    - Simplificar a análise
 
 - 04
     - Deixar a parte inicial semelhante ao BFS
-    - Simplificar a análise
+    - Simplificar a análise?
     - Colocar a figura 22-5-c como exemplo para tipos de arestas
     - Adicionar Teorema do caminho branco?
     - Revisar o uso do termo árvore DFS
-    - Simplificar atribuição cc (exercicio)
+    - Simplificar atribuição cc (exercício)
 
 - 05
     - Começar com exemplos mais interessantes e destacar a motivação
     - Falar das duas abordagens: adicionar os vértices do início para o final
       e do final para o início. Vértices sumidouros vs fontes.
 
+- 06
+    - Destacar as aplicações
+
+- 07
+    - Muito tempo até chegar nos algoritmos...
+
+- 08
+    - Aplicações e problemas reais?
+
 - 09
-    - Adicionar aplicações e problemas reais
-    - Passa a passo para as imagens...
+    - Falar do algoritmos baseado em multiplicação de matrizes (quem
+      é o autor?) e fazer um contraste com o algoritmo de Floyd-Warshall
 
 
 - Atualizar os termos utilizando a tradução da 3a. edição
