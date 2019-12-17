@@ -50,6 +50,10 @@
     - Falar do algoritmos baseado em multiplicação de matrizes (quem
       é o autor?) e fazer um contraste com o algoritmo de Floyd-Warshall
 
+- 11
+    - Colocar um exemplo com mais ciclos intermediários
+    - Mostrar a execução do algoritmo hierholzer-2
+
 
 - Atualizar os termos utilizando a tradução da 3a. edição
 
