@@ -55,6 +55,8 @@
     - Mostrar a execução do algoritmo hierholzer-2
 
 
+- Usar menos listas (preferir parágrafos sem itemização)
+
 - Atualizar os termos utilizando a tradução da 3a. edição
 
 - Os atributos devem ser escritos em português ou inglês?
