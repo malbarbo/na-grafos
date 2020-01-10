@@ -59,7 +59,7 @@ title: Componentes fortemente conexos
 
 ### Lema 22.13
 
-Sejam $C$ e $C'$ SCC distintos em um grafo direcionado $G = (V, E)$, seja $u,
+Sejam $C$ e $C'$ SCC distintos em um grafo orientado $G = (V, E)$, seja $u,
 v \in C$ e seja $u', v' \in C'$. Suponha que exista um caminho $u \leadsto u'$
 em $G$. Então, não pode existir um caminho $v' \leadsto v$ em $G$ \pause
 

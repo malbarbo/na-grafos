@@ -70,8 +70,8 @@ Tempo de execução \pause
 
 ### Lema 22.11
 
-Um grafo direcionado $G$ é acíclico se e somente se uma busca em profundidade
-de $G$ não encontra arestas de retorno.
+Um grafo orientado $G$ é acíclico se e somente se uma busca em profundidade de
+$G$ não encontra arestas de retorno.
 
 \pause
 
