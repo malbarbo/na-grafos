@@ -204,7 +204,7 @@ Análise do tempo de execução
 
 ## Heurística do vizinho mais próximo
 
-![](imagens/exemplo-nn.pdf)
+![](imagens/exemplo-nn.pdf){width=9.5cm}
 
 
 ## Heurística do vizinho mais próximo
