@@ -100,7 +100,7 @@ Redes com múltiplas fontes e sumidouros
 Chamamos de método e não algoritmo pois engloba diversas implementações com
 tempo de execução diferentes
 
-Utiliza os conceitos: rede residual, caminho aumentante e corte. Estes
+Utiliza os conceitos: rede residual, caminho de aumento e corte. Estes
 conceitos são importantes para muitos algoritmos e problemas de fluxo em rede
 
 
@@ -113,10 +113,10 @@ Ideia
 - Começamos com $f(u, v) = 0$ para todo $u, v \in G$, o que gera um fluxo de
   valor $0$
 
-- A cada iteração, aumentamos o valor do fluxo encontrado um “caminho
-  aumentante” na “rede residual” $G_f$ associada a $G$
+- A cada iteração, aumentamos o valor do fluxo encontrado um “caminho de
+  aumento” na “rede residual” $G_f$ associada a $G$
 
-- O processo continua até que nenhum caminho aumentante é encontrado
+- O processo continua até que nenhum caminho de aumento é encontrado
 
 - O teorema do fluxo máximo e corte mínimo garante que este processo produz
   o fluxo máximo no término
@@ -127,7 +127,7 @@ Ideia
 \begin{codebox}
     \Procname{$\proc{ford-fulkerson-method}(G, s, t)$}
     \li Iniciar o fluxo $f$ com $0$
-    \li \While existe um caminho aumentante $p$ na rede residual $G_f$ \Do
+    \li \While existe um caminho de aumento $p$ na rede residual $G_f$ \Do
     \li     aumente $f$ ao londo de $p$
         \End
     \li \Return $f$
@@ -197,21 +197,21 @@ em $G$ com valor $|f \uparrow f'| = |f| + |f'|$
 Vista em sala (veja o livro)
 
 
-## Caminho aumentante
+## Caminho de aumento
 
-Dado uma rede $G = (V, E)$ e um fluxo $f$, um **caminho aumentante** $p$ é um
+Dado uma rede $G = (V, E)$ e um fluxo $f$, um **caminho de aumento** $p$ é um
 caminho simples de $s$ para $t$ na rede residual $G_f$
 
 O valor máximo que pode ser aumentado no fluxo de cada aresta no caminho
-aumentante $p$ é chamado **capacidade residual** de $p$, e é dado por
+de aumento $p$ é chamado **capacidade residual** de $p$, e é dado por
 $$c_f(p) = \min \{c_f(u, v): (u, v) \in p\}$$
 
 
-## Caminho aumentante
+## Caminho de aumento
 
 **Lema 26.2**
 
-Seja $G = (V, E)$ um rede, $f$ um fluxo em $G$ e $p$ um caminho aumentante em
+Seja $G = (V, E)$ um rede, $f$ um fluxo em $G$ e $p$ um caminho de aumento em
 $G_f$. Seja a função $f_p: V \times V \rightarrow \mathbb{R}$, definida como
 
 $$f_p(u, v) = \begin{cases}
@@ -222,11 +222,11 @@ $$f_p(u, v) = \begin{cases}
 Então, $f_p$ é um fluxo em $G_f$ com valor $|f_p| = c_f(p) > 0$
 
 
-## Caminho aumentante
+## Caminho de aumento
 
 **Corolário 26.3**
 
-Seja $G = (V, E)$ um rede, $f$ um fluxo em $G$ e $p$ um caminho aumentante em
+Seja $G = (V, E)$ um rede, $f$ um fluxo em $G$ e $p$ um caminho de aumento em
 $G_f$. Seja a função $f_p$ como definido na equação (26.8) e suponha que nós
 aumentamos $f$ por $f_p$. Então a função $f \uparrow f_p$ é um fluxo em $G$ com
 valor $|f \uparrow f_p| = |f| + |f_p| > |f|$
@@ -238,7 +238,7 @@ valor $|f \uparrow f_p| = |f| + |f_p| > |f|$
 A partir dos lemas 26.1 e 26.2
 
 
-## Exemplo de caminho aumentante
+## Exemplo de caminho de aumento
 
 ![](imagens/Fig-26-4.pdf)
 
@@ -304,7 +304,7 @@ as seguintes condições são equivalentes:
 
 1. $f$ é um fluxo máximo em $G$
 
-2. A rede residual $G_f$ não contém nenhum caminho aumentante
+2. A rede residual $G_f$ não contém nenhum caminho de aumento
 
 3. $|f| = c(S, T)$ para algum corte $(S, T)$ de $G$
 
@@ -318,7 +318,7 @@ Vista em sala (veja o livro)
 ## Algoritmo básico de Ford-Fulkerson
 
 - Em cada iteração do método de Ford-Fulkerson é encontrado algum caminho
-  aumentante $p$ que é utilizado para modificar o fluxo $f$
+  de aumento $p$ que é utilizado para modificar o fluxo $f$
 
 - Como o Lema 26.2 e o Corolário 26.3 sugerem, o fluxo $f$ pode ser substituído
   por $f \uparrow f_p$, gerando um novo fluxo com valor $|f| + |f_p|$
@@ -332,7 +332,7 @@ Vista em sala (veja o livro)
 
     - Fluxo é removido se a aresta é contrária
 
-    - Quando não existe mais caminho aumentante, $f$ é máximo
+    - Quando não existe mais caminho de aumento, $f$ é máximo
 
 
 ## Algoritmo básico de Ford-Fulkerson
@@ -387,7 +387,7 @@ Análise do tempo de execução
     - Manter um grafo $G' = (V, E')$, onde
       $E' = \{(u, v): (u, v) \in E \text{ ou } (v, u) \in E\}$
 
-    - Encontrar o caminho aumente com \proc{DFS} ou \proc{BFS}, tempo $O(V + E') = O(E)$
+    - Encontrar o caminho de aumento com \proc{DFS} ou \proc{BFS}, tempo $O(V + E') = O(E)$
 
     - Cada iteração demora $O(E)$
 
@@ -401,7 +401,7 @@ Análise do tempo de execução
 
 ## Algoritmo de Edmonds-Karp
 
-- Encontrar o caminho aumentante $p$ com a busca em largura
+- Encontrar o caminho de aumento $p$ com a busca em largura
 
 - Escolher o menor caminho entre $s$ e $t$, sendo que o tamanho do caminho
   é o número de arestas no caminho
