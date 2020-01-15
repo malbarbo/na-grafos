@@ -232,6 +232,8 @@ NP-difícies.
     Livro Building Blocks for Theoretical Computer Science. Margaret M. Fleck.
     Capítulo 21.
 
+- [Vídeo Planar Graphs](https://www.youtube.com/watch?v=xBkTIp6ajAg).
+
 - Grafos planares. Wikipédia. <https://en.wikipedia.org/wiki/Planar_graph>
 
 - Teste de planaridade. Wikipédia.
