@@ -2,6 +2,8 @@
 
 # TODO
 
+- Adicionar os trabalhos a este repositório
+
 - 00
     - Usar figuras vetorial (tikz)
     - Exemplos mais motivantes (alguns onde os vértices e arestas representam
