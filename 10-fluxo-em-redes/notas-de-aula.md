@@ -22,8 +22,8 @@ E$ tem uma capacidade $c(u, v) \ge 0$
 Um **fluxo** em $G$ é uma função $f: V \times V \rightarrow \mathbb{R}$ que
 satisfaz as seguintes propriedades
 
-- **Restrição de capacidade**: Para todo $u, v \in V$, $0 \le f(u, v) \le c(u,
-  v)$
+- **Restrição de capacidade**: Para todo $u, v \in V$,
+  $$0 \le f(u, v) \le c(u,v)$$
 
 - **Conservação do fluxo**: Para todo $u \in V -\{s, t\}$
   $$\sum_{v \in V} f(v, u) = \sum_{v \in V} f(u, v)$$
@@ -33,9 +33,9 @@ satisfaz as seguintes propriedades
 
 ## Introdução
 
-O **valor** $|f|$ do fluxo $f$ é definido como $$|f| = \sum_{v \in V} f(s, v)
-- \sum_{v \in V} f(v, s)$$ ou seja, o fluxo total que saí de $s$ menos o fluxo
-total que entra em $s$
+O **valor** $|f|$ do fluxo $f$ é definido como
+$$|f| = \sum_{v \in V} f(s, v) - \sum_{v \in V} f(v, s)$$
+ou seja, o fluxo total que saí de $s$ menos o fluxo total que entra em $s$.
 
 
 ## Exemplo
@@ -58,7 +58,9 @@ Arestas antiparalelas
 
 - Parecesse uma boa oportunidade, o problema é que isto viola a restrição de
   que se $(v_1, v_2) \in E$, então $(v_2, v_1) \not \in E$ (as arestas $(v_1,
-  v_2)$ e $(v_2, v_1)$ são chamadas de **antiparalelas**) \pause
+  v_2)$ e $(v_3, v_1)$ são chamadas de **antiparalelas**)
+
+\pause
 
 - Transformamos em uma rede equivalente
 
@@ -80,6 +82,8 @@ Redes com múltiplas fontes e sumidouros
 
 - Não está de acordo com a definição de rede
 
+\pause
+
 - Transformamos em uma rede equivalente
 
     - Adicionamos uma super fonte $s$ e arestas com capacidade $\infty$ de $s$
@@ -98,23 +102,23 @@ Redes com múltiplas fontes e sumidouros
 ## O método de Ford-Fulkerson
 
 Chamamos de método e não algoritmo pois engloba diversas implementações com
-tempo de execução diferentes
+tempo de execução diferentes.
 
-Utiliza os conceitos: rede residual, caminho de aumento e corte. Estes
-conceitos são importantes para muitos algoritmos e problemas de fluxo em rede
+Conceitos importantes utilizados por este e outro algoritmos de redes
+
+- Rede residual
+- Caminho de aumento
+- Corte
 
 
 ## O método de Ford-Fulkerson
 
-Ideia
+Ideia: incrementar iterativamente o valor do fluxo
 
-- Incrementar iterativamente o valor do fluxo
-
-- Começamos com $f(u, v) = 0$ para todo $u, v \in G$, o que gera um fluxo de
-  valor $0$
+- Começamos com $f(u, v) = 0$ para todo $u, v \in G$ (portanto $|f| = 0$)
 
 - A cada iteração, aumentamos o valor do fluxo encontrado um “caminho de
-  aumento” na “rede residual” $G_f$ associada a $G$
+  aumento” na “rede residual” $G_f$
 
 - O processo continua até que nenhum caminho de aumento é encontrado
 
@@ -133,11 +137,6 @@ Ideia
     \li \Return $f$
 \end{codebox}
 
-\pause
-
-A fim de implementar e analisar o método de Ford-Fulkerson, precisamos de
-vários conceitos
-
 
 ## Redes residuais
 
@@ -154,14 +153,14 @@ Seja $G = (V, E)$ uma rede com fonte $s$ e sumidouro $t$, $f$ um fluxo em $G$
 e $u, v \in V$
 
 - A **capacidade residual** $c_f(u, v)$ é definida como
-    $$c_f(u, v) = \begin{cases}
-          c(u, v) - f(u, v) & \text{se } (u, v) \in E \\
-          f(v, u)           & \text{se } (v, u) \in E \\
-          0                 & \text{caso contrário}
-      \end{cases}$$
+  $$c_f(u, v) = \begin{cases}
+        c(u, v) - f(u, v) & \text{se } (u, v) \in E \\
+        f(v, u)           & \text{se } (v, u) \in E \\
+        0                 & \text{caso contrário}
+  \end{cases}$$
 
 - A **rede residual** de $G$ induzida por $f$ é $G_f = (V, E_f)$, onde
-    $$E_f = \{(u, v) \in V \times V : c_f(u, v) > 0\} \text{ e } |E_f| \le 2 |E|$$
+  $$E_f = \{(u, v) \in V \times V : c_f(u, v) > 0\} \text{ e } |E_f| \le 2 |E|$$
 
 
 ## Exemplo de rede residual
@@ -180,62 +179,68 @@ $$(f \uparrow f')(u, v) = \begin{cases}
   0                             & \text{caso contrário}
 \end{cases}$$
 
+\pause
+
+Esta definição reflete o propósito da forma que fizemos a definição de rede
+residual: descrever como o fluxo pode ser alterado em uma aresta. O fluxo
+entre $(u, v)$ aumenta por $f'(u, v)$ mas diminui por $f'(v, u)$.
+
 
 ## Redes residuais
 
 **Lema 26.1**
 
-Seja $G = (V, E)$ um rede com fonte $s$ e sumidouro $t$ e seja $f$ um fluxo em
+Seja $G = (V, E)$ uma rede com fonte $s$ e sumidouro $t$ e seja $f$ um fluxo em
 $G$. Seja $G_f$ uma rede residual de $G$ induzida por $f$ e seja $f'$ um fluxo
 em $G_f$. Então a função $f \uparrow f'$ definida na equação (26.4) é um fluxo
-em $G$ com valor $|f \uparrow f'| = |f| + |f'|$
+em $G$ com valor $|f \uparrow f'| = |f| + |f'|$.
 
 \pause
 
 **Prova**
 
-Vista em sala (veja o livro)
+Vista em sala (veja o livro).
 
 
 ## Caminho de aumento
 
 Dado uma rede $G = (V, E)$ e um fluxo $f$, um **caminho de aumento** $p$ é um
-caminho simples de $s$ para $t$ na rede residual $G_f$
+caminho simples de $s$ para $t$ na rede residual $G_f$.
 
 O valor máximo que pode ser aumentado no fluxo de cada aresta no caminho
 de aumento $p$ é chamado **capacidade residual** de $p$, e é dado por
-$$c_f(p) = \min \{c_f(u, v): (u, v) \in p\}$$
+$$c_f(p) = \min \{c_f(u, v): (u, v) \text{ está em } p\}$$.
 
 
 ## Caminho de aumento
 
 **Lema 26.2**
 
-Seja $G = (V, E)$ um rede, $f$ um fluxo em $G$ e $p$ um caminho de aumento em
+Seja $G = (V, E)$ uma rede, $f$ um fluxo em $G$ e $p$ um caminho de aumento em
 $G_f$. Seja a função $f_p: V \times V \rightarrow \mathbb{R}$, definida como
 
 $$f_p(u, v) = \begin{cases}
-  c_f(p) & \text{se } (u, v) \in p \\
+  c_f(p) & \text{se } (u, v) \text{ está em } p \\
   0      & \text{caso contrário}
 \end{cases}$$
 
-Então, $f_p$ é um fluxo em $G_f$ com valor $|f_p| = c_f(p) > 0$
+Então, $f_p$ é um fluxo em $G_f$ com valor $|f_p| = c_f(p) > 0$.
 
 
 ## Caminho de aumento
 
 **Corolário 26.3**
 
-Seja $G = (V, E)$ um rede, $f$ um fluxo em $G$ e $p$ um caminho de aumento em
+Seja $G = (V, E)$ uma rede, $f$ um fluxo em $G$ e $p$ um caminho de aumento em
 $G_f$. Seja a função $f_p$ como definido na equação (26.8) e suponha que nós
 aumentamos $f$ por $f_p$. Então a função $f \uparrow f_p$ é um fluxo em $G$ com
-valor $|f \uparrow f_p| = |f| + |f_p| > |f|$
+valor $|f \uparrow f_p| = |f| + |f_p| > |f|$.
 
 \pause
 
 **Prova**
 
-A partir dos lemas 26.1 e 26.2
+A partir dos lemas 26.1 e 26.2.
 
 
 ## Exemplo de caminho de aumento
@@ -250,10 +255,10 @@ Um corte $(S, T)$ de uma rede $G = (V, E)$ é uma partição de $V$ em $S$ e $T
 
 - Se $f$ é um fluxo, então o **fluxo líquido** $f(S, T)$ através do corte $(S,
   T)$ é definido como
-    $$f(S, T) = \sum_{u \in S} \sum_{v \in T} f(u, v) -  \sum_{u \in S} \sum_{v \in T} f(v, u)$$
+  $$f(S, T) = \sum_{u \in S} \sum_{v \in T} f(u, v) -  \sum_{u \in S} \sum_{v \in T} f(v, u)$$
 
 - A **capacidade** do corte $(S, T)$ é
-    $$c(S, T) = \sum_{u \in S} \sum_{v \in T} c(u, v)$$
+  $$c(S, T) = \sum_{u \in S} \sum_{v \in T} c(u, v)$$
 
 - Um **corte mínimo** de uma rede é um corte que tem capacidade mínima entre
   todos os cortes da rede
@@ -263,6 +268,8 @@ Um corte $(S, T)$ de uma rede $G = (V, E)$ é uma partição de $V$ em $S$ e $T
 
 ![](imagens/Fig-26-5.pdf){width=7cm}
 
+<!-- TODO: adicionar o valor do fluxo líquido e da capacidade do corte -->
+
 
 ## Corte de rede
 
@@ -270,13 +277,13 @@ Um corte $(S, T)$ de uma rede $G = (V, E)$ é uma partição de $V$ em $S$ e $T
 
 Seja $f$ um fluxo em uma rede $G$ com fonte $s$ e sumidouro $t$, e seja $(S,
 T)$ qualquer corte de $G$. Então o fluxo líquido através do corte $(S, T)$ é
-$f(S, T) = |f|$
+$f(S, T) = |f|$.
 
 \pause
 
 **Prova**
 
-Vista em sala (veja o livro)
+Vista em sala (veja o livro).
 
 
 ## Corte de rede
@@ -284,13 +291,13 @@ Vista em sala (veja o livro)
 **Corolário 26.5**
 
 O valor do fluxo $f$ em uma rede $G$ é limitado superiormente pela capacidade
-de qualquer corte de $G$
+de qualquer corte de $G$.
 
 \pause
 
 **Prova**
 
-Vista em sala (veja o livro)
+Vista em sala (veja o livro).
 
 
 ## Teorema do fluxo máximo e corte mínimo
