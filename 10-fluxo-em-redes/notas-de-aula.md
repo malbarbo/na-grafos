@@ -132,7 +132,7 @@ Ideia: incrementar iterativamente o valor do fluxo
     \Procname{$\proc{ford-fulkerson-method}(G, s, t)$}
     \li Iniciar o fluxo $f$ com $0$
     \li \While existe um caminho de aumento $p$ na rede residual $G_f$ \Do
-    \li     aumente $f$ ao londo de $p$
+    \li     aumente $f$ ao longo de $p$
         \End
     \li \Return $f$
 \end{codebox}
