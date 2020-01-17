@@ -324,37 +324,48 @@ Vista em sala (veja o livro)
 
 ## Algoritmo básico de Ford-Fulkerson
 
-- Em cada iteração do método de Ford-Fulkerson é encontrado algum caminho
-  de aumento $p$ que é utilizado para modificar o fluxo $f$
+Lembrando o método de Ford-Fulkerson...
 
-- Como o Lema 26.2 e o Corolário 26.3 sugerem, o fluxo $f$ pode ser substituído
-  por $f \uparrow f_p$, gerando um novo fluxo com valor $|f| + |f_p|$
+Em cada iteração algum caminho de aumento $p$ é encontrado e utilizado para
+modificar o fluxo $f$.
 
-- Vamos ver uma implementação
+O fluxo $f$ é ser substituído por $f \uparrow f_p$, gerando um novo fluxo com
+valor $|f| + |f_p|$.
 
-    - Cada aresta residual em $p$ é uma aresta na rede original ou uma aresta
-      contrária na rede original
-
-    - Fluxo é adicionado se a aresta é a original
-
-    - Fluxo é removido se a aresta é contrária
-
-    - Quando não existe mais caminho de aumento, $f$ é máximo
+Quando não existe mais caminho de aumento, $f$ é máximo
 
 
 ## Algoritmo básico de Ford-Fulkerson
 
-`ford-fulkerson`$(G, s, t)$\
-`1 for` cada aresta $(u, v) \in G.E$\
-`2   ` $(u, v). f = 0$\
-`3 while` existe um caminho $p$ de $s$ até $t$ na\
-`       ` rede residual $G_f$\
-`4   ` $c_f(p) = \min\{c_f(u, v): (u, v) \in p\}$\
-`5    for` cada aresta $(u, v) \in p$\
-`6      if` $(u, v) \in E$\
-`7        ` $(u, v).f = (u, v).f + c_f(p)$\
-`8      else`\
-`9        ` $(v, u).f = (v, u).f - c_f(p)$
+Como atualizar o fluxo em cada arestas? \pause
+
+- Cada aresta residual em $p$ é uma aresta na rede original ou uma aresta
+  contrária na rede original
+
+- Fluxo é adicionado se a aresta é a original
+
+- Fluxo é removido se a aresta é contrária
+
+
+## Algoritmo básico de Ford-Fulkerson
+
+\begin{codebox}
+    \Procname{$\proc{ford-fulkerson}(G, s, t)$}
+    \li \For $(u, v) \in \attrib{G}{E}$ \Do
+    \li     $\attrib{(u, v)}{f} = 0$
+        \End
+    \li \While existe um caminho $p$ de $s$ a $t$ em $G_f$ \Do
+    \li     $c_f(p) = \min\{c_f(u, v): (u, v) \text{ está em } p\}$
+    \li     \For $(u, v) \in p$ \Do
+    \li         \If $(u, v) \in E$ \Do
+    \li             $\attrib{(u, v)}{f} = \attrib{(u, v)}{f} + c_f(p)$
+    \li         \Else
+    \li             $\attrib{(v, u)}{f} = \attrib{(v, u)}{f} - c_f(p)$
+                \End
+            \End
+        \End
+    \li \Return $f$
+\end{codebox}
 
 
 ## Exemplo de execução
@@ -388,8 +399,8 @@ Análise do tempo de execução
   o valor do fluxo aumenta em pelo menos uma unidade em cada iteração
 
 - O conteúdo dentro do \While pode ser executado de forma eficiente se
-  escolhermos a estrutura correta para representar a rede e se o caminho
-  aumente for encontrado em tempo linear
+  escolhermos a estrutura correta para representar a rede e se o caminho de
+  aumento for encontrado em tempo linear
 
     - Manter um grafo $G' = (V, E')$, onde
       $E' = \{(u, v): (u, v) \in E \text{ ou } (v, u) \in E\}$
@@ -408,10 +419,11 @@ Análise do tempo de execução
 
 ## Algoritmo de Edmonds-Karp
 
-- Encontrar o caminho de aumento $p$ com a busca em largura
+O algoritmo de Edmonds-Karp utiliza busca em largura para encontrar o caminho
+de aumento $p$
 
-- Escolher o menor caminho entre $s$ e $t$, sendo que o tamanho do caminho
-  é o número de arestas no caminho
+- Escolher o menor caminho entre $s$ e $t$, sendo que o tamanho do caminho é o
+  número de arestas no caminho
 
 - Executa em $O(VE^2)$
 
