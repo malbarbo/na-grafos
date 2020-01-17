@@ -4,6 +4,8 @@
 
 - Adicionar os trabalhos a este repositório
 
+- Escrever um script para gerar o Makefile
+
 - 00
     - Usar figuras vetorial (tikz)
     - Exemplos mais motivantes (alguns onde os vértices e arestas representam
@@ -52,6 +54,11 @@
     - Falar do algoritmos baseado em multiplicação de matrizes (quem
       é o autor?) e fazer um contraste com o algoritmo de Floyd-Warshall
 
+- 10
+    - Uma demonstração do livro está errada, tem que ver na errata
+    - Usar provas usando somatórios implícitos como em
+      https://www.youtube.com/watch?v=VYZGlgzr_As
+
 - 11
     - Colocar um exemplo com mais ciclos intermediários
     - Mostrar a execução do algoritmo hierholzer-2
@@ -70,8 +77,7 @@
 
 - Trocar o termo acessível por atingível
 
-- Escrever os códigos usando o pacote clrscode3e (não dá para usar os
-  arquivos pdf de código pois eles não tem número de linhas)
+- Escrever os códigos usando o pacote clrscode3e (só falta caixeiro viajante)
 
 - Adicionar mais exercícios resolvidos
 
