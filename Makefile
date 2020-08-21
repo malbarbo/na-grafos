@@ -16,7 +16,7 @@ EXS=$(patsubst %/,%,$(dir $(shell ls -d */exemplos)))
 EXS_ZIP=$(addprefix $(DEST_ZIP)/, $(addsuffix -exemplos.zip, $(EXS)))
 TECTONIC=$(DEST)/bin/tectonic
 PANDOC=$(DEST)/bin/pandoc
-PANDOC_VERSION=2.7.3
+PANDOC_VERSION=2.10.1
 PANDOC_CMD=$(PANDOC) \
 		-V mathspec \
 		--pdf-engine=$(CURDIR)/$(TECTONIC) \
@@ -73,7 +73,7 @@ $(DEST_ZIP)/%-exemplos.zip: %/exemplos/*
 
 $(PANDOC):
 	mkdir -p $(DEST)
-	curl -L https://github.com/jgm/pandoc/releases/download/$(PANDOC_VERSION)/pandoc-$(PANDOC_VERSION)-linux.tar.gz | tar xz -C $(DEST) --strip-components=1
+	curl -L https://github.com/jgm/pandoc/releases/download/$(PANDOC_VERSION)/pandoc-$(PANDOC_VERSION)-linux-amd64.tar.gz | tar xz -C $(DEST) --strip-components=1
 
 $(TECTONIC):
 	mkdir -p $(DEST)/bin/
