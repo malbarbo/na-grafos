@@ -24,6 +24,5 @@ As imagens foram retiradas do livro e redistribuídas aqui, o que consideramos u
 
 Execute o comando `make pdf`. Os arquivos pdfs serão gerados no diretório `target/pdfs`.
 
-É necessário o [pandoc](https://pandoc.org/) e o
-[tectonic](http://tectonic-typesetting.github.io/). O pandoc é baixado
-automaticamente enquanto o tectonic precisa ser instalado.
+Este comando irá baixar e executar os programas [pandoc](https://pandoc.org/)
+e [tectonic](http://tectonic-typesetting.github.io/).
