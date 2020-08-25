@@ -7,12 +7,12 @@ DEST_PDF_HANDOUT=$(DEST)/pdfs/handout
 DEST_ZIP=$(DEST)/zips
 DEST_TEX=$(DEST)/tex
 IGNORAR=README.md
-NA=$(patsubst %/,%,$(dir $(shell ls */notas-de-aula.md)))
+NA=$(patsubst %/,%,$(dir $(shell find * -wholename '*/notas-de-aula.md')))
 NA_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix .pdf, $(NA)))
 NA_PDF_HANDOUT=$(addprefix $(DEST_PDF_HANDOUT)/, $(addsuffix .pdf, $(NA)))
-EX=$(patsubst %/,%,$(dir $(shell ls */exercicios.md)))
+EX=$(patsubst %/,%,$(dir $(shell find * -wholename '*/exercicios.md')))
 EX_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix -exercicios.pdf, $(EX)))
-EXS=$(patsubst %/,%,$(dir $(shell ls -d */exemplos)))
+EXS=$(patsubst %/,%,$(dir $(shell find * -type d -wholename '*/exemplos')))
 EXS_ZIP=$(addprefix $(DEST_ZIP)/, $(addsuffix -exemplos.zip, $(EXS)))
 TECTONIC=$(DEST)/bin/tectonic
 PANDOC=$(DEST)/bin/pandoc
@@ -39,14 +39,14 @@ ex: $(EX_PDF)
 
 zip: $(EXS_ZIP)
 
-$(DEST_PDF)/%.pdf: %/notas-de-aula.md %/imagens/* templates/default.latex metadata.yml $(PANDOC) $(TECTONIC)
+$(DEST_PDF)/%.pdf: %/notas-de-aula.md $(wildcard %/imagens/) templates/default.latex metadata.yml $(PANDOC) $(TECTONIC)
 	@mkdir -p $(DEST_PDF)
 	@echo $@
 	@cd $$(dirname $<) && \
 		../$(PANDOC_CMD) \
 		-o ../$@ notas-de-aula.md
 
-$(DEST_PDF_HANDOUT)/%.pdf: %/notas-de-aula.md templates/default.latex metadata.yml $(PANDOC) $(TECTONIC)
+$(DEST_PDF_HANDOUT)/%.pdf: %/notas-de-aula.md $(wildcard %/imagens/) templates/default.latex metadata.yml $(PANDOC) $(TECTONIC)
 	@mkdir -p $(DEST_PDF_HANDOUT)
 	@echo $@
 	@cd $$(dirname $<) && \
