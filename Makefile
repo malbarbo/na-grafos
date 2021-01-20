@@ -16,7 +16,7 @@ EXS=$(patsubst %/,%,$(dir $(shell find * -type d -wholename '*/exemplos')))
 EXS_ZIP=$(addprefix $(DEST_ZIP)/, $(addsuffix -exemplos.zip, $(EXS)))
 TECTONIC=$(DEST)/bin/tectonic
 PANDOC=$(DEST)/bin/pandoc
-PANDOC_VERSION=2.10.1
+PANDOC_VERSION=2.11.3.2
 PANDOC_CMD=$(PANDOC) \
 		-V mathspec \
 		--pdf-engine=$(CURDIR)/$(TECTONIC) \
