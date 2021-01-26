@@ -1,3 +1,5 @@
+from typing import Dict, List, Tuple
+
 # Programa para calcular o Número de Erdős
 #
 # Este programa foi feito como exemplo para uma aula inicial de Algoritmos em
@@ -21,18 +23,20 @@ def main():
         sys.exit(1)
 
 
-# Encontra o "número de Erdős" de cada pessoa usando pares como uma lista de
-# cooperação. Num é um dicionário que associa cada pessoa com seu número.
-# A pessoa inicial (representando o Erdős) deve iniciar com o número 0.
-def enumera(pares, num):
+# Encontra o "número de Erdős" de cada pessoa a partir de um vertices inicial
+# (raiz) e uma lista de pares de cooperação (pares). A função produz um
+# dicionário que associa cada pessoa com seu número.
+def enumera(pares: List[Tuple[str, str]], raiz: str) -> Dict[str, int]:
+    num = {raiz: 0}
     for d in range(0, len(pares)):
         # Encontra pessoas que não tem número e estão ligadas a pessoas com
         # número d e atribuí número d + 1 a elas
         for (p1, p2) in pares:
-            if num[p1] == d and num[p2] == None:
+            if p1 in num and num[p1] == d and p2 not in num:
                 num[p2] = d + 1
-            elif num[p1] == None and num[p2] == d:
+            if p2 in num and num[p2] == d and p1 not in num:
                 num[p1] = d + 1
+    return num
 
 
 def test():
@@ -58,43 +62,26 @@ def test():
         ("white", "bondy"),
     ]
 
-    # Dicionário (tabela hash) que associa cada nome com um número. None é
-    # usado para indicar que a pessoa não tem número
-    num = {
-        "babai": None,
-        "bondy": None,
-        "chvatal": None,
-        "deng": None,
-        "erdos": None,
-        "gates": None,
-        "harary": None,
-        "hell": None,
-        "imrich": None,
-        "lovasz": None,
-        "murty": None,
-        "papadimitriou": None,
-        "watkins": None,
-        "white": None,
+    esperado = {
+        "babai": 1,
+        "bondy": 2,
+        "chvatal": 1,
+        "deng": 2,
+        "erdos": 0,
+        "gates": 4,
+        "harary": 1,
+        "hell": 1,
+        "imrich": 2,
+        "lovasz": 1,
+        "murty": 3,
+        "papadimitriou": 3,
+        "watkins": 2,
+        "white": 2,
     }
 
-    num["erdos"] = 0
+    num = enumera(pares, "erdos")
 
-    enumera(pares, num)
-
-    assert num["babai"] == 1
-    assert num["bondy"] == 2
-    assert num["chvatal"] == 1
-    assert num["deng"] == 2
-    assert num["erdos"] == 0
-    assert num["gates"] == 4
-    assert num["harary"] == 1
-    assert num["hell"] == 1
-    assert num["imrich"] == 2
-    assert num["lovasz"] == 1
-    assert num["murty"] == 3
-    assert num["papadimitriou"] == 3
-    assert num["watkins"] == 2
-    assert num["white"] == 2
+    assert num == esperado
 
     print("Testes executados com sucesso.")
 
@@ -104,25 +91,23 @@ def test():
 
 # Lê os pares de nomes a partir de arquivo e enumera as pessoas a partir da
 # pessoa como nome inicio
-def run(arquivo, inicio):
+def run(arquivo: str, inicio: str):
     pares = le_pares(arquivo)
     nomes = sorted(set(nome for par in pares for nome in par))
-    num = {nome: None for nome in nomes}
 
-    if inicio not in num:
-        print(f"Nome inicial não está na lista de pares: {inicial}", file=sys.stderr)
+    if inicio not in nomes:
+        print(f"Nome inicial não está na lista de pares: {inicio}", file=sys.stderr)
         sys.exit(1)
-    else:
-        num[inicio] = 0
 
-    enumera(pares, num)
+    num = enumera(pares, inicio)
 
     for nome in nomes:
-        print(f"{nome} = {num[nome]}")
+        if nome in num:
+            print(f"{nome} = {num[nome]}")
 
 
 # Lê uma sequência de pares de um arquivo
-def le_pares(arquivo):
+def le_pares(arquivo: str) -> List[Tuple[str, str]]:
     pares = list(open(arquivo).read().split())
     if len(pares) % 2 != 0:
         print("Arquivo inválido: número impares de pessoas", file=sys.stderr)
