@@ -1,8 +1,11 @@
-// Programa para calcular o Número de Erdős
+// Programa para calcular o Número de Erdős.
 //
 // Este programa foi feito como exemplo para uma aula inicial de Algoritmos em
 // Grafos. O programa não usa um algoritmo eficiente, mas sim um algoritmo
 // ingênuo que é simples e direto.
+//
+// Este programa tem alguns erros de gerência de memória. Você consegue
+// indentificá-los? Então envie um email para mim!
 
 #include <assert.h>
 #include <stdbool.h>
@@ -23,13 +26,8 @@ struct Par {
     char* nome2;
 };
 
-// Criar um par entre nome1 e nome2
-struct Par par(char* nome1, char* nome2);
-
-// Criar uma pessoa com o nome especificado e número NENHUM
-struct Pessoa pessoa(char* nome);
-
-// Encontra uma pessoa com o nome especificado
+// Encontra uma pessoa com o nome especificado.
+// Sai do programa se a pessoa não for encontrada.
 struct Pessoa* encontra_pessoa(struct Pessoa* pessoas, size_t n, char* nome);
 
 // Encontra o "número de Erdős" de cada pessoa no arranjo pessoas usando o
@@ -38,7 +36,7 @@ struct Pessoa* encontra_pessoa(struct Pessoa* pessoas, size_t n, char* nome);
 void enumera(struct Par* pares, size_t m, struct Pessoa* pessoas, size_t n);
 
 // Lê os pares de nomes a partir de arquivo e enumera as pessoas a partir da
-// pessoa como nome inicio
+// pessoa como nome inicio.
 void run(char* arquivo, char* inicio);
 
 // Função que testa enumera com um exemplo
@@ -79,48 +77,46 @@ void enumera(struct Par* pares, size_t m, struct Pessoa* pessoas, size_t n)
 
 void test()
 {
-    size_t N = 14;
-    size_t M = 19;
+    size_t N = 14; // Número de pessoas
+    size_t M = 19; // Número de pares
     struct Par pares[] = {
-        par("babai", "imrich"),
-        par("babai", "lovasz"),
-        par("bondy", "murty"),
-        par("chvatal", "bondy"),
-        par("chvatal", "hell"),
-        par("deng", "papadimitriou"),
-        par("erdos", "babai"),
-        par("erdos", "chvatal"),
-        par("erdos", "harary"),
-        par("erdos", "hell"),
-        par("erdos", "lovasz"),
-        par("harary", "hell"),
-        par("harary", "white"),
-        par("hell", "bondy"),
-        par("hell", "deng"),
-        par("hell", "watkins"),
-        par("imrich", "watkins"),
-        par("papadimitriou", "gates"),
-        par("white", "bondy"),
+        { "babai", "imrich" },
+        { "babai", "lovasz" },
+        { "bondy", "murty" },
+        { "chvatal", "bondy" },
+        { "chvatal", "hell" },
+        { "deng", "papadimitriou" },
+        { "erdos", "babai" },
+        { "erdos", "chvatal" },
+        { "erdos", "harary" },
+        { "erdos", "hell" },
+        { "erdos", "lovasz" },
+        { "harary", "hell" },
+        { "harary", "white" },
+        { "hell", "bondy" },
+        { "hell", "deng" },
+        { "hell", "watkins" },
+        { "imrich", "watkins" },
+        { "papadimitriou", "gates" },
+        { "white", "bondy" },
     };
 
     struct Pessoa pessoas[] = {
-        pessoa("babai"),
-        pessoa("bondy"),
-        pessoa("chvatal"),
-        pessoa("deng"),
-        pessoa("erdos"),
-        pessoa("gates"),
-        pessoa("harary"),
-        pessoa("hell"),
-        pessoa("imrich"),
-        pessoa("lovasz"),
-        pessoa("murty"),
-        pessoa("papadimitriou"),
-        pessoa("watkins"),
-        pessoa("white"),
+        { "babai", NENHUM },
+        { "bondy", NENHUM },
+        { "chvatal", NENHUM },
+        { "deng", NENHUM },
+        { "erdos", 0 },
+        { "gates", NENHUM },
+        { "harary", NENHUM },
+        { "hell", NENHUM },
+        { "imrich", NENHUM },
+        { "lovasz", NENHUM },
+        { "murty", NENHUM },
+        { "papadimitriou", NENHUM },
+        { "watkins", NENHUM },
+        { "white", NENHUM },
     };
-
-    encontra_pessoa(pessoas, N, "erdos")->num = 0;
 
     enumera(pares, M, pessoas, N);
 
@@ -153,16 +149,6 @@ struct Pessoa* encontra_pessoa(struct Pessoa* pessoas, size_t n, char* nome)
     }
     fprintf(stderr, "Pessoa não encontrada: %s\n", nome);
     exit(1);
-}
-
-struct Par par(char* nome1, char* nome2)
-{
-    return (struct Par) { nome1, nome2 };
-}
-
-struct Pessoa pessoa(char* nome)
-{
-    return (struct Pessoa) { nome, NENHUM };
 }
 
 int compara_pessoa(const struct Pessoa* p1, const struct Pessoa* p2)
@@ -199,11 +185,11 @@ void run(char* arquivo, char* inicial)
     size_t n = 0;
     for (size_t i = 0; i < m; i += 1) {
         if (!contem_pessoa(pessoas, n, pares[i].nome1)) {
-            pessoas[n] = pessoa(pares[i].nome1);
+            pessoas[n] = (struct Pessoa){ pares[i].nome1, NENHUM };
             n += 1;
         }
         if (!contem_pessoa(pessoas, n, pares[i].nome2)) {
-            pessoas[n] = pessoa(pares[i].nome2);
+            pessoas[n] = (struct Pessoa){ pares[i].nome2, NENHUM };
             n += 1;
         }
     }
@@ -233,13 +219,18 @@ struct Par* ler_pares(char* arquivo)
         exit(1);
     }
 
-    // aloca um espaço inicial para 10 pares
-    int n = 10;
     int i = 0;
-    struct Par* pares = malloc(sizeof(struct Par) * n);
     char nome1[31];
     char nome2[31];
     int items;
+    // aloca um espaço inicial para 10 pares
+    int n = 10;
+    struct Par* pares = malloc(sizeof(struct Par) * n);
+    if (pares == NULL) {
+        perror("run");
+        free(pares);
+        exit(1);
+    }
     while ((items = fscanf(f, "%30s%30s", nome1, nome2)) != EOF) {
         if (items != 2) {
             fprintf(stderr, "Não foi possível ler o par %d\n", i + 1);
@@ -256,7 +247,7 @@ struct Par* ler_pares(char* arquivo)
             }
             pares = p;
         }
-        pares[i] = par(strdup(nome1), strdup(nome2));
+        pares[i] = (struct Par) { strdup(nome1), strdup(nome2) };
         i += 1;
     }
 
@@ -267,6 +258,7 @@ struct Par* ler_pares(char* arquivo)
     }
 
     fclose(f);
+    // Marca o último elemento com NULL
     pares[i].nome1 = NULL;
     pares[i].nome2 = NULL;
 
