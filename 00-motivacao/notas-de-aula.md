@@ -87,7 +87,7 @@ E esta?
 
 <div class="columns">
 <div class="column" width="30%">
-![](imagens/erdos.jpg)
+![](imagens/erdos.jpg){width=3cm}
 </div>
 <div class="column" width="70%">
 - Paul Erdős foi um famoso matemático Húngaro
@@ -115,30 +115,7 @@ E esta?
 
 ## Problema
 
-Dado uma lista de pessoas e as relações de colaboração entre elas, qual
-é o número de Erdős de cada pessoa na lista?
-
-
-## Problema
-
-Algoritmo
-
-- Atribua o número 0 ao Erdős
-
-- $d \leftarrow 0$
-
-- Repita até que todos as pessoas tenham um número ou $d = m$, onde $m$
-  é o número de relações
-
-    - Para cada relação (Pessoa1, Pessoa2)
-
-        - Se Pessoa1 tem número $d$ e Pessoa2 não tem número, então atribua
-          o número $d + 1$ a Pessoa2
-
-        - Senão se Pessoa2 tem número $d$ e Pessoa1 não tem número, então
-          atribua $d + 1$ a Pessoa1
-
-        - $d \leftarrow d + 1$
+Determinar o número de Erdős de cada pessoa em um conjunto de colaborações.
 
 
 ## Número de Erdős
@@ -164,6 +141,27 @@ Algoritmo
 ## Número de Erdős
 
 ![](imagens/erdosgraph5.pdf)
+
+
+## Algoritmo
+
+- Atribua o número 0 ao Erdős
+
+- $d \leftarrow 0$
+
+- Repita até que todos as pessoas tenham um número ou $d = m$, onde $m$
+  é o número de relações
+
+    - Para cada relação (Pessoa1, Pessoa2)
+
+        - Se Pessoa1 tem número $d$ e Pessoa2 não tem número, então atribua
+          o número $d + 1$ a Pessoa2
+
+        - Senão se Pessoa2 tem número $d$ e Pessoa1 não tem número, então
+          atribua $d + 1$ a Pessoa1
+
+    - $d \leftarrow d + 1$
+
 
 
 ## Número de Erdős
