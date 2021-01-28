@@ -5,8 +5,7 @@ title: Motivação
 
 ##
 
-É possível desenhar esta figura sem tirar o lápis do papel e sem passar sobre
-uma linha duas vezes?
+É possível desenhar esta figura sem tirar o lápis do papel e sem passar sobre uma linha duas vezes?
 
 ![](imagens/traco1.png){width=3cm}
 
@@ -39,8 +38,7 @@ E esta?
 
 ## O problema das Sete pontes de Königsberg
 
-- Em 1736 Leonhard Euler resolveu o problema mostrando que não existia tal
-  caminho
+- Em 1736 Leonhard Euler resolveu o problema mostrando que não existia tal caminho
 
 - Ele modelou o problema em termos abstratos
 
@@ -59,15 +57,11 @@ E esta?
 
 ## O problema das Sete pontes de Königsberg
 
-- Euler observou que toda vez que alguém atinge uma porção de terra por uma
-  ponte, deve deixar a porção de terra também por uma ponte
+- Euler observou que toda vez que alguém atinge uma porção de terra por uma ponte, deve deixar a porção de terra também por uma ponte
 
-- Para que cada ponte fosse cruzada apenas uma vez, todas as porcões de terra,
-  exceto talvez a inicial e a final, deveriam ter um número par de pontes
-  ligadas a ela
+- Para que cada ponte fosse cruzada apenas uma vez, todas as porcões de terra, exceto talvez a inicial e a final, deveriam ter um número par de pontes ligadas a ela
 
-- Mas todas as porções de terra do problema tem um número ímpar de pontes,
-  portanto, não é possível fazer o caminho
+- Mas todas as porções de terra do problema tem um número ímpar de pontes, portanto, não é possível fazer o caminho
 
 
 ## O problema das Sete pontes de Königsberg
@@ -77,8 +71,7 @@ E esta?
 
 ## Seis graus de separação
 
-- Ideia de que todas as pessoas do mundo estão separadas por até 6 ligações
-  sociais \pause
+- Ideia de que todas as pessoas do mundo estão separadas por até 6 ligações sociais \pause
 
 - Jogo "Seis graus de Kevin Bacon"
 
@@ -149,8 +142,7 @@ Determinar o número de Erdős de cada pessoa em um conjunto de colaborações.
 
 - $d \leftarrow 0$
 
-- Repita até que todos as pessoas tenham um número ou $d = m$, onde $m$
-  é o número de relações
+- Repita até que todos as pessoas tenham um número ou $d = m$, onde $m$ é o número de relações
 
     - Para cada relação (Pessoa1, Pessoa2)
 
@@ -181,8 +173,7 @@ Determinar o número de Erdős de cada pessoa em um conjunto de colaborações.
 
 - Aproximação de números irracionais por fracões
 
-- Em julho de 2019, Dimitris Koukoulopoulos e James Maynard provaram que
-  a conjectura é verdadeira usando modelagem por grafos
+- Em julho de 2019, Dimitris Koukoulopoulos e James Maynard provaram que a conjectura é verdadeira usando modelagem por grafos
 
     ![](imagens/duffin-schaeffer.jpg){width=5cm}
 
@@ -232,10 +223,8 @@ problemas em grafos! \pause
 
 ## Referências
 
-- [Wikipedia - Seven Bridges of
-  Königsberg](https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg)
+- [Wikipedia - Seven Bridges of Königsberg](https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg)
 
-- [New Proof Settles How to Approximate Numbers Like
-  Pi](https://www.quantamagazine.org/new-proof-settles-how-to-approximate-numbers-like-pi-20190814/)
+- [New Proof Settles How to Approximate Numbers Like Pi](https://www.quantamagazine.org/new-proof-settles-how-to-approximate-numbers-like-pi-20190814/)
 
 - [Collaboration Distance](https://mathscinet.ams.org/mathscinet/collaborationDistance.html)

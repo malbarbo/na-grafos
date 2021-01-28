@@ -2,7 +2,7 @@ Para executar os programas, entre no diretório que contém este arquivo
 
 Para compilar o programa erdos.c
 
-cc -o erdos erdos
+cc -o erdos erdos.c
 
 Para executar os testes
 
