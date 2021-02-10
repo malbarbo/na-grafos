@@ -1,5 +1,7 @@
+// Este programa calcula o grau de saída dos vértices de um grafo.
 public class Graus {
     public static void main(String[] args) {
+        // Grafo da figura 22-2 do livro do Cormen.
         int[][] adj = {
             {1, 3},
             {4},
@@ -9,24 +11,31 @@ public class Graus {
             {5}
         };
 
-        int[] grauSaida = calcularGrausDeSaida(adj);
-        mostrarGrausDeSaida(grauSaida);
+        int[] grauSaida = calculaGrausDeSaida(adj);
+
+        // Lembre-se de usar a opção -ea para o Java executar os asserts.
+        assert grauSaida[0] == 2;
+        assert grauSaida[1] == 1;
+        assert grauSaida[2] == 2;
+        assert grauSaida[3] == 1;
+        assert grauSaida[4] == 1;
+        assert grauSaida[5] == 1;
+
+        System.out.println("Testes realizados com sucesso!");
     }
 
-    public static int[] calcularGrausDeSaida(int[][] adj) {
+    /**
+     * Calcula o grau de saida de cada vértice do grafo representado por adj.
+     */
+    public static int[] calculaGrausDeSaida(int[][] adj) {
         int[] grauSaida = new int[adj.length];
 
-        for (int v = 0; v < adj.length; v++) {
-            for (int u : adj[v]) {
-                grauSaida[v] += 1;
+        for (int u = 0; u < adj.length; u++) {
+            for (int v : adj[u]) {
+                grauSaida[u] += 1;
             }
         }
-        return grauSaida;
-    }
 
-    public static void mostrarGrausDeSaida(int[] grauSaida) {
-        for (int v = 0; v < grauSaida.length; v++) {
-            System.out.printf("Vertice(%d).grauSaida = %d\n", v, grauSaida[v]);
-        }
+        return grauSaida;
     }
 }

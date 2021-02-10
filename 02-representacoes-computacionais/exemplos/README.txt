@@ -1,5 +1,5 @@
 Este projeto contém exemplos simples da implementação de grafos usando lista
-de adjacências.
+de adjacências. Os exemplos foram escritos de forma simples usando o assert.
 
 Características implementadas
     - adição de vértice e aresta (exemplo 2)
@@ -17,10 +17,10 @@ propósito dos exemplos é dar uma ideia de como a estrutura de um grafo pode se
 implementada questões de encapsulamento foram desconsideradas.
 
 Exemplo 1 (int)
-    - os vértices são representados por inteiros de 0 .. |V|-1
+    - os vértices são representados pelos inteiros 0, 1, ..., |V|-1
     - um grafo é presentado por um arranjo (adj) de arranjos de inteiros
     - cada posição v do arranjo adj contém a lista de adjacência de v
-    - uma propriedade p é representada por um arranjo p[0..|V|-1], onde p[v]
+    - um atributo p é representada por um arranjo p[0..|V|-1], onde p[v]
       representa o atributo v.p
     - vantagens
         * implementação simples
@@ -36,8 +36,10 @@ Exemplo 2 (class)
     - um grafo é representado pela classe Grafo. A classe Grafo contém a lista
       de vértices
     - vantagens
-        * o código dos algoritmos pode ficar mais parecido com o pseudo código
+        * pode aumentar a legibilidade (o código dos algoritmos pode ficar mais
+          parecido com o pseudo código)
     - desvantagens
         * implementação mais trabalhosa no início
         * cada atributo necessário deve ser declarado na classe
-          Vertice (no caso do Java)
+          Vertice (no caso do Java). Para contornar esta desvantagem é comum
+          usar atributos externos, da forma descrita no exemplo 1
