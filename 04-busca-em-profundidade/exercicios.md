@@ -3,16 +3,13 @@
 title: 04 - Busca em profundiade
 ---
 
-1. Exercício 22.3-1 do CLRS3 ou CLRS2. (Observe que você deve considerar se
-   pode ou não existir arestas (e o tipo) durante **qualquer** momento da
-   execução do algoritmo)
+1. Exercício 22.3-1 do CLRS3 ou CLRS2. (Observe que você deve considerar se pode ou não existir arestas (e o tipo) durante **qualquer** momento da execução do algoritmo)
 
 2. Exercício 22.3-2 do CLRS3 ou CLRS2.
 
 3. Exercício 22.3-3 do CLRS3 ou CLRS2.
 
-4. Exercício 22.3-4 do CLRS3. (De acordo com a errata, considere a remoção da
-   linha 8 e não da linha 3)
+4. Exercício 22.3-4 do CLRS3. (De acordo com a errata, considere a remoção da  linha 8 e não da linha 3)
 
 5. Exercício 22.3-7 do CLRS3 ou 22.3-6 CLRS2.
 
@@ -25,6 +22,8 @@ title: 04 - Busca em profundiade
 9. Exercício 22.3-11 do CLRS3 ou 22.3-10 CLRS2.
 
 10. Exercício 22.3-12 do CLRS3 ou 22.3-11 CLRS2.
+
+11. Exercício 22.3-13 do CLRS3.
 
 
 # Referências
@@ -40,8 +39,7 @@ title: 04 - Busca em profundiade
 
 **Exercício 8**
 
-Apenas o procedimento \proc{DFS-Visit} precisa ser alterado. O código a
-seguir mostra as modificações para grafos orientados.
+Apenas o procedimento \proc{DFS-Visit} precisa ser alterado. O código a seguir mostra as modificações para grafos orientados.
 
 \begin{codebox}
   \Procname{$\proc{DFS-Visit}(G, u)$}
@@ -68,11 +66,7 @@ seguir mostra as modificações para grafos orientados.
   \li $\attrib{u}{f} \gets \id{tempo}$
 \end{codebox}
 
-Para grafos não orientados temos que evitar classificar uma aresta mais de
-uma vez, especificamente, as arestas que conectam um vértice ao seu pai
-são arestas da árvore, então temos que evitar classificá-las como de
-retorno. O código a seguir mostra as modificação do \proc{DFS-Visit} para
-grafos não orientados.
+Para grafos não orientados temos que evitar classificar uma aresta mais de uma vez, especificamente, as arestas que conectam um vértice ao seu pai são arestas da árvore, então temos que evitar classificá-las como de retorno. O código a seguir mostra as modificação do \proc{DFS-Visit} para grafos não orientados.
 
 \begin{codebox}
   \Procname{$\proc{DFS-Visit}(G, u)$}
@@ -97,12 +91,7 @@ grafos não orientados.
 
 **Exercício 10**
 
-Utilizamos uma variável $\id{cc}$ no procedimento \proc{DFS} que armazena o
-número de componentes. Quando um vértice $u$ com cor \const{branco} é
-identificado incrementamos \id{cc}, para indicar mais um componente conexo, e
-fazemos $\attrib{u}{cc} \gets \id{cc}$. Em \proc{DFS-Visit} todos os vértices
-recebem o mesmo número do componente do seu pai (linha 6). Desta forma, todos
-vértices de um mesmo componente têm o mesmo valor do atributo \id{cc}.
+Utilizamos uma variável $\id{cc}$ no procedimento \proc{DFS} que armazena o número de componentes. Quando um vértice $u$ com cor \const{branco} é identificado incrementamos \id{cc}, para indicar mais um componente conexo, e fazemos $\attrib{u}{cc} \gets \id{cc}$. Em \proc{DFS-Visit} todos os vértices recebem o mesmo número do componente do seu pai (linha 6). Desta forma, todos vértices de um mesmo componente têm o mesmo valor do atributo \id{cc}.
 
 \begin{codebox}
   \Procname{$\proc{DFS}(G)$}
