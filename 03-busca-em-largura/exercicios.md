@@ -52,7 +52,7 @@ Considere que o grafo de entrada é representado por uma lista de adjacências.
 
 2. Projete uma função que receba como entrada um grafo $g$ e um vértice inicial $s$ de $g$ e encontre os vértices acessíveis a partir de $s$ que estão mais distantes dele.
 
-3. Projete uma função que receba como entrada um grafo não orientado conexo $g$ e calcule o seu diâmetro. (Veja a definição de diâmetro no exercício 22.2-8 e pesquise um algoritmo para calcular o diâmetro).
+3. Projete uma função que receba como entrada um grafo não orientado conexo acíclico (árvore) $g$ e calcule o seu diâmetro. (Veja a definição de diâmetro no exercício 22.2-8 e pesquise um algoritmo para calcular o diâmetro de uma árvore).
 
 
 # Referências
