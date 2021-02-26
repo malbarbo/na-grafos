@@ -567,6 +567,10 @@ Dicas
 - Baseado nesses exemplos, tente identificar aspectos nos resultados que possam ajudar na solução das questões
 
 
+## Exercícios
+
+Veja a lista completa de exercícios e algumas soluções na página da disciplina.
+
 
 ## Referências
 
