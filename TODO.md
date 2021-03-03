@@ -38,9 +38,7 @@
     - Simplificar atribuição cc (exercício)
 
 - 05
-    - Começar com exemplos mais interessantes e destacar a motivação
-    - Falar das duas abordagens: adicionar os vértices do início para o final
-      e do final para o início. Vértices sumidouros vs fontes.
+    - Destacar que as abordagens são semelhantes: sumidouros vs fontes.
 
 - 06
     - Destacar as aplicações
