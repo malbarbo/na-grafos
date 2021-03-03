@@ -25,6 +25,7 @@
     - Cabeça e cauda
 
 - 03
+    - Falar do conceito de busca
     - Usar o termo árvore BFS como sinônimo de árvore da busca em largura
     - Simplificar a análise
 
