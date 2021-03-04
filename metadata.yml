@@ -7,7 +7,12 @@ institute: |
     \newline
     \href{http://www.uem.br}{Universidade Estadual de Maringá}
 lang: pt-BR
+# As três primeiras linhas são necessárias para evitar
+# o erro descrito em https://github.com/reutenauer/polyglossia/issues/400
 header-includes: |
+    \makeatletter
+    \def\bbl@cs#1{\csname bbl@#1\endcsname}
+    \makeatother
     \usepackage{caption}
     \usepackage{clrscode3e}
     \captionsetup[figure]{labelformat=empty}
