@@ -23,7 +23,7 @@ title: 05 - Ordenação topológica
 \newpage
 
 
-**Exercício 5**
+**Exercício 5 (22.4-5)**
 
 Para cada vértice nós calculamos o grau de entrada no início do algoritmo. Nós mantemos uma fila com os vértices com grau de entrada 0. Enquanto houver vértices na fila, retiramos um vértice $u$ e adicionamos ao final de uma lista $L$, em seguida diminuímos de 1 o grau de entrada dos vértices adjacentes a $u$ para simular a remoção do vértice $u$ do grafo. Se um vértice ficar com grau de entrada igual a zero, ele é adicionado na fila. No final, se não existirem ciclos no grafo de entrada, a lista $L$ conterá os vértices em ordem topológica. Se existirem ciclos no grafo de entrada, alguns vértices nunca vão ficar com grau de entrada zero e portanto nunca vão entrar na fila. Desta forma o algoritmo irá devolver a lista $L$ incompleta. O pseudo código a seguir implementa esta ideia. Fazendo uma análise agregada podemos concluir que o tempo de execução do algoritmo é $O(V + E)$.
 
