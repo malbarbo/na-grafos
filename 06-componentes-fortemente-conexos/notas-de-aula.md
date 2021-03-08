@@ -252,6 +252,22 @@ Este processo continua até que todas as componentes tenham sido encontradas.
 
 ## Exercícios
 
+22.5-1 - Como o número de componentes fortemente conexos de um grafo pode mudar se uma nova aresta é adiciona?
+
+## Exercícios
+
+22.5-6 - Dado um grafo orientado $G = (V, E)$, explique como criar um outro grafo $G' = (V, E')$ tal que
+
+a) $G'$ tem os mesmos componentes fortemente conexos de $G$;
+
+b) $G'$ tem o mesmo grafo de componentes de $G$; e
+
+c) $E'$ tem o menor número possível de arestas.
+
+Descreva um algoritmo eficiente para calcular $G'$.
+
+## Exercícios
+
 Veja a lista de exercícios e algumas soluções na página da disciplina.
 
 
