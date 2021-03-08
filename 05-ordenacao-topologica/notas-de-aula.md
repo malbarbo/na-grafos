@@ -267,6 +267,21 @@ $\qed$
 
 ## Exercícios
 
+
+22.4-1 Mostre a ordem do vértices produzido por \proc{topological-sort} quando executado no gao da Figura 22.8 (assuma que o for das linhas 5-7 do \proc{DFS} considera os vertices em ordem alfabética e que os vértices nas listas de adjacência estão em ordem alfabética)
+
+\includegraphics[trim=0pt 0pt 0pt 0pt,clip,width=7cm]{imagens/Fig-22-8.pdf}
+
+
+## Exercícios
+
+22.4-2 Dê um algoritmo de tempo linear que receba com entrada um grafo acíclico orientado $G = (V, E)$ e dois vértices $s$ e $t$ e retorne o número de caminhos simples de $s$ para $t$ em $G$. Por exemplo, o gao da Figura 22.8 contém exatamente quatro caminhos simples do vértice $p$ para o vértice $v$: $pov$, $poryv$, $posryv$ e $psryv$.
+
+\includegraphics[trim=0pt 0pt 0pt 0pt,clip,width=7cm]{imagens/Fig-22-8.pdf}
+
+
+## Exercícios
+
 Veja a lista de exercícios e algumas soluções na página da disciplina.
 
 
