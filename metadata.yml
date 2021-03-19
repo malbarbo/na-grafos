@@ -13,6 +13,7 @@ header-includes: |
     \makeatletter
     \def\bbl@cs#1{\csname bbl@#1\endcsname}
     \makeatother
+    \usepackage{bm}
     \usepackage{caption}
     \usepackage{clrscode3e}
     \captionsetup[figure]{labelformat=empty}
