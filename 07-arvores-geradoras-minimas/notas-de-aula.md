@@ -44,7 +44,7 @@ Quais características uma solução deve ter? \pause
 Uma forma de confirmar que entendemos o problema é fazer uma definição precisa dele. \pause Então vamos fazer isso.
 
 
-## Problema da árvore gerado mínima
+## Problema da árvore geradora mínima
 
 Dado um grafo conexo não orientado $G = (V, E)$ e uma função peso $w: E \rightarrow \mathbb{R}$, queremos encontrar um subconjunto acíclico $T \subseteq E$ que conecte todos os vértices de $G$ e cujo peso total
 
@@ -655,6 +655,20 @@ Seja $G = (V, E)$ um grafo conexo não orientado com uma função peso $w$ de va
 
 Tomamos $S = V_C$ no Teorema 23.1.
 
+
+## Exercícios
+
+23.1-1 Seja $(u, v)$ uma aresta de peso mínimo em um grafo conexo $G$. Mostre que $(u, v)$ pertence a alguma árvore geradora mínima de $G$.
+
+
+## Exercícios
+
+23.1-3 Mostre que se uma aresta $(u, v)$ está contido em alguma árvore geradora mínima, então ela é uma aresta leve cruzando algum corte do grafo.
+
+
+## Exercícios
+
+Veja a lista de exercícios e algumas soluções na página da disciplina.
 
 
 ## Referências
