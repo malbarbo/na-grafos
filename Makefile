@@ -15,6 +15,7 @@ EX_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix -exercicios.pdf, $(EX)))
 EXS=$(patsubst %/,%,$(dir $(shell find * -type d -wholename '*/exemplos')))
 EXS_ZIP=$(addprefix $(DEST_ZIP)/, $(addsuffix -exemplos.zip, $(EXS)))
 TECTONIC=$(DEST)/bin/tectonic
+TECTONIC_VERSION=0.1.13
 PANDOC=$(DEST)/bin/pandoc
 PANDOC_VERSION=2.11.3.2
 PANDOC_CMD=$(PANDOC) \
@@ -77,7 +78,8 @@ $(PANDOC):
 
 $(TECTONIC):
 	mkdir -p $(DEST)/bin/
-	curl -L  https://github.com/tectonic-typesetting/tectonic/releases/download/continuous/tectonic-latest-x86_64-unknown-linux-musl.tar.gz | tar xz -C $(DEST)/bin/
+	curl -L https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic@$(TECTONIC_VERSION)/tectonic-$(TECTONIC_VERSION)-x86_64-unknown-linux-musl.tar.gz \
+		| tar xz -C $(DEST)/bin/
 
 clean:
 	@echo Removendo $(DEST_PDF)
