@@ -544,7 +544,7 @@ Executado em tempo \pause linear no número de vértices no caminho impresso, po
 
 ## Exercícios
 
-22.2-5 Argumente que em uma busca em profundidade, o valor de $\attrib{u}{d}$ atribuído para um vértice $u$ é independente da ordem que os vértices aparecem em cada lista de adjacência. Usando a Figura 22.3 como exemplo, mostre que a árvore produzida pelo BFS pode depender da ordem dentro das listas de adjacências.
+22.2-5 Argumente que em uma busca em largura, o valor de $\attrib{u}{d}$ atribuído para um vértice $u$ é independente da ordem que os vértices aparecem em cada lista de adjacência. Usando a Figura 22.3 como exemplo, mostre que a árvore produzida pelo BFS pode depender da ordem dentro das listas de adjacências.
 
 \includegraphics[trim=80pt 2259pt 2300pt 0pt,clip,height=2.5cm]{imagens/Fig-22-3.pdf}
 
