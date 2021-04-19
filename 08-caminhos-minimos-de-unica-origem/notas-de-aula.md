@@ -8,185 +8,243 @@ title: Caminhos mínimos de única origem
 ---
 
 
-# Introdução
+## Problema
+
+Como determinar a "rota" mais curta entre duas cidades do Brasil? \pause
+
+Que informações nós temos? \pause A cidade de origem, a cidade de destino e um mapa das estradas do Brasil com a distância entre cada par de interseções adjacentes. \pause O mapa e as distâncias podem ser representadas por um grafo: \pause
+
+- Cada interseção é representada por um vértice; \pause
+- A distância entre cada par de interseções adjacentes é representada por uma aresta com peso. \pause
+
+Se a nossa entrada é um grafo e dois vértices, qual é a saída? \pause
+
+- Um caminho que inicia no vértice de origem e termina no vértice de destino e tem o peso (soma dos pesos das arestas) mínimo.
 
 
-## Introdução
+## Problema
 
-- Como encontrar o caminho mínimo entre duas cidades? \pause
+\includegraphics[width=4.5cm]{imagens/fig-24-2.pdf}
 
-- Vamos estudar este tipo de problema, que é conhecido como **problema de
-  caminho mínimo**
+Se a cidade de origem é representada por $s$ e a de destino por $x$ \pause
 
-- Entrada
-
-    - Um grafo orientado $G = (V, E)$
-
-    - Uma função peso $w : E \rightarrow \mathbb{R}$
+- O caminho $\langle s, y, t \rangle$ representa um "rota" entre as cidades de origem e destino? \pause Não. \pause
+- O caminho $\langle s, y, t, x \rangle$ representa um "rota" entre as cidades de origem e destino? \pause Sim. \pause Qual o peso desse caminho? \pause 12. \pause Esta é a "rota" mais curta? \pause Não. \pause Os caminhos $\langle s, y, x \rangle$ e $\langle s, t, x \rangle$ também representam rotas entre as cidades de origem e destino e tem peso 9.
 
 
-## Introdução
+## Definições
 
-- O **peso do caminho** $p = \langle v_0, v_1, \dots, v_k \rangle$ é a soma dos
-  pesos das arestas no caminho
-
-    - $\displaystyle w(p) = \sum_{i=1}^k w(v_{i-1}, v_i)$
+Neste módulo vamos estudar alguns **problemas de caminho mínimo**. \pause Antes de continuarmos precisamos definir com precisão alguns termos.
 
 
-## Introdução
+## Definições
 
-- O **peso do caminho mínimo** $\delta(u, v)$ deste $u$ até $v$ é
+Seja $G = (V, E)$ um grafo orientado e $w : E \rightarrow \mathbb{R}$ uma função peso: \pause
 
-    $$\delta(u, v) = \begin{cases}
+- O **peso do caminho** $p = \langle v_0, v_1, \dots, v_k \rangle$ é a soma dos pesos das arestas em $p$ $$\displaystyle w(p) = \sum_{i=1}^k w(v_{i-1}, v_i)$$ \pause
+- O **peso do caminho mínimo** $\delta(u, v)$ de $u$ até $v$ é
+
+  $$\delta(u, v) = \begin{cases}
         min\{w(p) : u \stackrel{p}{\leadsto} v \} & \text{se existe um caminho de $u$ até $v$} \\
         \infty                                    & \text{caso contrário}
-    \end{cases}$$
+  \end{cases}$$ \pause
+- Um **caminho mínimo** do vértice $u$ até o vértice $v$ é qualquer caminho $p$ tal que $w(p) = \delta(u,v)$.
 
 
-## Introdução
+## Peso ou distância?
 
-- Um **caminho mínimo** do vértice $u$ até o vértice $v$ é qualquer caminho $p$
-  com peso $w(p) = \delta(u,v)$
+Porque usamos o termo "peso" e não "distância? \pause
 
-
-## Introdução
-
-- Os pesos das arestas podem representar outras métricas além da distância,
-  como o tempo, custo, ou outra quantidade que acumule linearmente ao longo de
-  um caminho e que se deseja minimizar
-
-- O algoritmo de busca em largura é um algoritmo de caminhos mínimos que
-  funciona para grafos não valorados, isto é, as arestas tem peso unitário
+Porque os pesos das arestas podem representar outras métricas além da distância, como o tempo, custo, ou outra quantidade que acumule linearmente ao longo de um caminho e que desejamos minimizar.
 
 
 ## Tipos de problemas de caminho mínimo
 
-- **Origem única**: Encontrar um caminho mínimo a partir de uma dada origem $s
-  \in V$ até todo vértice $v \in V$ \pause
+**Único par**: Encontrar o caminho mínimo de $u$ até $v$. \pause
 
-- **Destino único**: Encontrar um caminho mínimo até um determinado vértice de
-  destino $t$ a partir de cada vértice $v$ \pause
+**Única origem**: Encontrar um caminho mínimo a partir de uma dada origem $s \in V$ até todo vértice $v \in V$. \pause O algoritmo de busca em largura é um algoritmo de caminhos mínimos de única origem que funciona para grafos não valorados, isto é, as arestas tem peso unitário. \pause
 
-- **Par único**: Encontrar o caminho mínimo de $u$ até $v$ \pause
+**Único destino**: Encontrar um caminho mínimo até um determinado vértice de destino $t$ a partir de cada vértice $v$. \pause
 
-- **Todos os pares**: Encontrar um caminho mínimo deste $u$ até $v$ para todo
-  par de vértices $u$ e $v$
+**Todos os pares**: Encontrar um caminho mínimo deste $u$ até $v$ para todo par de vértices $u$ e $v$.
 
 
 ## Exemplo
 
-- Exemplo de caminhos mínimos de única origem
+Vamos focar no **problema do caminho mínimo de única origem**. \pause Aqui está um exemplo de caminhos mínimos de única origem
 
-    ![](imagens/Fig-24-2.pdf)
+![](imagens/Fig-24-2.pdf)
 
-- Observe que
+\pause
 
-    - O caminho mínimo pode não ser único
+Antes de pensarmos em como resolver este problema, o que podemos observar sobre caminhos mínimos? \pause
 
-    - Os caminhos mínimos de uma origem para todos os outros vértices formam
-      uma árvore
-
-
-## Caminhos mínimos
-
-- Veremos algumas características dos caminho mínimos
+- Um caminho mínimo é formado por outros caminhos mínimos (subestrutura ótima); \pause
+- Os caminhos mínimos de única origem formam uma árvore.
 
 
 ## Subestrutura ótima
 
-Em geral os algoritmos de caminhos mínimos se baseiam na seguinte propriedade
-
 ### Lema 24.1
 
-Qualquer subcaminho de um caminho mínimo é um caminho mínimo \pause
+Qualquer subcaminho de um caminho mínimo é um caminho mínimo. \pause
 
 ### Prova
 
-Ideia da prova: se um subcaminho não for mínimo podemos trocá-lo por um
-subcaminho mínimo é obter um caminho menor, o que é uma contradição pois o
-caminho é mínimo!
+Ideia da prova: se um subcaminho não for mínimo podemos trocá-lo por um subcaminho mínimo é obter um caminho de menor peso, o que é uma contradição pois o caminho é mínimo!
 
 
-## Arestas com pesos negativos
+## Representação da árvore
 
-- Não apresentam problemas se nenhum ciclo com peso negativo é alcançável a
-  partir da origem
+Da mesma forma que no \proc{BFS}, \proc{DFS} e \proc{Prim}: \pause
 
-- Nenhum caminho da origem até um vértice em um ciclo negativo pode ser mínimo
+- $\attrib{v}{\pi} =$ predecessor de $v$ no caminho mínimo a partir de $s$
 
-- Se existe um ciclo de peso negativo em algum caminho de $s$ até $v$,
-  definimos $\delta(s, v) = -\infty$
-
-    ![](imagens/Fig-24-1.pdf){width=7cm}
+- Se não existe predecessor, então $\attrib{v}{\pi} = \const{nil}$
 
 
-## Ciclos
+## Pensando em um algoritmo
 
-- Caminhos mínimos podem conter ciclos? \pause Não \pause
+Qual é o tipo do problema? \pause Otimização. \pause
 
-    - Peso negativo, acabamos de descartar
+Que estratégias podemos tentar utilizar? \pause
 
-    - Peso positivo, podemos obter um caminho mínimo eliminando o ciclo
+- Algoritmo guloso
+- Programação dinâmica
+- Melhoramento iterativo
+- Etc
 
-    - Peso nulo, não existe razão para usar tal ciclo
+\pause
 
-    \pause
-
-- Qualquer caminho acíclico em um grafo $G = (V, E)$ contém no máximo $|V|$
-  vértices distintos e no máximo $|V| - 1$ arestas
-
-    - Desta forma, vamos restringir a nossa atenção para ciclos com no máximo
-      $|V| - 1$ arestas
+Vamos tentar utilizar estas técnicas para derivar hipóteses de algoritmos.
 
 
-## Representação
+## Pensando em um algoritmo
 
-- Representamos os caminhos mínimos de forma semelhante as árvores produzidas
-  pelo \proc{BFS}
+\includegraphics{imagens/Fig-24-2.pdf}
 
+Como produzir árvores de caminhos mínimos a partir da entrada? \pause
 
-## Representação
-
-- Para cada vértice $v \in V$, a saída dos algoritmos consiste em
-
-    - $\attrib{v}{d} = \delta(s, v)$
-
-        - Inicialmente $\attrib{v}{d} = \infty$
-
-        - Diminui conforme o algoritmo progride, mas sempre mantém a
-          propriedade $\attrib{v}{d} \ge \delta(s, v)$
-
-        - Vamos chamar $\attrib{v}{d}$ de **estimativa do caminho mínimo**
-
-    - $\attrib{v}{\pi} =$ predecessor de $v$ no caminho mínimo a partir de $s$
-
-        - Se não existe predecessor, então $\attrib{v}{\pi} = \const{nil}$
-
-        - $\pi$ induz uma árvore, a árvore de caminhos mínimos
+Veja os vídeos das aulas para entender como derivamos a hipóteses a seguir.
 
 
+## Pensando em um algoritmo
 
-## Relaxamento
+Hipóteses \pause
+
+- Algoritmo guloso: Começar com o vértice de origem na árvore e ir "ligando" novos vértices à árvore usando os caminhos mínimos (não pode haver arestas de peso negativo). \pause
+
+- Programação dinâmica: Expressar os pesos dos caminhos mínimos que usam no máximo $k$ arestas, em termos dos pesos dos caminhos mínimos que usam no máximo $k - 1$ arestas. \pause
+
+- Melhoramento iterativo: Iniciar com uma árvore de caminhos qualquer e tentar melhorar os caminhos trocando uma aresta da árvore por uma que não está na árvore.
+
+
+## Algoritmo de Dijkstra
+
+A ideia deste algoritmo guloso para caminhos mínimos de única origem foi inicialmente proposta por Dijkstra. \pause
+
+A ideia do algoritmo de Dijkstra é semelhante a de outro algoritmo guloso: o algoritmo de Prim. \pause Vamos comparar as duas ideias.
+
+
+## Dijkstra vs Prim
+
+**Dijkstra (Caminhos mínimos de única origem)**: Começar com o vértice de origem na árvore e ir "ligando" novos vértices à árvore usando os caminhos de menor peso.
+
+**Prim (Árvores geradoras mínimas)**: Começar com um vértice na árvore e ir "ligando" novos vértices à árvore usando as arestas de menor peso.
+
+\pause
+
+Quais são as semelhanças? \pause
+
+- Começam com um vértice na árvore; \pause
+- Escolhem o próximo vértice para ligar na árvore usando um critério guloso.
+
+\pause
+
+Qual é a diferença? \pause O critério guloso:
+
+- Prim: escolhemos ligar o novo vértice usando **uma aresta** de menor peso.
+- Dijkstra: escolhemos ligar um novo vértice usando **um caminho** de menor peso.
+
+
+## Algoritmo de Dijkstra
+
+Como podemos implementar de forma eficiente o algoritmo de Dijkstra? \pause
+
+Considerando a semelhança entre o algoritmos de Dijkstra e o algoritmo de Prim, vamos lembrar: Qual era o "desafio" para implementar o algoritmo Prim de forma eficiente? \pause
+
+- Escolher de forma eficiente o próximo vértice para ser ligado a árvore. \pause
+
+Como resolvemos esse problema? \pause Usando uma fila de prioridades. \pause
+
+Vamos revisar como isso funcionava no algoritmo de Prim.
+
+
+
+## Revisão do algoritmo de Prim
+
+Os elementos em uma fila de prioridade são removidos por ordem de prioridade (a \id{chave} no algoritmo de Prim). \pause
+
+Para cada vértice $v$ fora da árvore, qual é o significado do valor $\attrib{v}{chave}$ no algoritmo de Prim? \pause O menor peso entre todas as arestas que podem ser usadas para ligar $v$ a um vértice qualquer da árvore.
+
+
+## Revisão do algoritmo de Prim
+
+Todos os vértices são inicialmente adicionados na fila. O vértice raiz $r$ começa com $\attrib{r}{chave} = 0$ e os outros vértices com $\id{chave} = \infty$. \pause
+
+Cada vez que um vértice $u$ é removido da fila para ser ligado a árvore, o que é necessário fazer? \pause Verificar é possível ligar algum vértice $v$ adjacente de $u$ de forma "mais eficiente" a árvore, isto é, se podemos mudar o valor de $\attrib{v}{chave}$ para $w(u, v)$: \pause
 
 \begin{codebox}
-    \Procname{$\proc{initialize-single-source}(G, s)$}
-    \li \For $v \in \attrib{G}{V}$ \Do
-    \li     $\attrib{v}{d} = \infty$
-    \li     $\attrib{v}{\pi} = \const{nil}$\
-        \End
-    \li $\attrib{s}{d} = 0$
+  \zi \If $\attrib{v}{chave} > w(u, v)$ \Then
+  \zi       $\attrib{v}{chave} = w(u, v)$
+  \zi       $\attrib{v}{\pi} = u$
+  \zi \End
 \end{codebox}
 
 
-## Relaxamento
+## Algoritmo de Dijkstra
 
-Sendo os vértices inicializados com \proc{initialize-single-source}, podemos
-melhorar a estimativa do caminho mínimo para $v$, indo através de $u$ e
-seguindo $(u, v)$?
+Vamos usar a mesma ideia no algoritmo de Dijkstra. \pause
+
+Para cada vértice $v$ do grafo mantemos o atributo $\attrib{v}{d}$, a **estimativa de caminho mínimo**, que é usada como prioridade. \pause
+
+Todos os vértices são inicialmente adicionados na fila. O vértice de origem $s$ começa com $\attrib{s}{d} = 0$ e os vértices começam com $d = \infty$. \pause
+
+Assim como as chaves no algoritmo de Prim são alteradas conforme o algoritmo progride, os valores das estimativas de caminhos mínimo também são alteradas. \pause
+
+Nos exemplos a seguir as arestas destacadas que levam a vértices brancos mostram a estimativa de caminho mínimo atual.
+
+
+## Algoritmo de Dijkstra
+
+\includegraphics[width=6cm,trim=0pt 903pt 2484pt 0pt,clip,]{imagens/Fig-24-6.pdf}
+
+## Algoritmo de Dijkstra
+
+\includegraphics[width=6cm,trim=1242pt 903pt 1242pt 0pt,clip,]{imagens/Fig-24-6.pdf}
+
+## Algoritmo de Dijkstra
+
+\includegraphics[width=6cm,trim=2484pt 903pt 0pt 0pt,clip,]{imagens/Fig-24-6.pdf}
+
+## Algoritmo de Dijkstra
+
+\includegraphics[width=6cm,trim=0pt 0pt 2484pt 903pt,clip,]{imagens/Fig-24-6.pdf}
+
+## Algoritmo de Dijkstra
+
+\includegraphics[width=6cm,trim=1242pt 0pt 1242pt 903pt,clip,]{imagens/Fig-24-6.pdf}
+
+## Algoritmo de Dijkstra
+
+\includegraphics[width=6cm,trim=2484pt 0pt 0pt 903pt,clip,]{imagens/Fig-24-6.pdf}
+
+
+## Atualização da estimativa de peso do caminho mínimo
 
 ![](imagens/Fig-24-3.pdf){width=6cm}
 
-\pause
+Como a estimativa de caminho mínimo deve ser atualizada algoritmo de Dijkstra? \pause
 
 \begin{codebox}
     \Procname{$\proc{relax}(u, v, w)$}
@@ -196,106 +254,441 @@ seguindo $(u, v)$?
         \End
 \end{codebox}
 
-
-## Propriedades
-
-- Desigualdade de triângulos (Lema 24.10)
-
-    - Para toda $(u, v) \in E$, temos que
-      $\delta(s, v) \le \delta(s, u) + w(u, v)$ \pause
-
-- Para as próximas propriedades supomos que
-
-    - O grafo é inicializado com uma chamada a \proc{initialize-single-source}
-
-    - O único modo de modificar $\attrib{v}{d}$ e $\attrib{v}{\pi}$ (para qualquer vértice) e pela
-      chamada de \proc{relax}
+Este esquema de atualização também é utilizada em outros algoritmos, por isso definimos um procedimento.
 
 
-## Propriedades
+## \proc{Initialize-Single-Source}
 
-- Propriedade do limite superior (Lema 24.11)
+Para manter a propriedade de que o atributo $d$ representa uma estimativa de caminho mínimo, ele deve ser inicializado de forma apropriada e só pode ser alterado utilizando o procedimento \proc{Relax}. \pause
 
-    - Sempre temos $\attrib{v}{d} \ge \delta(s, v)$ para todo $v$. Uma vez que
-      $\attrib{v}{d} = \delta(s, v)$, ele nunca muda
+Usamos a seguinte função de inicialização em diversos algoritmos:
 
-    \pause
-
-- Propriedade de nenhum caminho (Corolário 24.12)
-
-    - Se $\delta(s, v) = \infty$, então sempre $\attrib{v}{d} = \infty$
-
-
-## Propriedades
-
-- Propriedade de convergência (Lema 24.14)
-
-    - Se $s \leadsto u \rightarrow v$ é um caminho mínimo,
-      $\attrib{u}{d} = \delta(s, u)$ e \proc{relax}$(u, v, w)$ é chamado,
-      então, em todos os momentos após a chamada, temos $\attrib{v}{d} =
-      \delta(s, v)$
-
-    \pause
-
-- Propriedade de relaxamento de caminho (Lema 24.15)
-
-    - Seja $p = \langle v_0, v_1, \dots, v_k \rangle$ o caminho mínimo de $s =
-      v_0$ até $v_k$, se a função \proc{relax} for chamada na ordem $(v_0, v_1),
-      (v_1, v_2), \dots, (v_{k-1}, v_k)$, mesmo que intercalada com outros
-      relaxamentos, então $\attrib{v_k}{d} = \delta(s, v_k)$
-
-## Propriedades
-
-- Propriedade do subgrafo-predecessor
-
-    - Uma vez que $\attrib{v}{d} = \delta(s, v)$ for todo $v \in V$, o subgrafo
-      predecessor é uma árvore de caminhos mínimos enraizada em $s$
+\begin{codebox}
+    \Procname{$\proc{Initialize-Single-Source}(G, s)$}
+    \li \For $v \in \attrib{G}{V}$ \Do
+    \li     $\attrib{v}{d} = \infty$
+    \li     $\attrib{v}{\pi} = \const{nil}$\
+        \End
+    \li $\attrib{s}{d} = 0$
+\end{codebox}
 
 
-## Ideia dos algoritmos
+## Algoritmo de Dijkstra
 
-- Os algoritmos que veremos usam a mesma ideia
+Agora que sabemos que o algoritmo de Dijkstra pode ser implementado da mesma forma que o algoritmo de Prim, mudando apenas a forma que as prioridades são computadas, podemos escrever o pseudo código do algoritmo. \pause
 
-    - inicializar os atributos $\attrib{v}{d}$ e $\attrib{v}{\pi}$
-
-    - relaxar as arestas
-
-- Eles diferem na ordem e na quantidade de vezes que cada aresta é relaxada
+Para nos ajudar na análise de corretude do algoritmo, nós vamos utilizar um conjunto $S$, que conterá os vértices cujo caminho mínimo desde a origem já foram determinados.
 
 
+## Algoritmo de Dijkstra
 
-# Algoritmo de Bellman-Ford
+<div class="columns">
+<div class="column" width="40%">
+\begin{codebox}
+    \Procname{$\proc{Dijkstra}(G, w, s)$}
+    \li $\proc{Initialize-Single-Source}(G, s)$
+    \li $S = \emptyset$
+    \li $Q = \attrib{G}{V}$
+    \li \While $Q \not = \emptyset$ \Do
+    \li     $u = \proc{Extract-Min}(Q)$
+    \li     $S = S \cup \{ u \}$
+    \li     \For $v \in \attrib{G}{adj}[u]$ \Do
+    \li         $\proc{Relax}(u, v, w)$
+            \End
+        \End
+\end{codebox}
+</div>
+<div class="column" width="60%">
+\pause
+**Análise do tempo de execução** \pause
+
+É a mesma que a do algoritmo de Prim! \pause
+
+- O tempo de execução abstrato é escrito em termos dos tempos das operações de fila: $O(V) \times O(\proc{Insert}) + O(V) \times O(\proc{Extract-Min)} + O(E) \times O(\proc{Decrease-Key})$. \pause
+
+- Para determinar o tempo de execução concreto, precisamos considerar como a fila de prioridade é implementada.
+
+</div>
+</div>
 
 
-## Algoritmo de Bellman-Ford
+## Algoritmo de Dijkstra
 
-- Resolve o problema para o caso geral, as arestas podem ter pesos negativos
-
-    - Se ciclos negativos acessíveis a partir da origem forem encontrados
-      o algoritmo devolve \const{false}, caso contrário, devolve \const{true}
-
-    - Calcula $\attrib{v}{d}$ e $\attrib{v}{\pi}$ para todo $v \in V$
+Operação           | Arranjo  | Heap           | Heap de Fibonacci
+-------------------|----------|----------------|------------------
+\proc{create}      | $O(V)$   |   $O(V)$       | $O(V)$
+\proc{extract-min} | $O(V)$   | $O(\lg V)$     | $O(\lg V)$ (amortizado)
+\proc{decrease-key}| $O(1)$   | $O(\lg V)$     | $O(1)$ (amortizado)
 
 \pause
 
-- Ideia
+Tempo do procedimento \proc{Dijkstra}
 
-    - Relaxar todas as arestas, $|V| - 1$ vezes
+Tempo              | Arranjo         | Heap                  | Heap de Fibonacci
+-------------------|-----------------|-----------------------|------------------
+Grafo qualquer     | \pause $O(V^2)$ | \pause $O(E \lg V)$   | \pause $O(E + V \lg V)$ \pause
+Grafo denso        | \pause $O(V^2)$ | \pause $O(V^2 \lg V)$ | \pause $O(V^2)$
 
 
-## Algoritmo de Bellman-Ford
+## Algoritmo de Dijkstra
+
+<div class="columns">
+<div class="column" width="40%">
+\begin{codebox}
+    \Procname{$\proc{Dijkstra}(G, w, s)$}
+    \li $\proc{Initialize-Single-Source}(G, s)$
+    \li $S = \emptyset$
+    \li $Q = \attrib{G}{V}$
+    \li \While $Q \not = \emptyset$ \Do
+    \li     $u = \proc{Extract-Min}(Q)$
+    \li     $S = S \cup \{ u \}$
+    \li     \For $v \in \attrib{G}{adj}[u]$ \Do
+    \li         $\proc{Relax}(u, v, w)$
+            \End
+        \End
+\end{codebox}
+</div>
+<div class="column" width="60%">
+
+\pause
+
+**Análise de corretude** \pause
+
+O algoritmo mantém a seguinte invariante: \pause
+
+- No início de cada iteração do laço \While, $\attrib{v}{d} = \delta(s, v)$ para todos $v \in S$ \pause
+
+A invariante é verdadeira antes da primeira iteração? \pause
+
+- Sim! \pause $S = \emptyset$, então é verdadeira por nulidade. \pause
+
+Vamos deixar a manutenção de lado por um instante e pensar no término. Quando o laço termina, quais vértices estão em $S$? \pause
+
+- Todos, então, pela invariante, $\attrib{v}{d} = \delta(s, v)$, para todo $v \in V$ e o algoritmo produz a resposta correta!
+
+\pause
+
+Agora precisamos mostrar como a invariante é mantida quando um vértice é adicionado a $S$.
+
+</div>
+</div>
+
+
+## Algoritmo de Dijkstra
+
+<div class="columns">
+<div class="column" width="30%">
+
+\small
+
+\begin{codebox}
+    \Procname{$\proc{Dijkstra}(G, w, s)$}
+    \li $\proc{Initialize-Single-Source}(G, s)$
+    \li $S = \emptyset$
+    \li $Q = \attrib{G}{V}$
+    \li \While $Q \not = \emptyset$ \Do
+    \li     $u = \proc{Extract-Min}(Q)$
+    \li     $S = S \cup \{ u \}$
+    \li     \For $v \in \attrib{G}{adj}[u]$ \Do
+    \li         $\proc{Relax}(u, v, w)$
+            \End
+        \End
+\end{codebox}
+</div>
+<div class="column" width="70%">
+
+\small
+
+\pause
+
+**Análise de corretude** \pause
+
+Invariante: no início de cada iteração do laço \While, $\attrib{v}{d} = \delta(s, v)$ para todos $v \in S$. \pause
+
+Manutenção: Temos que mostrar que quando o vértice $u$ é extraído da fila (linha 5) e adicionado ao conjunto $S$ (linha 6) $\attrib{u}{d} = \delta(s, u)$. Vamos supor que $\attrib{u}{d} > \delta(s, u)$ e derivar uma contradição.\pause
+
+- $u$ pode ser o $s$? \pause Não, pois $\attrib{s}{d} = 0 = \delta(s, s)$; \pause
+- Existe algum caminho entre $s$ e $u$? \pause Sim, pois se não $\delta(s, u) = \infty$ e o algoritmo não poderia ter encontrado $\attrib{u}{d} > \delta(s, u)$; \pause
+- Seja $p$ um caminho de peso mínimo entre $s$ e $u$ ($w(p) = \delta(s, u)$). \pause
+- Como $s \in S$ e $u \not \in S$, então no caminho $p$ existe pelo menos uma aresta que conecta um vértice de $S$ com um vértice que não está em $S$. Seja $(x, y)$ a primeira aresta em $p$ que faz isso ($x \in S$ e $y \not \in S$).
+
+</div>
+</div>
+
+
+## Algoritmo de Dijkstra
+
+<div class="columns">
+<div class="column" width="30%">
+
+\small
+
+\begin{codebox}
+    \Procname{$\proc{Dijkstra}(G, w, s)$}
+    \li $\proc{Initialize-Single-Source}(G, s)$
+    \li $S = \emptyset$
+    \li $Q = \attrib{G}{V}$
+    \li \While $Q \not = \emptyset$ \Do
+    \li     $u = \proc{Extract-Min}(Q)$
+    \li     $S = S \cup \{ u \}$
+    \li     \For $v \in \attrib{G}{adj}[u]$ \Do
+    \li         $\proc{Relax}(u, v, w)$
+            \End
+        \End
+\end{codebox}
+</div>
+<div class="column" width="70%">
+
+\small
+
+**Análise de corretude**
+
+Invariante: no início de cada iteração do laço \While, $\attrib{v}{d} = \delta(s, v)$ para todos $v \in S$.
+
+Manutenção: Temos que mostrar que quando o vértice $u$ é extraído da fila (linha 5) e adicionado ao conjunto $S$ (linha 6) $\attrib{u}{d} = \delta(s, u)$. Vamos supor que $\attrib{u}{d} > \delta(s, u)$ e derivar uma contradição.
+
+- Se não existem arestas de peso negativo no grafo, então $\delta(s, x) + w(x, y) \le \delta(s, u)$. \pause
+- Pela hipótese indutiva $\attrib{x}{d} = \delta(s, x)$ e portanto $\attrib{x}{d} + w(x, y) \le \delta(s, u)$. \pause
+- A aresta $(x, y)$ foi relaxada quando $x$ foi adicionada a $S$, portanto $\attrib{y}{d} \le \attrib{x}{d} + w(x, y)$. \pause
+- Qual a relação entre os valores de $d$ do vértice $u$ e $y$? \pause $\attrib{u}{d} \le \attrib{y}{d}$ porque $u$ foi escolhido primeiro que $y$. \pause
+- $\attrib{u}{d} \le \attrib{y}{d} \pause \le \attrib{x}{d} + w(x,y) \pause \le \delta(s, u)$, \pause uma contradição!
+
+</div>
+</div>
+
+## Arestas com pesos negativos
+
+Nós vimos que a corretude do algoritmo de Dijkstra requer que o grafo não tenha arestas de peso negativo. \pause Mas e se o grafo tiver arestas de peso negativos, podemos determinar os caminhos de peso mínimo? \pause Vamos fazer um exemplo e pensar nessa questão.
+
+
+## Arestas com pesos negativos
+
+![](imagens/Fig-24-1.pdf){width=7cm}
+
+\pause
+O que podemos observar em relação as arestas de peso negativo e os caminhos de peso mínimo? \pause
+
+- Arestas de peso negativo podem gerar ciclos de peso negativo; \pause
+- Os caminhos de peso mínimo que não envolvem ciclos de peso negativo continuam bem definidos; \pause
+- Os ciclos de peso negativo que são acessíveis a partir da origem tornam "impossível" enumerar alguns caminhos de peso mínimo (ex: $\langle s, e, f, e, f, \dots \rangle$).
+
+
+## Arestas com pesos negativos
+
+Como lidar com caminhos entre $s$ e $v$ que envolvam ciclos de peso negativos? \pause
+
+- Vamos ajustar a definição de peso de caminho mínimo para estes casos para $\delta(s, v) = - \infty$; \pause
+- Não podemos enumerar os vértices do caminho, mas será que podemos identificar que ele contém um ciclo de peso negativo? \pause
+
+Vamos voltar para as hipóteses de algoritmos baseadas em programação dinâmica e melhoramento iterativo e verificar se podemos empregá-las para encontrar caminhos mínimos em grafos com arestas de peso negativo.
+
+
+## Relembrando as hipóteses
+
+Programação dinâmica: Expressar os pesos dos caminhos mínimos que usam no máximo $k$ arestas, em termos dos pesos dos caminhos mínimos que usam no máximo $k - 1$ arestas. \pause
+
+Melhoramento iterativo: Iniciar com uma árvore de caminhos qualquer e tentar melhorar os caminhos trocando uma aresta da árvore por uma que não está na árvore.
+
+
+## Limitações
+
+Existe alguma limitação aparente nessas abordagens que impedem que elas sejam usadas em grafos com arestas de peso negativo (e sem ciclos de peso negativo)? \pause
+
+- Programação dinâmica: \pause encontra todos os caminhos mínimos com até $|V| - 1$ arestas, como os caminhos mínimos, mesmo com arestas de peso negativos (sem ciclos de peso negativo), não podem ter mais que $|V| - 1$ arestas, então as arestas de peso negativo parecem não mudar a hipótese \pause
+
+- Melhoramento iterativo: \pause como o algoritmo só vai parar quando não for possível melhorar mais nenhum caminho, então as arestas de peso negativo parecem não mudar a hipótese \pause
+
+Sabendo que as duas hipóteses ainda são viáveis, agora temos que partir para descrição dos algoritmos e verificação de corretude.
+
+
+## Melhoramento iterativo
+
+Qual questão ficou em aberto na ideia baseada em melhoramento iterativo? \pause
+
+- Como e em que ordem verificar se as arestas que não estão na árvore podem ser inseridas na árvore e melhorar os caminhos. \pause
+
+Por exemplo, se em um determinado momento tivéssemos os caminhos $s \leadsto a \leadsto b$ e de $b$ pra todos os demais vértices (não necessariamente direto), como verificar se podemos "colocar" a aresta $(a, b)$ na árvore? \pause
+
+Verificando se o peso do caminho $s \leadsto a \rightarrow b$ é menor do que o peso do caminho atual $s \leadsto b$, \pause ou seja, relaxando a aresta $(a, b)$! \pause Como o peso do caminho $s \leadsto b$ mudou, temos que mudar o peso de todos os caminhos que começam com $b$... \pause e como fazer isso? \pause Relaxando as arestas dos caminhos. \pause Então, de fato, não precisamos apenas relaxar as arestas que não estão na árvore, pode ser necessário relaxar as próprias arestas da árvore. A questão continua, em que ordem?
+
+
+## Programação dinâmica
+
+E a ideia baseada em programação dinâmica? \pause
+
+- Nós escrevemos a função recursiva mas não discutimos como implementá-la.
+
+
+## Programação dinâmica
+
+\small
+
+$\delta^k(s, v)$ -- peso do caminho mínimo de $s$ para $v$ que utiliza até $k$ arestas
+$$\delta^k(s, v) =
+\begin{cases}
+  0 & \text{se $s = v$ e $k = 0$} \\
+  \infty & \text{se $s \not = v$ e $k = 0$} \\
+  \min \begin{cases}
+    \delta^{k-1}(s, v) \\
+    \min\limits_{(u, v) \in E}(\delta^{k-1}(s, u) + w(u, v))
+  \end{cases} & \text{caso contrário}
+\end{cases}$$
+
+\pause
+
+O que o "caso contrário" nos diz? \pause
+
+- O caminho mínimo de $s$ para $v$ com até $k$ arestas é o mesmo que o caminho mínimo com até $k - 1$ arestas; ou \pause
+- O caminho mínimo de $s$ para $v$ com até $k$ arestas tem exatamente $k$ arestas e então pode ser obtido a partir de um caminho mínimo com $k-1$ arestas. \pause Por que isso é verdade? \pause Porque caminhos mínimos tem subestrutura ótima!
+
+
+## Programação dinâmica
+
+Como seria uma implementação _bottom-up_?\pause
+
+- Começamos, de forma trivial, com uma árvore de caminhos mínimos com até 0 aresta; \pause
+- Depois, a partir da árvore de caminhos mínimos com até 0 aresta, encontramos a árvore de caminhos mínimos com até 1 aresta; \pause
+- Depois, a partir da árvore de caminhos mínimos com até 1 aresta, encontramos a árvore de caminhos mínimos com até 2 aresta; \pause
+- E assim por diante até caminhos mínimos com até $|V| - 1$ arestas.
+
+
+## Programação dinâmica
+
+Note de que certa forma esse é um algoritmo de melhoramento iterativo \pause
+
+* Os caminhos mínimos com até $k - 1$ arestas são uma estimativa para os caminhos mínimos com até $|V| - 1$ arestas; \pause
+* Na iteração $k$, buscamos melhorar as estimativas obtidas na iteração $k - 1$. \pause
+
+Esta "visão" de uma abordagem de melhoramento iterativo é mais interessante que a outra, isto porque ela define claramente uma forma de progresso para o algoritmo e o momento de parada. \pause
+
+Vamos seguir com a ideia de programação dinâmica e escrever o algoritmo!
+
+
+## Programação dinâmica
+
+O algoritmo precisa fazer $|V| - 1$ iterações. Em uma iteração $k > 0$ precisamos construir uma nova árvore a partir da árvore da iteração $k - 1$, como fazemos isso? \pause "Aplicando" a equação para cada vértice. \pause
+
+<div class="columns">
+<div class="column" width="45%">
+\begin{codebox}
+    \zi \Comment Computar $\attrib{v}{d}^0$ e $\attrib{v}{\pi}^0$ para todo $v \in V$
+    \zi \For $k \gets 1$ \To $|V| - 1$ \Do
+    \zi   \For each vertex $v \in V$ \Do
+    \zi     $\attrib{v}{d}^k = \attrib{v}{d}^{k-1}$
+    \zi     $\attrib{v}{\pi}^k = \attrib{v}{\pi}^{k-1}$
+    \zi     \For each edge $(u, v) \in E$ \Do
+    \zi       \If $\attrib{v}{d}^k > \attrib{u}{d}^{k-1} + w(u, v)$ \Then
+    \zi         $\attrib{v}{d}^k = \attrib{u}{d}^{k-1} + w(u, v)$
+    \zi         $\attrib{v}{\pi}^k = u$
+              \End
+            \End
+          \End
+        \End
+\end{codebox}
+</div>
+<div class="column" width="55%">
+\pause
+
+O que poderia ser difícil de implementar nesse código? \pause
+
+\vspace{2mm}
+
+Fazer a repetição usando as arestas que entram em $v$. \pause A dificuldade existe porque em uma lista de adjacências temos as arestas que saem de um vértice e não as que entram. \pause Como resolver esse problema? \pause Criando uma lista de adjacências com as arestas que entram nos vértices! \pause
+
+\vspace{2mm}
+
+Tem outra maneira? \pause Sim!
+
+</div>
+</div>
+
+## Programação dinâmica
 
 <div class="columns">
 <div class="column" width="50%">
 \begin{codebox}
-    \Procname{$\proc{bellman-ford}(G, w, s)$}
-    \li $\proc{initialize-single-source}(G, s)$
+    \zi \Comment Computar $\attrib{v}{d}^0$ e $\attrib{v}{\pi}^0$ para todo $v \in V$
+    \zi \For $k \gets 1$ \To $|V| - 1$ \Do
+    \zi   \For each vertex $v \in V$ \Do
+    \zi     $\attrib{v}{d}^k = \attrib{v}{d}^{k-1}$
+    \zi     $\attrib{v}{\pi}^k = \attrib{v}{\pi}^{k-1}$
+    \zi     \For each edge $(u, v) \in E$ \Do
+    \zi       \If $\attrib{v}{d}^k > \attrib{u}{d}^{k-1} + w(u, v)$ \Then
+    \zi         $\attrib{v}{d}^k = \attrib{u}{d}^{k-1} + w(u, v)$
+    \zi         $\attrib{v}{\pi}^k = u$
+              \End
+            \End
+          \End
+        \End
+\end{codebox}
+</div>
+<div class="column" width="50%">
+Você consegue identificar algo familiar no código? \pause O relaxamento da aresta $(u, v)$. \pause
+
+\vspace{2mm}
+
+Qual é o propósito do relaxamento? \pause Tentar melhorar a estimativa de caminho mínimo para $v$. \pause
+
+\vspace{2mm}
+
+Da forma que o código está escrito, as tentativas de melhora para $v$ são feitas uma após a outro. \pause Isto é necessário ou poderíamos intercalar tentativas? Tentar uma melhora para um vértice, depois tentar para outro e assim por diante até tentar todas as melhoras para todos os vértices? \pause Podemos tentar as melhoras em qualquer ordem!
+
+</div>
+</div>
+
+
+## Programação dinâmica
+
+<div class="columns">
+<div class="column" width="45%">
+\begin{codebox}
+    \zi \Comment Computar $\attrib{v}{d}^0$ e $\attrib{v}{\pi}^0$ para todo $v \in V$
+    \zi \For $k \gets 1$ \To $|V| - 1$ \Do
+    \zi   \For each vertex $v \in V$ \Do
+    \zi     $\attrib{v}{d}^k = \attrib{v}{d}^{k-1}$
+    \zi     $\attrib{v}{\pi}^k = \attrib{v}{\pi}^{k-1}$
+          \End
+    \zi   \For each edge $(u, v) \in E$ \Do
+    \zi     \If $\attrib{v}{d}^k > \attrib{u}{d}^{k-1} + w(u, v)$ \Then
+    \zi       $\attrib{v}{d}^k = \attrib{u}{d}^{k-1} + w(u, v)$
+    \zi       $\attrib{v}{\pi}^k = u$
+            \End
+          \End
+        \End
+\end{codebox}
+</div>
+<div class="column" width="55%">
+\small
+
+Para facilitar a programação verificamos as arestas na ordem que elas aparecem nas listas de adjacências. \pause
+
+\vspace{2mm}
+
+Tem mais alguma coisa que podemos modificar no código para deixar a implementação mais fácil? \pause Ao invés de cada vértice ter atributos $d$ e $\pi$ para cada valor de $k$, cada vértice pode ter apenas um atributo $d$ e $\pi$ (vamos ver a seguir porque isso é possível). \pause Isso permite três simplificações: \pause
+
+- O uso de \proc{Initialize-Single-Source} para computar os valores iniciais de $d$ e $\pi$ \pause
+- A remoção da repetição que inicializa os atributos $d$ e $\pi$ da iteração $k$ a partir dos valores da iteração $k - 1$ \pause
+- O uso de \proc{Relax}
+
+</div>
+</div>
+
+
+## \proc{Bellman-Ford}
+
+O algoritmo que obtemos é chamado de \proc{Bellman-Ford}.
+
+<div class="columns">
+<div class="column" width="50%">
+\begin{codebox}
+    \Procname{$\proc{Bellman-Ford}(G, w, s)$}
+    \li $\proc{Initialize-Single-Source}(G, s)$
     \li \For $i \gets 1$ \To $|\attrib{G}{V}| - 1$ \Do
-    \li     \For $(u, v) \in \attrib{G}{E}$ \Do
-    \li         $\proc{relax}(u, v, w)$
+    \li     \For each edge $(u, v) \in \attrib{G}{E}$ \Do
+    \li         $\proc{Relax}(u, v, w)$
             \End
         \End
-    \li \For $(u, v) \in \attrib{G}{E}$ \Do
+    \li \For each edge $(u, v) \in \attrib{G}{E}$ \Do
     \li     \If $\attrib{v}{d} > \attrib{u}{d} + w(u, v)$ \Then
     \li         \Return \const{false}
             \End
@@ -306,14 +699,13 @@ seguindo $(u, v)$?
 <div class="column" width="50%">
 \pause
 
-Análise do tempo de execução
+**Análise do tempo de execução**
 
 \pause
 
 - A inicialização na linha 1 demora $\Theta(V)$
 
-- Cada uma das $|V| - 1$ passagens das linha 2 a 4 demora o tempo $\Theta(E)$,
-  totalizando $O(V \cdot E)$
+- Cada uma das $|V| - 1$ passagens das linha 2 a 4 demora o tempo $\Theta(E)$, totalizando $\Theta(V \cdot E)$
 
 - O laço das linha 5 a 7 demora $O(E)$
 
@@ -321,79 +713,149 @@ Análise do tempo de execução
 </div>
 </div/>
 
+## Algoritmo de Bellman-Ford
+
+Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
+
+\includegraphics[width=5cm,trim=0pt 1016pt 2484pt 0pt,clip,]{imagens/Fig-24-4.pdf}
 
 ## Algoritmo de Bellman-Ford
 
 Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
 
-\includegraphics[width=7cm,trim=0pt 1016pt 2484pt 0pt,clip,]{imagens/Fig-24-4.pdf}
+\includegraphics[width=5cm,trim=1242pt 1016pt 1242pt 0pt,clip,]{imagens/Fig-24-4.pdf}
 
 ## Algoritmo de Bellman-Ford
 
 Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
 
-\includegraphics[width=7cm,trim=1242pt 1016pt 1242pt 0pt,clip,]{imagens/Fig-24-4.pdf}
+\includegraphics[width=5cm,trim=2484pt 1016pt 0pt 0pt,clip,]{imagens/Fig-24-4.pdf}
 
 ## Algoritmo de Bellman-Ford
 
 Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
 
-\includegraphics[width=7cm,trim=2484pt 1016pt 0pt 0pt,clip,]{imagens/Fig-24-4.pdf}
+\includegraphics[width=5cm,trim=0pt 0pt 2484pt 1016pt,clip,]{imagens/Fig-24-4.pdf}
 
 ## Algoritmo de Bellman-Ford
 
 Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
 
-\includegraphics[width=7cm,trim=0pt 0pt 2484pt 1016pt,clip,]{imagens/Fig-24-4.pdf}
-
-## Algoritmo de Bellman-Ford
-
-Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x), (z,s), (s,t), (s,y)$
-
-\includegraphics[width=7cm,trim=1242pt 0pt 1242pt 1016pt,clip,]{imagens/Fig-24-4.pdf}
+\includegraphics[width=5cm,trim=1242pt 0pt 1242pt 1016pt,clip,]{imagens/Fig-24-4.pdf}
 
 
+## Correture de Bellman-Ford
 
-## Algoritmo de Bellman-Ford
+### Lema 24.14 - Propriedade de convergência
 
-\small
+Se $s \leadsto u \rightarrow v$ é um caminho mínimo, $\attrib{u}{d} = \delta(s, u)$ e \proc{Relax}$(u, v, w)$ é chamado, então, em todos os momentos após a chamada, temos $\attrib{v}{d} = \delta(s, v)$
 
-- Por que este algoritmo funciona? \pause
+\pause
 
-    - Propriedade de relaxamento de caminho
+### Lema 24.15 - Propriedade de relaxamento de caminho
 
-    - Seja $p = \langle v_0, v_1, \dots, v_k \rangle$ um caminho mínimo
-      acíclico entre $s = v_0$ e $v = v_k$. O caminho $p$ tem no máximo $|V| -
-      1$ arestas, e portanto $k \le |V| - 1$
+Seja $p = \langle v_0, v_1, \dots, v_k \rangle$ o caminho mínimo de $s = v_0$ até $v_k$, se a função \proc{Relax} for chamada na ordem $(v_0, v_1), (v_1, v_2), \dots, (v_{k-1}, v_k)$, mesmo que intercalada com outros relaxamentos, então $\attrib{v_k}{d} = \delta(s, v_k)$
 
-    - Cada iteração do laço da linha 2 relaxa todas as arestas
 
-        - A primeira iteração relaxa $(v_0, v_1)$
+## Correture de Bellman-Ford
 
-        - A segunda iteração relaxa $(v_1, v_2)$
+<div class="columns">
+<div class="column" width="50%">
+\begin{codebox}
+    \Procname{$\proc{Bellman-Ford}(G, w, s)$}
+    \li $\proc{Initialize-Single-Source}(G, s)$
+    \li \For $i \gets 1$ \To $|\attrib{G}{V}| - 1$ \Do
+    \li     \For each edge $(u, v) \in \attrib{G}{E}$ \Do
+    \li         $\proc{Relax}(u, v, w)$
+            \End
+        \End
+    \li \For each edge $(u, v) \in \attrib{G}{E}$ \Do
+    \li     \If $\attrib{v}{d} > \attrib{u}{d} + w(u, v)$ \Then
+    \li         \Return \const{false}
+            \End
+        \End
+    \li \Return \const{true}
+\end{codebox}
+</div>
+<div class="column" width="50%">
 
-        - ...
+**Análise de corretude** \pause
 
-        - A $k$-ésima iteração relaxa $(v_{k-1}, v_k)$
+Cada iteração do laço da linha 2 relaxa todas as arestas
 
-    - Pela propriedade de relaxamento de caminho
-        $\attrib{v}{d} = \attrib{v_k}{d} = \delta(s, v_k) = \delta(s, v)$
+- A primeira iteração relaxa $(v_0, v_1)$
+
+- A segunda iteração relaxa $(v_1, v_2)$
+
+- ...
+
+- A $k$-ésima iteração relaxa $(v_{k-1}, v_k)$
+
+Pela propriedade de relaxamento de caminho $\attrib{v}{d} = \attrib{v_k}{d} = \delta(s, v_k) = \delta(s, v)$
 
 <!-- TODO: e o valor true/false? !-->
+</div>
+</div>
 
 
+## Revisão
 
-# Grafo orientado acíclico
+Tanto o algoritmo de Dijkstra quanto o algoritmo de Bellman-Ford são baseados na mesma ideia
+
+- Inicializar os atributos $d$ e $\pi$
+
+- Relaxar as arestas em uma ordem específica \pause
+
+O algoritmo de Dijkstra relaxa cada aresta apenas uma vez e só funciona para grafos sem arestas de peso negativo.
+
+O algoritmo relaxa todas as arestas $|V| - 1$ vezes e funciona para grafos com arestas de peso negativo e identifica grafos com ciclos de peso negativo.
 
 
-## Algoritmo para gaos
+## Exercício
 
-- Em grafo acíclico orientado (gao), os caminhos mínimos são sempre bem
-  definidos (não existem ciclos de peso negativo) \pause
+Projete um algoritmo que encontre os caminhos mínimos de única origem em um grafo acíclico orientado. \pause
 
-- Ideia
+Solução
 
-    - Relaxar as arestas em uma ordem topológica dos vértices
+- Relaxar as arestas em uma ordem topológica dos vértices
+
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=0pt 2032pt 1920pt 0pt,clip,width=7cm]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=1920pt 2032pt 0pt 0pt,clip,width=7cm]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=0pt 1355pt 1920pt 677pt,clip,width=7cm]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=1920pt 1355pt 0pt 677pt,clip,width=7cm]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=0pt 678pt 1920pt 1354pt,clip,width=7cm]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=1920pt 678pt 0pt 1354pt,clip,width=7cm]{imagens/Fig-24-5.pdf}
+
+## Caminhos mínimos de única origem em gaos
+
+\includegraphics[trim=0pt 1pt 1920pt 2031pt,clip,width=7cm]{imagens/Fig-24-5.pdf}
+
+
+## Caminhos mínimos de única origem em gaos
+
+Por que este algoritmo funciona? \pause
+
+- Como os vértices são processados em ordem topológica, as arestas de qualquer caminho são relaxadas na ordem que aparecem no caminho; \pause
+
+- Pela propriedade de relaxamento de caminho, o algoritmo funciona corretamente.
 
 
 ## Caminhos mínimos de única origem em gaos
@@ -401,272 +863,64 @@ Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x
 <div class="columns">
 <div class="column" width="50%">
 \begin{codebox}
-    \Procname{$\proc{dag-shortest-paths}(G, w, s)$}
+    \Procname{$\proc{Dag-Shortest-Paths}(G, w, s)$}
     \li ordenar topologicamente $\attrib{G}{V}$
-    \li $\proc{initialize-single-source}(G, s)$
+    \li $\proc{Initialize-Single-Source}(G, s)$
     \li \For vértice $u$ em ordem topológica \Do
-    \li     \For $v \in \attrib{G}{adj}[u]$ \Do
-    \li         $\proc{relax}(u, v, w)$
+    \li     \For each vertex $v \in \attrib{G}{adj}[u]$ \Do
+    \li         $\proc{Relax}(u, v, w)$
             \End
         \End
 \end{codebox}
 </div>
 <div class="column" width="50%">
 \pause
-Análise do tempo de execução
+**Análise do tempo de execução**
 \pause
 
 - A ordenação topológica da linha 1 tem tempo $\Theta(V + E)$
 
-- \proc{initialize-single-source} na linha 2 tem tempo $\Theta(V)$
+- \proc{Initialize-Single-Source} na linha 2 tem tempo $\Theta(V)$
 
-- Nos laços das linhas 2 e 3 a lista de adjacências de cada vértices é visitada
-  apenas uma vez, totalizando $V + E$ (análise agregada), como o relaxamento de
-  cada aresta custa $O(1)$, o tempo total é $\Theta(E)$
+- Nos laços das linhas 2 e 3 a lista de adjacências de cada vértices é visitada apenas uma vez, totalizando $V + E$ (análise agregada), como o relaxamento de cada aresta custa $O(1)$, o tempo total é $\Theta(E)$
 
 - Portanto, o tempo de execução do algoritmo é $\Theta(V + E)$
 </div>
 </div>
 
 
-## Caminhos mínimos de única origem em gaos
+<!--
+## Aplicação
 
-\includegraphics[trim=0pt 2032pt 1920pt 0pt,clip,]{imagens/Fig-24-5.pdf}
+Caminhos críticos na análise de diagramas PERT (*program evaluation and review technique*)
 
-## Caminhos mínimos de única origem em gaos
+As arestas representam serviços a serem executados
 
-\includegraphics[trim=1920pt 2032pt 0pt 0pt,clip,]{imagens/Fig-24-5.pdf}
+Os pesos de arestas representam os tempos necessários para execução de determinados serviços
 
-## Caminhos mínimos de única origem em gaos
-
-\includegraphics[trim=0pt 1355pt 1920pt 677pt,clip,]{imagens/Fig-24-5.pdf}
-
-## Caminhos mínimos de única origem em gaos
-
-\includegraphics[trim=1920pt 1355pt 0pt 677pt,clip,]{imagens/Fig-24-5.pdf}
-
-## Caminhos mínimos de única origem em gaos
-
-\includegraphics[trim=0pt 678pt 1920pt 1354pt,clip,]{imagens/Fig-24-5.pdf}
-
-## Caminhos mínimos de única origem em gaos
-
-\includegraphics[trim=1920pt 678pt 0pt 1354pt,clip,]{imagens/Fig-24-5.pdf}
-
-## Caminhos mínimos de única origem em gaos
-
-\includegraphics[trim=0pt 1pt 1920pt 2031pt,clip,]{imagens/Fig-24-5.pdf}
-
-
-## Caminhos mínimos de única origem em gaos
-
-- Por que este algoritmo funciona?
-
-    - Como os vértices são processados em ordem topológica, as arestas de
-      qualquer caminho são relaxadas na ordem que aparecem no caminho
-
-    - Pela propriedade de relaxamento de caminho, o algoritmo funciona
-      corretamente
+- $(u, v)$, $v$, $(v, x)$: serviço $(u, v)$ deve ser executado antes do serviço $(v, x)$
 
 
 ## Aplicação
 
-- Caminhos críticos na análise de diagramas PERT (*program evaluation and
-  review technique*)
+Um caminho através desse gao: sequência de serviços
 
-- As arestas representam serviços a serem executados
+Caminho crítico: é um caminho mais longo pelo gao
 
-- Os pesos de arestas representam os tempos necessários para execução de
-  determinados serviços
+- Tempo mais longo para execução de uma sequência ordenada
 
-- $(u, v)$, $v$, $(v, x)$: serviço $(u, v)$ deve ser executado antes do serviço
-  $(v, x)$
+O peso de um caminho crítico é um limite inferior sobre o tempo total para execução de todos os serviços
 
 
 ## Aplicação
 
-- Um caminho através desse gao: sequência de serviços
+Podemos encontrar um caminho crítico de duas maneiras: \pause
 
-- Caminho crítico: é um caminho mais longo pelo gao
+- Tornando negativos os pesos das arestas e executando \proc{dag-shortest-paths}; ou \pause
 
-    - Tempo mais longo para execução de uma sequência ordenada
+- Executando \proc{dag-shortest-paths}, substituindo “$\infty$” por “$-\infty$” na linha 2 de \proc{initialize-single-source} e “$>$” por “$<$” no procedimento \proc{relax}
 
-- O peso de um caminho crítico é um limite inferior sobre o tempo total para
-  execução de todos os serviços
-
-
-## Aplicação
-
-- Podemos encontrar um caminho crítico de duas maneiras: \pause
-
-    - Tornando negativos os pesos das arestas e executando
-      \proc{dag-shortest-paths}; ou \pause
-
-    - Executando \proc{dag-shortest-paths}, substituindo “$\infty$” por
-      “$-\infty$” na linha 2 de \proc{initialize-single-source} e “$>$” por
-      “$<$” no procedimento \proc{relax}
-
-
-
-# Algoritmo de Dijkstra
-
-
-## Algoritmo de Dijkstra
-
-- Caminho mínimo de única origem em um grafo orientado ponderado
-
-- Todos os pesos de arestas são não negativos, ou seja $w(u,v) \geq 0$ para
-  cada aresta $(u,v) \in E$
-
-
-## Algoritmo de Dijkstra
-
-- Ideia
-
-    - Essencialmente uma versão ponderada da busca em largura
-
-        - Ao invés de uma fila FIFO, usa uma fila de prioridades
-
-        - As chaves são os valores $\attrib{v}{d}$
-
-    - Mantém dois conjuntos de vértices
-
-        - $S$: vértices cujo caminho mínimo desde a origem já foram
-          determinados
-
-        - $Q = V - S$: fila de prioridades
-
-    - O algoritmo seleciona repetidamente o vértice $u \in Q$ com a mínima
-      estimativa de peso do caminho mínimo, adiciona $u$ a $S$ e relaxa todas
-      as arestas que saem de $u$
-
-
-## Algoritmo de Dijkstra
-
-\begin{codebox}
-    \Procname{$\proc{dijkstra}(G, w, s)$}
-    \li $\proc{initialize-single-source}(G, s)$
-    \li $S = \emptyset$
-    \li $Q = \attrib{G}{V}$
-    \li \While $Q \not = \emptyset$ \Do
-    \li     $u = \proc{extract-min}(Q)$
-    \li     $S = S \cup \{ u \}$
-    \li     \For $v \in \attrib{G}{adj}[u]$ \Do
-    \li         $\proc{relax}(u, v, w)$
-            \End
-        \End
-\end{codebox}
-
-
-## Algoritmo de Dijkstra
-
-\includegraphics[width=7cm,trim=0pt 903pt 2484pt 0pt,clip,]{imagens/Fig-24-6.pdf}
-
-## Algoritmo de Dijkstra
-
-\includegraphics[width=7cm,trim=1242pt 903pt 1242pt 0pt,clip,]{imagens/Fig-24-6.pdf}
-
-## Algoritmo de Dijkstra
-
-\includegraphics[width=7cm,trim=2484pt 903pt 0pt 0pt,clip,]{imagens/Fig-24-6.pdf}
-
-## Algoritmo de Dijkstra
-
-\includegraphics[width=7cm,trim=0pt 0pt 2484pt 903pt,clip,]{imagens/Fig-24-6.pdf}
-
-## Algoritmo de Dijkstra
-
-\includegraphics[width=7cm,trim=1242pt 0pt 1242pt 903pt,clip,]{imagens/Fig-24-6.pdf}
-
-## Algoritmo de Dijkstra
-
-\includegraphics[width=7cm,trim=2484pt 0pt 0pt 903pt,clip,]{imagens/Fig-24-6.pdf}
-
-
-## Algoritmo de Dijkstra
-
-- Análise do tempo de execução
-
-    - Linha 1 $\Theta(V)$
-
-    - Linhas 3 a 8 $O(V + E)$ (sem contar as operações com fila)
-
-    - Operações de fila
-
-        - \proc{insert} implícita na linha 3 (executado uma vez para cada vértice)
-
-        - \proc{extract-min} na linha 5 (executado uma vez para cada vértice)
-
-        - \proc{decrease-key} implícita em \proc{relax} (executado no máximo de
-          $|E|$ vezes, uma vez para cada aresta relaxada)
-
-    - Depende da implementação da fila de prioridade
-
-
-## Algoritmo de Dijkstra
-
-- Análise do tempo de execução
-
-    - Arranjos simples
-
-        - Como os vértices são enumerados de $1$ a $|V|$, armazenamos o valor
-          $\attrib{v}{d}$ na $v$-ésima entrada de um arranjo
-
-        - Cada operação \proc{insert} e \proc{decrease-key} demora $O(1)$
-
-        - Cada operação \proc{extract-min} demora $O(V)$ (pesquisa linear)
-
-        - Tempo total de $O(V^2 + E) = O(V^2)$
-
-
-## Algoritmo de Dijkstra
-
-- Análise do tempo de execução
-
-    - Heap
-
-        - Se o grafo é esparso, em particular, $E = o(V^2 / \lg V)$ é prático
-          utilizar um heap binário
-
-        - O tempo para construir um heap é $O(V)$
-
-        - Cada operação de \proc{extract-min} e \proc{decrease-key} demora $O(\lg V)$
-
-        - Tempo total de $O((V + E)\lg V + V)$, que é $O(E\lg V)$ se todos os
-          vértices são acessíveis a partir da origem
-
-
-## Algoritmo de Dijkstra
-
-- Análise do tempo de execução
-
-    - Heap de Fibonacci
-
-        - Cada operação \proc{extract-min} demora $O(\lg V)$
-
-        - Cada operação \proc{decrease-key} demora o tempo amortizado de $O(1)$
-
-        - Tempo total de $O(V\lg V + E)$
-
-
-## Algoritmo de Dijkstra
-
-- Porque este algoritmo funciona?
-
-    - Invariante de laço: no início de cada iteração do laço \While,
-    $\attrib{v}{d} = \delta(s, v)$ para todos $v \in S$
-
-    - Inicialização: $S = \emptyset$, então é verdadeiro
-
-    - Término: No final,
-    $Q = \emptyset \Rightarrow S = V \Rightarrow \attrib{v}{d} = \delta(s, v)$, para todo $v \in V$
-
-    - Manutenção: precisamos mostrar que $\attrib{u}{d} = \delta(s, u)$ quando $u$ é
-      adicionado a $S$ em cada iteração (Comentado em sala, veja o livro para a
-      prova completa)
-
-    - Feito em sala
-
+-->
 
 ## Referências
 
