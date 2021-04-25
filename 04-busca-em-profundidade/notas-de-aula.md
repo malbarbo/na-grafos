@@ -115,6 +115,7 @@ Durante a execução do algoritmo, diversos atributos são definidos para os vé
 <div class="columns">
 <div class="column" width="30%">
 \scriptsize
+\vspace{-1mm}
 
 \begin{codebox}
   \Procname{$\proc{DFS}(G)$}
@@ -154,7 +155,7 @@ Durante a execução do algoritmo, diversos atributos são definidos para os vé
 
 \pause
 
-Tempo de execução \pause
+**Tempo de execução** \pause
 
 - Os laços nas linhas 1 a 3 e nas linhas 5 a 7 de \proc{DFS} demoram tempo $\Theta(V)$, sem contar o tempo das chamadas a \proc{DFS-Visit}
 
@@ -208,31 +209,28 @@ Quando representamos a descoberta de um vértice $v$ por "$(v$" e o término por
 ## Estrutura de parênteses
 
 <div class="columns">
-<div class="column" width="43%">
+<div class="column" width="40%">
 \small
 
 ### Teorema 22.7 (Teorema do parênteses)
 
-Para dois vértices quaisquer $u$ e $v$, exatamente uma das três condições a seguir é verdadeira \pause
+Para dois vértices quaisquer $u$ e $v$, exatamente uma das três condições a seguir é verdadeira \pause \vspace{-1em}
 
 - Os intervalos $[\attrib{u}{d}, \attrib{u}{f}]$ e $[\attrib{v}{d}, \attrib{v}{f}]$ são disjuntos e nem $u$ e nem $v$ são descendentes um do outro \pause
-
 - O intervalo $[\attrib{u}{d}, \attrib{u}{f}]$ está contido inteiramente no intervalo $[\attrib{v}{d}, \attrib{v}{f}]$ e $u$ é descendente de $v$ em uma árvore DFS \pause
-
 - O intervalo $[\attrib{v}{d}, \attrib{v}{f}]$ está contido inteiramente no intervalo $[\attrib{u}{d}, \attrib{u}{f}]$ e $v$ é descendente de $u$ em uma árvore DFS \pause
 </div>
 
-<div class="column" width="60%">
+<div class="column" width="57%">
 \small
 
 ### Prova
 
 Primeiro observamos que $\attrib{u}{d} < \attrib{u}{f}$ para todo vértice $u$ (22.2). \pause
 
-É verdade que $\attrib{u}{d} < \attrib{v}{d}$? \pause Se sim\pause, é verdade que $\attrib{v}{d} < \attrib{u}{f}$? \pause
+É verdade que $\attrib{u}{d} < \attrib{v}{d}$? \pause Se sim\pause, é verdade que $\attrib{v}{d} < \attrib{u}{f}$? \pause \vspace{-1em}
 
 - Se sim, \pause qual era a cor de $u$ quando $v$ foi descoberto? \pause \proc{cinza}. \pause $v$ é descente de $u$? \pause Sim. \pause Então todas as arestas que saem de $v$ são exploradas e $v$ é finalizado antes que a busca retorne para finaliza $u$. \pause Logo $\attrib{v}{f} < \attrib{u}{f}$ e o intervalo $[\attrib{v}{d}, \attrib{v}{f}]$ está inteiramente contido no intervalo $[\attrib{u}{d}, \attrib{u}{f}]$. \pause
-
 - Se não, $\attrib{u}{f} < \attrib{v}{d}$ e pela equação 22.2 $\attrib{u}{d} < \attrib{u}{f} < \attrib{v}{d} < \attrib{v}{f}$. \pause Portanto os intervalos $[\attrib{u}{d}, \attrib{u}{f}]$ e $[\attrib{v}{d}, \attrib{v}{f}]$ são disjuntos. \pause
 
 Se não ($\attrib{v}{d} < \attrib{u}{d}$), \pause temos a mesma situação anterior, mas o $u$ faz o papel de $v$ e $v$ faz o papel do $u$.

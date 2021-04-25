@@ -123,23 +123,19 @@ Nós construímos em sala o algoritmo "do zero". Como exercício, tente escrever
 
 <div class="column" width="70%">
 
-\footnotesize
+\small
 
 \pause
 
-Tempo de execução \pause
+**Tempo de execução** \pause
 
-- O teste da linha 13 garante que cada vértice é colocado na fila no máximo uma
-  vez, e portanto, é retirado da fila no máximo uma vez
+- O teste da linha 13 garante que cada vértice é colocado na fila no máximo uma vez, e portanto, é retirado da fila no máximo uma vez
 
-- As operações de colocar e retirar da fila tem tempo $O(1)$, assim, o tempo
-  total das operações com filas é $O(V)$
+- As operações de colocar e retirar da fila tem tempo $O(1)$, assim, o tempo total das operações com filas é $O(V)$
 
-- A lista de adjacência de cada vértice é examinada apenas quando o vértice
-  é retirado da fila, desta forma, no máximo uma vez
+- A lista de adjacência de cada vértice é examinada apenas quando o vértice é retirado da fila, desta forma, no máximo uma vez
 
-- Como a soma dos comprimentos das listas de adjacências é $\Theta(E)$, o tempo
-  para percorrer todas as listas é no máximo $O(E)$
+- Como a soma dos comprimentos das listas de adjacências é $\Theta(E)$, o tempo para percorrer todas as listas é no máximo $O(E)$
 
 - O tempo de inicialização é $O(V)$
 
@@ -195,9 +191,8 @@ $v.d \ge \delta(s, v)$ para todo vértice $v \in V$.
 
 ## Corretude
 
-
 <div class="columns">
-<div class="column" width="25%">
+<div class="column" width="35%">
 
 \scriptsize
 
@@ -229,26 +224,25 @@ $v.d \ge \delta(s, v)$ para todo vértice $v \in V$.
 
 </div>
 
-<div class="column" width="75%">
+<div class="column" width="65%">
 
 \footnotesize
 
-### Prova
+**Prova**
 
 Vamos usar indução no número de operações \proc{Enqueue}. \pause A nossa hipótese de indução é que $\attrib{v}{d} \ge \delta(s, v)$ para todo $v \in V$. \pause
 
-Base (imediatamente após a linha 9) \pause
+Base (imediatamente após a linha 9) \pause \vspace{-1em}
 
 - Para o vértice inicial $s$, temos $\attrib{s}{d} = \pause 0 = \delta(s, s)$ \pause. Para todos os vértices $v \in V - \{ s \}$, temos $\attrib{v}{d} = \pause \infty \ge \delta(s, v)$, então a hipótese é verdadeira. \pause
 
-Passo de indução \pause
+Passo de indução \vspace{-1em}
 
 - Considere um vértice branco $v$ que é descoberto a partir de um vértice $u$ \pause
 - Pela hipótese de indução $\attrib{u}{d} \ge \delta(s, u)$ \pause
 - Pela linha 15, temos $\attrib{v}{d} = \attrib{u}{d} + 1$ \pause, logo $\attrib{v}{d} \ge \delta(s, u) + 1$ \pause
 - Como pelo lema 22.1 $\delta(s, u) + 1 \ge \delta(s, v)$ \pause, então $\attrib{v}{d} \ge \delta(s, v)$ \pause
 - Como a cor de $v$ é alterado para \const{cinza} as linhas de 14-17 não serão mais executadas para $v$ e a sua distância não será mais alterada, portando a hipótese de indução se mantém. $\qed$
-
 
 </div>
 </div>
@@ -299,7 +293,7 @@ Por contradição.
 ## Corretude
 
 <div class="columns">
-<div class="column" width="25%">
+<div class="column" width="35%">
 
 \scriptsize
 
@@ -331,11 +325,11 @@ Por contradição.
 
 </div>
 
-<div class="column" width="75%">
+<div class="column" width="65%">
 
 \footnotesize
 
-Vamos assumir, com o propósito de contradição, que algum vértice $v$ receba um $d$ diferente de $\delta(s, v)$. \pause Seja $v$ o vértice com o menor $\delta(s, v)$ que recebeu o $d$ incorreto. \pause
+Vamos assumir, com o propósito de contradição, que algum vértice $v$ receba um $d$ diferente de $\delta(s, v)$. \pause Seja $v$ o vértice com o menor $\delta(s, v)$ que recebeu o $d$ incorreto. \pause \vspace{-1em}
 
 - O vértice $v$ pode ser igual a $s$? \pause Não, pois o valor $\attrib{s}{d} = 0$ está correto.
 - O vértice $v$ é acessível a partir de $s$? \pause Sim, porque senão o algoritmo teria determinado que $\attrib{v}{d} = \infty$ que é $\delta(s, v)$ e portanto está correto. \pause
@@ -344,7 +338,6 @@ Vamos assumir, com o propósito de contradição, que algum vértice $v$ receba 
 - Do Lema 22.2 sabemos que $\attrib{v}{d} \ge \delta(s, v)$. Será que $\attrib{v}{d}$ pode ser igual a $\delta(s, v)$? \pause Não! Logo $\attrib{v}{d} > \delta(s, v)$. \pause
 - Juntando estas propriedades temos $\attrib{v}{d} > \delta(s, v) = \delta(s, u) + 1 = \attrib{u}{d} + 1$
 
-
 </div>
 </div>
 
@@ -352,7 +345,7 @@ Vamos assumir, com o propósito de contradição, que algum vértice $v$ receba 
 ## Corretude
 
 <div class="columns">
-<div class="column" width="25%">
+<div class="column" width="35%">
 
 \scriptsize
 
@@ -384,11 +377,11 @@ Vamos assumir, com o propósito de contradição, que algum vértice $v$ receba 
 
 </div>
 
-<div class="column" width="75%">
+<div class="column" width="65%">
 
 \footnotesize
 
-Sabendo que $\attrib{v}{d} > \attrib{u}{d} + 1$ (Eq 22.1), vamos analisar o momento em que o BFS retira $u$ da fila (linha 11). \pause Nesse momento o vértice $v$ pode ser \const{branco}, \const{cinza} ou \const{preto}. Vamos mostrar que em cada um desses casos nos derivamos uma contradição para a equação 22.1. \pause
+Sabendo que $\attrib{v}{d} > \attrib{u}{d} + 1$ (Eq 22.1), vamos analisar o momento em que o BFS retira $u$ da fila (linha 11). \pause Nesse momento o vértice $v$ pode ser \const{branco}, \const{cinza} ou \const{preto}. Vamos mostrar que em cada um desses casos nos derivamos uma contradição para a equação 22.1. \pause \vspace{-1em}
 
 - Se $v$ é \const{branco}, qual é o valor que o BFS atribui para $\attrib{v}{d}$? \pause O valor $\attrib{u}{d} + 1$ (linha 15), que contradiz a Eq 22.1. \pause
 - Se $v$ é \const{preto} então ele já foi removido da fila, como $\attrib{v}{d}$ se compara com $\attrib{u}{d}$? \pause Pelo Corolário 22.4 $\attrib{v}{d} \le \attrib{u}{d}$, contrariando a Eq 22.1. \pause
@@ -428,13 +421,13 @@ Uma árvore de busca em largura é de fato uma árvore, pois é conexa e $|E_\pi
 ## Árvore de busca em largura
 
 <div class="columns">
-<div class="column" width="30%">
+<div class="column" width="40%">
 \includegraphics[trim=80pt 3pt 2300pt 2256pt,clip,width=4.5cm]{imagens/Fig-22-3.pdf}
 \vspace{5cm}
 
 </div>
 
-<div class="column" width="70%">
+<div class="column" width="60%">
 
 \small
 
@@ -455,13 +448,13 @@ E os outros casos? \pause Se tivermos o caminho de $s$ até o predecessor de $v$
 
 
 <div class="columns">
-<div class="column" width="30%">
+<div class="column" width="40%">
 \includegraphics[trim=80pt 3pt 2300pt 2256pt,clip,width=4.5cm]{imagens/Fig-22-3.pdf}
-\vspace{5cm}
+
 
 </div>
 
-<div class="column" width="70%">
+<div class="column" width="60%">
 
 \small
 
@@ -481,14 +474,13 @@ E os outros casos? \pause Se tivermos o caminho de $s$ até o predecessor de $v$
 
 Executado em tempo \pause linear no número de vértices no caminho impresso, pois cada chamada recursiva é feita para um caminho com um vértice menor que o atual.
 
-\vspace{4cm}
 </div>
 </div>
 
 ## Exercícios
 
 <div class="columns">
-<div class="column" width="25%">
+<div class="column" width="35%">
 
 \scriptsize
 
@@ -520,7 +512,7 @@ Executado em tempo \pause linear no número de vértices no caminho impresso, po
 
 </div>
 
-<div class="column" width="75%">
+<div class="column" width="65%">
 
 \small
 
@@ -531,6 +523,7 @@ Executado em tempo \pause linear no número de vértices no caminho impresso, po
 - Podemos remover o cálculo do valor $\pi$? \pause Sim, o fluxo de execução do algoritmo não depende de $\pi$. \pause
 
 - Podemos remover a linha 18? \pause Sim, o fluxo de execução é determinado por apenas duas situações, vértice branco ou não branco, não é necessário diferenciar entre cinza e preto.
+
 </div>
 </div>
 

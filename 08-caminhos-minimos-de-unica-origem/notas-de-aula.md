@@ -48,7 +48,7 @@ Seja $G = (V, E)$ um grafo orientado e $w : E \rightarrow \mathbb{R}$ uma funç�
         min\{w(p) : u \stackrel{p}{\leadsto} v \} & \text{se existe um caminho de $u$ até $v$} \\
         \infty                                    & \text{caso contrário}
   \end{cases}$$ \pause
-- Um **caminho mínimo** do vértice $u$ até o vértice $v$ é qualquer caminho $p$ tal que $w(p) = \delta(u,v)$.
+- Um **caminho mínimo** de $u$ até $v$ é qualquer caminho $p$ tal que $w(p) = \delta(u,v)$.
 
 
 ## Peso ou distância?
@@ -352,17 +352,19 @@ Grafo denso        | \pause $O(V^2)$ | \pause $O(V^2 \lg V)$ | \pause $O(V^2)$
 
 \pause
 
+\small
+
 **Análise de corretude** \pause
 
-O algoritmo mantém a seguinte invariante: \pause
+O algoritmo mantém a seguinte invariante: \pause \vspace{-1em}
 
 - No início de cada iteração do laço \While, $\attrib{v}{d} = \delta(s, v)$ para todos $v \in S$ \pause
 
-A invariante é verdadeira antes da primeira iteração? \pause
+A invariante é verdadeira antes da primeira iteração? \pause \vspace{-1em}
 
 - Sim! \pause $S = \emptyset$, então é verdadeira por nulidade. \pause
 
-Vamos deixar a manutenção de lado por um instante e pensar no término. Quando o laço termina, quais vértices estão em $S$? \pause
+Vamos deixar a manutenção de lado por um instante e pensar no término. Quando o laço termina, quais vértices estão em $S$? \pause \vspace{-1em}
 
 - Todos, então, pela invariante, $\attrib{v}{d} = \delta(s, v)$, para todo $v \in V$ e o algoritmo produz a resposta correta!
 
@@ -377,7 +379,7 @@ Agora precisamos mostrar como a invariante é mantida quando um vértice é adic
 ## Algoritmo de Dijkstra
 
 <div class="columns">
-<div class="column" width="30%">
+<div class="column" width="35%">
 
 \small
 
@@ -395,7 +397,7 @@ Agora precisamos mostrar como a invariante é mantida quando um vértice é adic
         \End
 \end{codebox}
 </div>
-<div class="column" width="70%">
+<div class="column" width="65%">
 
 \small
 
@@ -405,7 +407,7 @@ Agora precisamos mostrar como a invariante é mantida quando um vértice é adic
 
 Invariante: no início de cada iteração do laço \While, $\attrib{v}{d} = \delta(s, v)$ para todos $v \in S$. \pause
 
-Manutenção: Temos que mostrar que quando o vértice $u$ é extraído da fila (linha 5) e adicionado ao conjunto $S$ (linha 6) $\attrib{u}{d} = \delta(s, u)$. Vamos supor que $\attrib{u}{d} > \delta(s, u)$ e derivar uma contradição.\pause
+Manutenção: Temos que mostrar que quando o vértice $u$ é extraído da fila (linha 5) e adicionado ao conjunto $S$ (linha 6) $\attrib{u}{d} = \delta(s, u)$. Vamos supor que $\attrib{u}{d} > \delta(s, u)$ e derivar uma contradição.\pause \vspace{-1em}
 
 - $u$ pode ser o $s$? \pause Não, pois $\attrib{s}{d} = 0 = \delta(s, s)$; \pause
 - Existe algum caminho entre $s$ e $u$? \pause Sim, pois se não $\delta(s, u) = \infty$ e o algoritmo não poderia ter encontrado $\attrib{u}{d} > \delta(s, u)$; \pause
@@ -419,7 +421,7 @@ Manutenção: Temos que mostrar que quando o vértice $u$ é extraído da fila (
 ## Algoritmo de Dijkstra
 
 <div class="columns">
-<div class="column" width="30%">
+<div class="column" width="35%">
 
 \small
 
@@ -437,7 +439,7 @@ Manutenção: Temos que mostrar que quando o vértice $u$ é extraído da fila (
         \End
 \end{codebox}
 </div>
-<div class="column" width="70%">
+<div class="column" width="65%">
 
 \small
 
@@ -445,7 +447,7 @@ Manutenção: Temos que mostrar que quando o vértice $u$ é extraído da fila (
 
 Invariante: no início de cada iteração do laço \While, $\attrib{v}{d} = \delta(s, v)$ para todos $v \in S$.
 
-Manutenção: Temos que mostrar que quando o vértice $u$ é extraído da fila (linha 5) e adicionado ao conjunto $S$ (linha 6) $\attrib{u}{d} = \delta(s, u)$. Vamos supor que $\attrib{u}{d} > \delta(s, u)$ e derivar uma contradição.
+Manutenção: Temos que mostrar que quando o vértice $u$ é extraído da fila (linha 5) e adicionado ao conjunto $S$ (linha 6) $\attrib{u}{d} = \delta(s, u)$. Vamos supor que $\attrib{u}{d} > \delta(s, u)$ e derivar uma contradição. \vspace{-1em}
 
 - Se não existem arestas de peso negativo no grafo, então $\delta(s, x) + w(x, y) \le \delta(s, u)$. \pause
 - Pela hipótese indutiva $\attrib{x}{d} = \delta(s, x)$ e portanto $\attrib{x}{d} + w(x, y) \le \delta(s, u)$. \pause
@@ -569,7 +571,8 @@ Vamos seguir com a ideia de programação dinâmica e escrever o algoritmo!
 O algoritmo precisa fazer $|V| - 1$ iterações. Em uma iteração $k > 0$ precisamos construir uma nova árvore a partir da árvore da iteração $k - 1$, como fazemos isso? \pause "Aplicando" a equação para cada vértice. \pause
 
 <div class="columns">
-<div class="column" width="45%">
+<div class="column" width="50%">
+\small
 \begin{codebox}
     \zi \Comment Computar $\attrib{v}{d}^0$ e $\attrib{v}{\pi}^0$ para todo $v \in V$
     \zi \For $k \gets 1$ \To $|V| - 1$ \Do
@@ -586,16 +589,16 @@ O algoritmo precisa fazer $|V| - 1$ iterações. Em uma iteração $k > 0$ preci
         \End
 \end{codebox}
 </div>
-<div class="column" width="55%">
+<div class="column" width="50%">
 \pause
+
+\small
 
 O que poderia ser difícil de implementar nesse código? \pause
 
-\vspace{2mm}
+Fazer a repetição usando as arestas que entram em $v$. \pause A dificuldade existe porque em uma lista de adjacências temos as arestas que saem de um vértice e não as que entram. \pause
 
-Fazer a repetição usando as arestas que entram em $v$. \pause A dificuldade existe porque em uma lista de adjacências temos as arestas que saem de um vértice e não as que entram. \pause Como resolver esse problema? \pause Criando uma lista de adjacências com as arestas que entram nos vértices! \pause
-
-\vspace{2mm}
+Como resolver esse problema? \pause Criando uma lista de adjacências com as arestas que entram nos vértices! \pause
 
 Tem outra maneira? \pause Sim!
 
@@ -606,6 +609,7 @@ Tem outra maneira? \pause Sim!
 
 <div class="columns">
 <div class="column" width="50%">
+\small
 \begin{codebox}
     \zi \Comment Computar $\attrib{v}{d}^0$ e $\attrib{v}{\pi}^0$ para todo $v \in V$
     \zi \For $k \gets 1$ \To $|V| - 1$ \Do
@@ -625,13 +629,11 @@ Tem outra maneira? \pause Sim!
 <div class="column" width="50%">
 Você consegue identificar algo familiar no código? \pause O relaxamento da aresta $(u, v)$. \pause
 
-\vspace{2mm}
-
 Qual é o propósito do relaxamento? \pause Tentar melhorar a estimativa de caminho mínimo para $v$. \pause
 
-\vspace{2mm}
+Da forma que o código está escrito, as tentativas de melhora para $v$ são feitas uma após a outro. \pause Isto é necessário ou poderíamos intercalar tentativas? Tentar uma melhora para um vértice, depois tentar para outro e assim por diante até tentar todas as melhoras para todos os vértices? \pause
 
-Da forma que o código está escrito, as tentativas de melhora para $v$ são feitas uma após a outro. \pause Isto é necessário ou poderíamos intercalar tentativas? Tentar uma melhora para um vértice, depois tentar para outro e assim por diante até tentar todas as melhoras para todos os vértices? \pause Podemos tentar as melhoras em qualquer ordem!
+Podemos tentar as melhoras em qualquer ordem!
 
 </div>
 </div>
@@ -640,7 +642,8 @@ Da forma que o código está escrito, as tentativas de melhora para $v$ são fei
 ## Programação dinâmica
 
 <div class="columns">
-<div class="column" width="45%">
+<div class="column" width="50%">
+\small
 \begin{codebox}
     \zi \Comment Computar $\attrib{v}{d}^0$ e $\attrib{v}{\pi}^0$ para todo $v \in V$
     \zi \For $k \gets 1$ \To $|V| - 1$ \Do
@@ -657,12 +660,10 @@ Da forma que o código está escrito, as tentativas de melhora para $v$ são fei
         \End
 \end{codebox}
 </div>
-<div class="column" width="55%">
+<div class="column" width="50%">
 \small
 
 Para facilitar a programação verificamos as arestas na ordem que elas aparecem nas listas de adjacências. \pause
-
-\vspace{2mm}
 
 Tem mais alguma coisa que podemos modificar no código para deixar a implementação mais fácil? \pause Ao invés de cada vértice ter atributos $d$ e $\pi$ para cada valor de $k$, cada vértice pode ter apenas um atributo $d$ e $\pi$ (vamos ver a seguir porque isso é possível). \pause Isso permite três simplificações: \pause
 

@@ -96,7 +96,7 @@ Como podemos modelar este problema usando grafos? \pause
 ## Exemplo
 
 <div class="columns">
-<div class="column" width="50%">
+<div class="column" width="48%">
 
 Por exemplo, considere a colocação de cada peça de roupa como uma etapa: \pause
 
@@ -107,12 +107,12 @@ Por exemplo, considere a colocação de cada peça de roupa como uma etapa: \pau
 - $\dots$ \pause
 
 </div>
-<div class="column" width="50%">
+<div class="column" width="48%">
 Nós podemos representar estas etapas e suas precedências com o seguinte grafo:
 
 \vspace{0.5cm}
 
-\includegraphics[trim=100pt 600pt 800pt 0pt,clip,width=7cm]{imagens/Fig-22-7.pdf}
+\includegraphics[trim=100pt 600pt 800pt 0pt,clip,width=6.5cm]{imagens/Fig-22-7.pdf}
 
 </div>
 </div>
@@ -152,11 +152,11 @@ Observe que formulamos o problema em termos abstratos, de certa forma a ideia de
 <div class="columns">
 <div class="column" width="60%">
 
-Baseado no exemplo das roupas, podemos criar uma "hipótese" de como resolver o problema? (Ignore por enquanto o carimbos de tempo)
+Baseado no exemplo das roupas, podemos criar uma "hipótese" de como resolver o problema? (Ignore por enquanto os carimbos de tempo)
 
 \vspace{1cm}
 
-\includegraphics[clip,width=8.5cm]{imagens/Fig-22-7.pdf}
+\includegraphics[clip,width=8cm]{imagens/Fig-22-7.pdf}
 </div>
 <div class="column" width="40%">
 
@@ -194,8 +194,7 @@ Considerando os eventos de descoberta e termino dos vértices na ordem que eles 
 ## Procedimento \proc{topological-sort}
 
 <div class="columns">
-<div class="column" width="45%">
-\scriptsize
+<div class="column" width="50%">
 
 \begin{codebox}
   \Procname{$\proc{topological-sort}(G)$}
@@ -208,13 +207,13 @@ Considerando os eventos de descoberta e termino dos vértices na ordem que eles 
 
 </div>
 
-<div class="column" width="55%">
+<div class="column" width="50%">
 
-\footnotesize
+\small
 
 \pause
 
-Tempo de execução \pause
+**Tempo de execução** \pause
 
 - O tempo de execução da busca em profundidade é $\Theta(V + E)$
 

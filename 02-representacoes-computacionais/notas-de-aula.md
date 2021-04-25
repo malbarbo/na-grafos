@@ -100,18 +100,17 @@ Neste caso, supomos que os vértices são numerados $1, 2, \dots, |V|$
 
 <div class="columns">
 <div class="column" width="30%">
-\includegraphics[trim=0cm 0cm 84cm 0cm,clip,width=3.7cm]{imagens/Fig-22-1.pdf}
-\includegraphics[trim=0cm 0cm 84cm 0cm,clip,width=3.7cm]{imagens/Fig-22-2.pdf}
+\includegraphics[trim=0cm 0cm 84cm 0cm,clip,width=3.5cm]{imagens/Fig-22-1.pdf}
+\includegraphics[trim=0cm 0cm 84cm 0cm,clip,width=3.5cm]{imagens/Fig-22-2.pdf}
 </div>
-<div class="column" width="25%">
-\includegraphics[trim=84cm 0cm 0cm 0cm,clip,width=3.7cm]{imagens/Fig-22-1.pdf}
-\includegraphics[trim=84cm 0cm 0cm 0cm,clip,width=3.7cm]{imagens/Fig-22-2.pdf}
-</div>
-<div class="column" width="5%">
+<div class="column" width="30%">
+\includegraphics[trim=84cm 0cm 0cm 0cm,clip,width=3.5cm]{imagens/Fig-22-1.pdf}
+\includegraphics[trim=84cm 0cm 0cm 0cm,clip,width=3.5cm]{imagens/Fig-22-2.pdf}
 </div>
 <div class="column" width="40%">
-Qual é quantidade de memória requerida? \pause \newline
-$\Theta(V^2)$ (independe de $|E|$) \pause
+Qual é quantidade de memória requerida? \pause
+
+$\Theta(V^2)$ (independe de $|E|$). \pause
 
 Adequada para grafos densos. \pause
 
@@ -128,9 +127,10 @@ Vantagens \pause
 
 - Permite consultar se uma aresta faz parte do grafo em tempo constante \pause
 
+
 Desvantagem \pause
 
-- Uso excessivo da memória para grafos esparsos
+- Uso excessivo da memória para grafos esparsos \newline
 
 
 ## Pseudo código
@@ -170,6 +170,7 @@ Para fazer uma repetição passando por cada vértice adjacente a um vértice $u
 Como podemos implementar a representação de matriz de adjacências? \pause
 
 - Diretamente usando matriz na linguagem de programação \pause
+
 - Criar uma abstração para matriz transposta e economizar memória na representação de grafos não orientados
 
 
@@ -178,8 +179,11 @@ Como podemos implementar a representação de matriz de adjacências? \pause
 Como podemos implementar a representação de lista de adjacências? \pause
 
 - De muitas formas, depende da linguagem, do algoritmo, etc \pause
+
 - Uma forma simples é representar os vértices com inteiros no intervalo de $0$ a $V - 1$ é a lista de adjacências com lista de listas (arranjo de arranjos), sem criar nenhum abstração \pause
+
 - Ou criar uma abstração simples para deixar o código mais legível e evitar que o grafo seja alterado de forma inconsistente \pause
+
 - Ou ainda usar orientação objeto e criar classes para grafo, vértice, aresta, etc.
 
 
@@ -187,7 +191,7 @@ Como podemos implementar a representação de lista de adjacências? \pause
 
 <div class="columns">
 <div class="column" width="50%">
-\includegraphics[trim=0cm 0cm 35cm 0cm,clip,width=7cm]{imagens/Fig-22-1.pdf}
+\includegraphics[trim=0cm 0cm 35cm 0cm,clip,width=6.5cm]{imagens/Fig-22-1.pdf}
 \scriptsize
 \pause
 Como representar esse grafo em Python? \pause
@@ -235,9 +239,10 @@ m = sum(len(adjacentes) for adjacentes in g) / 2
 ## Implementação simples
 
 <div class="columns">
-<div class="column" width="50%">
-\includegraphics[trim=0cm 0cm 35cm 0cm,clip,width=7cm]{imagens/Fig-22-2.pdf}
+<div class="column" width="55%">
+\includegraphics[trim=0cm 0cm 35cm 0cm,clip,width=6.5cm]{imagens/Fig-22-2.pdf}
 \scriptsize
+
 \pause
 Como representar esse grafo em C? \pause
 
@@ -255,19 +260,20 @@ int* g[7] = {
 };
 ```
 </div>
-<div class="column" width="50%">
+<div class="column" width="45%">
 \scriptsize
 \pause
 Como fazer uma repetição passando por cada vértice? \pause
 
 ```c
-for (int v = 0; g[v] != NULL; v++) { // v = 0, 1, 2, ..., n - 1
+for (int v = 0; g[v] != NULL; v++) {
+    // v = 0, 1, 2, ..., n - 1
     ...
 }
 ```
 
 \pause
-Como fazer uma repetição passando por cada vértice adjacente de um vértice $u$? \pause
+E uma repetição por cada vértice adjacente de um vértice $u$? \pause
 
 ```c
 int u = 2;
@@ -287,9 +293,7 @@ for (int* v = g[u]; *v != -1; v++) {
 ```
 
 \pause
-Como calcular o número de arestas? \pause
-
-Fica como exercício
+Como calcular o número de arestas? \pause Fica como exercício.
 
 </div>
 </div>
@@ -328,7 +332,7 @@ Veja na página da disciplina.
 
 ## Exercício
 
-[22.1-1] Dada uma representação de lista de adjacências de um grafo orientado, qual o tempo necessário para computar o grau de saída de todo o vértice? Qual o tempo necessário para computar os graus de entrada?
+22.1-1) Dada uma representação de lista de adjacências de um grafo orientado, qual o tempo necessário para computar o grau de saída de todo o vértice? Qual o tempo necessário para computar os graus de entrada?
 
 ## Resolução 22.1-1
 
@@ -352,7 +356,7 @@ Antes de fazer a análise do tempo de execução é necessário escrever o pseud
 
 \small
 
-Análise do tempo de execução
+**Análise do tempo de execução**
 
 - O laço das linhas 1 a 2 tem tempo de execução $\Theta(V)$
 - A cada interação do laço da linha 3, o laço das linha 4 a 5 é executado
@@ -380,7 +384,7 @@ Análise do tempo de execução
 
 \pause
 
-Análise do tempo de execução
+**Análise do tempo de execução**
 
 - Mesmo do procedimento $\proc{graus-de-saida}$
 

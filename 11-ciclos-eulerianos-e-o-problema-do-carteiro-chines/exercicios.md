@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: Ciclos eulerianos e o problema do carteiro chinês
+title: 11 - Ciclos eulerianos e o problema do carteiro chinês
 ---
 
 1. Execute os procedimentos \proc{hierholzer-1} e \proc{hierholzer-2} para

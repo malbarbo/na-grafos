@@ -150,7 +150,7 @@ Um grafo $G$ é planar se, e somente se, ele não contém uma subdivisão do $K_
 
 ## Exemplo
 
-![](imagens/exemplo-petersen.pdf)
+![](imagens/exemplo-petersen.pdf){width=8cm}
 
 Veja [esta](https://en.wikipedia.org/wiki/File:Kuratowski.gif) animação
 mostrando a subdivisão.
@@ -198,7 +198,7 @@ podem ser desenhados com este método.
 
 ## Exemplo
 
-![](imagens/exemplo-metodo-circulo-corda.pdf)
+![](imagens/exemplo-metodo-circulo-corda.pdf){width=10cm}
 
 
 ## Medidas de não planaridade

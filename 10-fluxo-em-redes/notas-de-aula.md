@@ -95,7 +95,7 @@ Redes com múltiplas fontes e sumidouros
 
 ## Criando modelos
 
-![](imagens/Fig-26-3.pdf)
+![](imagens/Fig-26-3.pdf){width=10cm}
 
 
 
@@ -370,12 +370,12 @@ Como atualizar o fluxo em cada arestas? \pause
 
 ## Exemplo de execução
 
-![](imagens/Fig-26-6-L.pdf)
+![](imagens/Fig-26-6-L.pdf){width=11cm}
 
 
 ## Exemplo de execução
 
-![](imagens/Fig-26-6-R.pdf)
+![](imagens/Fig-26-6-R.pdf){width=11cm}
 
 
 ## Algoritmo básico de Ford-Fulkerson

@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: Fluxo em redes
+title: 10 - Fluxo em redes
 ---
 
 #. Exercício 26.1-6 do CLRS3.

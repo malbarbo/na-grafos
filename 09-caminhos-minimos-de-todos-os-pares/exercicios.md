@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: 08 - Caminhos mínimos de todos os pares
+title: 09 - Caminhos mínimos de todos os pares
 ---
 
 1. Exercício 25.2-1 do CLRS3 ou CLRS2. <!-- + !-->

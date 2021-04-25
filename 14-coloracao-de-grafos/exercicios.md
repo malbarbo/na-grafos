@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: Coloração de grafos
+title: 14 - Coloração de grafos
 ---
 
 #.  Faça a análise do tempo de execução do algoritmo maior grau primeiro.

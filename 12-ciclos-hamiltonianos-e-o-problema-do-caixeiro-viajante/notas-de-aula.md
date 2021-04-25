@@ -127,7 +127,7 @@ Análise do tempo de execução
 
 ## Algoritmo baseado na árvore geradora mínima
 
-![](imagens/Fig-35-2.pdf)
+![](imagens/Fig-35-2.pdf){width=12cm}
 
 
 ## Algoritmo baseado na árvore geradora mínima

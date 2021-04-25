@@ -128,7 +128,7 @@ Ideia: ao considerar os vértices na segunda execução do $\proc{DFS}$ na ordem
 
 <div class="columns">
 <div class="column" width="50%">
-\scriptsize
+\small
 
 \begin{codebox}
     \Procname{$\proc{strongly-connected-components}(G)$}
@@ -149,7 +149,9 @@ Ideia: ao considerar os vértices na segunda execução do $\proc{DFS}$ na ordem
 
 \pause
 
-Tempo de execução \pause
+\small
+
+**Tempo de execução** \pause
 
 - O tempo do $\proc{DFS}$ das linhas 1 e 3 é $\Theta(V + E)$ \pause
 
@@ -254,6 +256,7 @@ Este processo continua até que todas as componentes tenham sido encontradas.
 
 22.5-1 - Como o número de componentes fortemente conexos de um grafo pode mudar se uma nova aresta é adiciona?
 
+
 ## Exercícios
 
 22.5-6 - Dado um grafo orientado $G = (V, E)$, explique como criar um outro grafo $G' = (V, E')$ tal que
@@ -265,6 +268,7 @@ b) $G'$ tem o mesmo grafo de componentes de $G$; e
 c) $E'$ tem o menor número possível de arestas.
 
 Descreva um algoritmo eficiente para calcular $G'$.
+
 
 ## Exercícios
 

@@ -113,27 +113,27 @@ Determinar o número de Erdős de cada pessoa em um conjunto de colaborações.
 
 ## Número de Erdős
 
-![](imagens/erdosgraph1.pdf)
+![](imagens/erdosgraph1.pdf){width=5.5cm}
 
 
 ## Número de Erdős
 
-![](imagens/erdosgraph2.pdf)
+![](imagens/erdosgraph2.pdf){width=5.5cm}
 
 
 ## Número de Erdős
 
-![](imagens/erdosgraph3.pdf)
+![](imagens/erdosgraph3.pdf){width=5.5cm}
 
 
 ## Número de Erdős
 
-![](imagens/erdosgraph4.pdf)
+![](imagens/erdosgraph4.pdf){width=5.5cm}
 
 
 ## Número de Erdős
 
-![](imagens/erdosgraph5.pdf)
+![](imagens/erdosgraph5.pdf){width=5.5cm}
 
 
 ## Algoritmo

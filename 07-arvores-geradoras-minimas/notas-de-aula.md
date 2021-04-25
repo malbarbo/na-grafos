@@ -237,7 +237,10 @@ Baseado no exemplo de funcionamento e nas operações de conjuntos disjuntos, va
 ## Algoritmo de Kruskal
 
 <div class="columns">
-<div class="column" width="35%">
+<div class="column" width="38%">
+
+\small
+
 \begin{codebox}
   \Procname{$\proc{MST-Kruskal}(G, w)$}
   \li $A = \emptyset$
@@ -258,17 +261,16 @@ Baseado no exemplo de funcionamento e nas operações de conjuntos disjuntos, va
 \* Em ordem não decrescente de peso
 
 </div>
-<div class="column" width="65%">
+<div class="column" width="62%">
 \pause
 
-Análise do tempo de execução
+\small
+
+**Análise do tempo de execução** \vspace{-1em}
 
 - A ordenação das arestas na linha 4 tem tempo \pause $O(E \lg E)$ \pause
-
 - Operações com conjuntos disjunto
-
     - O laço das linhas 5 a 8 executa $O(E)$ vezes \proc{find-set} e \proc{union}. Juntamente com as $|V|$ operações \proc{make-set}, elas têm tempo $O((V + E)\alpha(V))$. \pause Pelo fato de $G$ ser conexo, temos que $|E| \ge |V| - 1$ e portanto o tempo com operações com conjuntos disjuntos é $O(E\alpha(V))$ \pause. Além disso, $\alpha(|V|) = O(\lg V) = O(\lg E)$, e portanto o tempo total das operações com conjuntos disjuntos é $O(E\lg E)$. \pause
-
 - Somando o custo de ordenação e o custo das operações com conjuntos disjuntos, temos $O(E \lg E)$. Observando que $|E| < |V^2|$, temos que $\lg |E| = O(\lg V)$, e portanto, o tempo de execução do algoritmo é $O(E \lg V)$.
 
 </div>
@@ -294,25 +296,22 @@ Como apenas uma árvore é mantida, podemos representá-la da mesma forma que no
 - Também precisamos armazenar o peso da aresta $(u, v)$, para isso mantemos em cada vértice $v$ um atributo $\attrib{v}{chave} = w(v, u)$. Se $v$ não pode ser ligado a árvore, então $\attrib{v}{\pi} = \const{Nil}$ e $\attrib{v}{chave} = \infty$
 
 
-
 ## Algoritmo de Prim
 
 \includegraphics[trim=0pt 3164pt 1920pt 0pt,clip,width=9cm]{imagens/Fig-23-5.pdf}
 
 <div class="columns">
-<div class="column" width="25%"></div>
-<div class="column" width="50%">
+<div class="column" width="20%"></div>
+<div class="column" width="60%">
 
-+--------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+
-| Vértice |$\bm{a}$|   $b$  |   $c$  |   $d$  |   $e$  |   $f$  |   $g$  |   $h$  |   $i$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $chave$ |    0   |   $4$  |$\infty$|$\infty$|$\infty$|$\infty$|$\infty$|   $8$  |$\infty$|
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $\pi$   |        |   $a$  |        |        |        |        |        |   $a$  |        |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+--------  -------- -------- -------- -------- -------- -------- -------- -------- --------
+ Vértice  $\bm{a}$    $b$      $c$      $d$      $e$      $f$      $g$      $h$      $i$
+ $chave$      0       $4$   $\infty$ $\infty$ $\infty$ $\infty$ $\infty$    $8$   $\infty$
+   $\pi$              $a$                                                   $a$
+--------  -------- -------- -------- -------- -------- -------- -------- -------- --------
 
 </div>
-<div class="column" width="25%"></div>
+<div class="column" width="20%"></div>
 </div>
 
 
@@ -321,19 +320,17 @@ Como apenas uma árvore é mantida, podemos representá-la da mesma forma que no
 \includegraphics[trim=1920pt 3164pt 0pt 0pt,clip,width=9cm]{imagens/Fig-23-5.pdf}
 
 <div class="columns">
-<div class="column" width="25%"></div>
-<div class="column" width="50%">
+<div class="column" width="20%"></div>
+<div class="column" width="60%">
 
-+--------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+
-| Vértice |$\bm{a}$|$\bm{b}$|   $c$  |   $d$  |   $e$  |   $f$  |   $g$  |   $h$  |   $i$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $chave$ |    0   |   $4$  |   $8$  |$\infty$|$\infty$|$\infty$|$\infty$|   $8$  |$\infty$|
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $\pi$   |        |   $a$  |   $b$  |        |        |        |        |   $a$  |        |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
+ Vértice $\bm{a}$ $\bm{b}$    $c$      $d$      $e$      $f$      $g$      $h$      $i$
+ $chave$     0       $4$      $8$   $\infty$ $\infty$ $\infty$ $\infty$    $8$   $\infty$
+ $\pi$               $a$      $b$                                          $a$
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
 
 </div>
-<div class="column" width="25%"></div>
+<div class="column" width="20%"></div>
 </div>
 
 
@@ -342,19 +339,17 @@ Como apenas uma árvore é mantida, podemos representá-la da mesma forma que no
 \includegraphics[trim=0pt 2373pt 1920pt 791pt,clip,width=9cm]{imagens/Fig-23-5.pdf}
 
 <div class="columns">
-<div class="column" width="25%"></div>
-<div class="column" width="50%">
+<div class="column" width="20%"></div>
+<div class="column" width="60%">
 
-+--------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+
-| Vértice |$\bm{a}$|$\bm{b}$|$\bm{c}$|   $d$  |   $e$  |   $f$  |   $g$  |   $h$  |   $i$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $chave$ |    0   |   $4$  |   $8$  |   $7$  |$\infty$|   $4$  |$\infty$|   $8$  |   $2$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $\pi$   |        |   $a$  |   $b$  |   $c$  |        |   $c$  |        |   $a$  |   $c$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
+ Vértice $\bm{a}$ $\bm{b}$ $\bm{c}$    $d$      $e$      $f$      $g$      $h$      $i$
+ $chave$     0       $4$      $8$      $7$   $\infty$    $4$   $\infty$    $8$      $2$
+ $\pi$               $a$      $b$      $c$               $c$               $a$      $c$
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
 
 </div>
-<div class="column" width="25%"></div>
+<div class="column" width="20%"></div>
 </div>
 
 
@@ -363,19 +358,17 @@ Como apenas uma árvore é mantida, podemos representá-la da mesma forma que no
 \includegraphics[trim=1920pt 2373pt 0pt 791pt,clip,width=9cm]{imagens/Fig-23-5.pdf}
 
 <div class="columns">
-<div class="column" width="25%"></div>
-<div class="column" width="50%">
+<div class="column" width="20%"></div>
+<div class="column" width="60%">
 
-+--------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+
-| Vértice |$\bm{a}$|$\bm{b}$|$\bm{c}$|   $d$  |   $e$  |   $f$  |   $g$  |   $h$  |$\bm{i}$|
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $chave$ |    0   |   $4$  |   $8$  |   $7$  |$\infty$|   $4$  |   $6$  |   $7$  |   $2$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $\pi$   |        |   $a$  |   $b$  |   $c$  |        |   $c$  |   $i$  |   $i$  |   $c$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
+ Vértice  $\bm{a}$ $\bm{b}$ $\bm{c}$   $d$      $e$      $f$      $g$      $h$   $\bm{i}$
+ $chave$     0       $4$      $8$      $7$   $\infty$    $4$      $6$      $7$      $2$
+ $\pi$               $a$      $b$      $c$               $c$      $i$      $i$      $c$
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
 
 </div>
-<div class="column" width="25%"></div>
+<div class="column" width="20%"></div>
 </div>
 
 
@@ -384,19 +377,17 @@ Como apenas uma árvore é mantida, podemos representá-la da mesma forma que no
 \includegraphics[trim=0pt 1582pt 1920pt 1582pt,clip,width=9cm]{imagens/Fig-23-5.pdf}
 
 <div class="columns">
-<div class="column" width="25%"></div>
-<div class="column" width="50%">
+<div class="column" width="20%"></div>
+<div class="column" width="60%">
 
-+--------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+
-| Vértice |$\bm{a}$|$\bm{b}$|$\bm{c}$|   $d$  |   $e$  |$\bm{f}$|   $g$  |   $h$  |$\bm{i}$|
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $chave$ |    0   |   $4$  |   $8$  |   $7$  |  $10$  |   $4$  |   $2$  |   $7$  |   $2$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $\pi$   |        |   $a$  |   $b$  |   $c$  |   $f$  |   $c$  |   $f$  |   $i$  |   $c$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
+ Vértice $\bm{a}$ $\bm{b}$ $\bm{c}$    $d$      $e$   $\bm{f}$    $g$      $h$   $\bm{i}$
+ $chave$     0       $4$      $8$      $7$     $10$      $4$      $2$      $7$      $2$
+ $\pi$               $a$      $b$      $c$      $f$      $c$      $f$      $i$      $c$
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
 
 </div>
-<div class="column" width="25%"></div>
+<div class="column" width="20%"></div>
 </div>
 
 
@@ -405,19 +396,17 @@ Como apenas uma árvore é mantida, podemos representá-la da mesma forma que no
 \includegraphics[trim=1920pt 1582pt 0pt 1582pt,clip,width=9cm]{imagens/Fig-23-5.pdf}
 
 <div class="columns">
-<div class="column" width="25%"></div>
-<div class="column" width="50%">
+<div class="column" width="20%"></div>
+<div class="column" width="60%">
 
-+--------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+
-| Vértice |$\bm{a}$|$\bm{b}$|$\bm{c}$|   $d$  |   $e$  |$\bm{f}$|$\bm{g}$|   $h$  |$\bm{i}$|
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $chave$ |    0   |   $4$  |   $8$  |   $7$  |  $10$  |   $4$  |   $2$  |   $1$  |   $2$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $\pi$   |        |   $a$  |   $b$  |   $c$  |   $f$  |   $c$  |   $f$  |   $g$  |   $c$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
+ Vértice $\bm{a}$ $\bm{b}$ $\bm{c}$    $d$      $e$   $\bm{f}$ $\bm{g}$    $h$   $\bm{i}$
+ $chave$     0       $4$      $8$      $7$     $10$      $4$      $2$      $1$      $2$
+ $\pi$               $a$      $b$      $c$      $f$      $c$      $f$      $g$      $c$
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
 
 </div>
-<div class="column" width="25%"></div>
+<div class="column" width="20%"></div>
 </div>
 
 
@@ -426,19 +415,17 @@ Como apenas uma árvore é mantida, podemos representá-la da mesma forma que no
 \includegraphics[trim=0pt 791pt 1920pt 2373pt,clip,width=9cm]{imagens/Fig-23-5.pdf}
 
 <div class="columns">
-<div class="column" width="25%"></div>
-<div class="column" width="50%">
+<div class="column" width="20%"></div>
+<div class="column" width="60%">
 
-+--------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+
-| Vértice |$\bm{a}$|$\bm{b}$|$\bm{c}$|   $d$  |   $e$  |$\bm{f}$|$\bm{g}$|$\bm{h}$|$\bm{i}$|
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $chave$ |    0   |   $4$  |   $8$  |   $7$  |  $10$  |   $4$  |   $2$  |   $1$  |   $2$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $\pi$   |        |   $a$  |   $b$  |   $c$  |   $f$  |   $c$  |   $f$  |   $g$  |   $c$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
+ Vértice $\bm{a}$ $\bm{b}$ $\bm{c}$    $d$      $e$   $\bm{f}$ $\bm{g}$ $\bm{h}$ $\bm{i}$
+ $chave$     0       $4$      $8$      $7$     $10$      $4$      $2$      $1$      $2$
+ $\pi$               $a$      $b$      $c$      $f$      $c$      $f$      $g$      $c$
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
 
 </div>
-<div class="column" width="25%"></div>
+<div class="column" width="20%"></div>
 </div>
 
 
@@ -447,19 +434,17 @@ Como apenas uma árvore é mantida, podemos representá-la da mesma forma que no
 \includegraphics[trim=1920pt 791pt 0pt 2373pt,clip,width=9cm]{imagens/Fig-23-5.pdf}
 
 <div class="columns">
-<div class="column" width="25%"></div>
-<div class="column" width="50%">
+<div class="column" width="20%"></div>
+<div class="column" width="60%">
 
-+--------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+
-| Vértice |$\bm{a}$|$\bm{b}$|$\bm{c}$|$\bm{d}$|   $e$  |$\bm{f}$|$\bm{g}$|$\bm{h}$|$\bm{i}$|
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $chave$ |    0   |   $4$  |   $8$  |   $7$  |   $9$  |   $4$  |   $2$  |   $1$  |   $2$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $\pi$   |        |   $a$  |   $b$  |   $c$  |   $d$  |   $c$  |   $f$  |   $g$  |   $c$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
+ Vértice $\bm{a}$ $\bm{b}$ $\bm{c}$ $\bm{d}$   $e$    $\bm{f}$ $\bm{g}$ $\bm{h}$ $\bm{i}$
+ $chave$    0       $4$      $8$      $7$      $9$      $4$      $2$      $1$      $2$
+ $\pi$              $a$      $b$      $c$      $d$      $c$      $f$      $g$      $c$
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
 
 </div>
-<div class="column" width="25%"></div>
+<div class="column" width="20%"></div>
 </div>
 
 
@@ -468,19 +453,17 @@ Como apenas uma árvore é mantida, podemos representá-la da mesma forma que no
 \includegraphics[trim=0pt 0pt 1920pt 3164pt,clip,width=9cm]{imagens/Fig-23-5.pdf}
 
 <div class="columns">
-<div class="column" width="25%"></div>
-<div class="column" width="50%">
+<div class="column" width="20%"></div>
+<div class="column" width="60%">
 
-+--------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+:------:+
-| Vértice |$\bm{a}$|$\bm{b}$|$\bm{c}$|$\bm{d}$|$\bm{e}$|$\bm{f}$|$\bm{g}$|$\bm{h}$|$\bm{i}$|
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $chave$ |    0   |   $4$  |   $8$  |   $7$  |   $9$  |   $4$  |   $2$  |   $1$  |   $2$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $\pi$   |        |   $a$  |   $b$  |   $c$  |   $d$  |   $c$  |   $f$  |   $g$  |   $c$  |
-+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
+ Vértice $\bm{a}$ $\bm{b}$ $\bm{c}$ $\bm{d}$ $\bm{e}$ $\bm{f}$ $\bm{g}$ $\bm{h}$ $\bm{i}$
+ $chave$     0       $4$      $8$      $7$      $9$      $4$      $2$      $1$      $2$
+ $\pi$               $a$      $b$      $c$      $d$      $c$      $f$      $g$      $c$
+-------- -------- -------- -------- -------- -------- -------- -------- -------- --------
 
 </div>
-<div class="column" width="25%"></div>
+<div class="column" width="20%"></div>
 </div>
 
 
@@ -504,7 +487,8 @@ Baseado no exemplo de funcionamento e nas operações de fila de prioridades, va
 
 <div class="columns">
 <div class="column" width="40%">
-\footnotesize
+\small
+
 \begin{codebox}
   \Procname{$\proc{MST-Prim}(G, w, r)$}
   \li \For $u \in \attrib{G}{V}$ \Do
@@ -525,9 +509,11 @@ Baseado no exemplo de funcionamento e nas operações de fila de prioridades, va
 \end{codebox}
 </div>
 <div class="column" width="60%">
-\footnotesize
+
+\small
+
 \pause
-Análise do tempo de execução
+**Análise do tempo de execução** \vspace{-1em}
 \pause
 
 - A inicialização nas linhas de 1 a 3 tem tempo $O(V)$
@@ -616,8 +602,10 @@ Seja $T$ uma AGM que contém $A$
 ## Prova
 
 <div class="columns">
-<div class="column" width="30%">
-![](imagens/Fig-23-3.pdf){width=4.5cm}
+<div class="column" width="35%">
+![](imagens/Fig-23-3.pdf){width=4cm}
+
+\small
 
 $T$ é a AGM que inclui $A$.
 
@@ -626,8 +614,10 @@ $(S, V - S)$ é qualquer corte que respeita $A$.
 $(u, v)$ é uma aresta leve cruzando o corte.
 
 </div>
-<div class="column" width="70%">
+<div class="column" width="65%">
 \pause
+
+\small
 
 Temos que mostrar que $(u, v)$ é segura para $A$.
 

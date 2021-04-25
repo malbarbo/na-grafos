@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: Ciclos hamiltonianos e o problema do caixeiro viajante
+title: 12 - Ciclos hamiltonianos e o problema do caixeiro viajante
 ---
 
 1. O problema do cavalo consiste em determinar uma sequência de movimentos do

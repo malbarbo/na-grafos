@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: Grafos planares
+title: 13 - Grafos planares
 ---
 
 1. Quantas faces existem em um grafo planar com 10 vértices e cada vértice

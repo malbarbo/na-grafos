@@ -1,6 +1,6 @@
 ---
 # vim: set spell spelllang=pt_br:
-title: 07 - Caminhos mínimos de única origem
+title: 08 - Caminhos mínimos de única origem
 ---
 
 1. Exercício 24.1-1 do CLRS3 ou CLRS2.
