@@ -5,6 +5,8 @@
 
 ## Geral
 
+- Colocar os código em arquivos separados
+
 - Adicionar os trabalhos a este repositório
 
 - Escrever um script para gerar o Makefile?
@@ -35,6 +37,10 @@
 - Adicionar versão curta para respostas (a longa é mais didática)
 
 - Juntar em tópico "Busca e Aplicações"?
+
+- Explorar usos de busca que acumulam valor nas raízes das árvores (grafo biconexo, articulações e pontes)
+    - Um visitação pré-ordem
+    - Será que tem como associar com modelo baseado na definição de dados? Aqui a árvore é implícita.
 
 
 ## 00 - Motivação
