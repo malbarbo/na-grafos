@@ -747,21 +747,56 @@ Relaxação das arestas na ordem $(t,x), (t,y), (t,z), (x,t), (y,x), (y,z), (z,x
 
 ## Correture de Bellman-Ford
 
-### Lema 24.14 - Propriedade de convergência
+Nos derivamos o algoritmo a partir do modelo de programação dinâmica. Na iteração $k$ o algoritmo fazia: \pause
 
-Se $s \leadsto u \rightarrow v$ é um caminho mínimo, $\attrib{u}{d} = \delta(s, u)$ e \proc{Relax}$(u, v, w)$ é chamado, então, em todos os momentos após a chamada, temos $\attrib{v}{d} = \delta(s, v)$
+- Na primeira versão, selecionava um vértice, inicializa $d^k$ e $\pi^k$ e relaxava as arestas que "entravam" no vértice; \pause
 
-\pause
+- Na segunda versão, inicializa $d^k$ e $\pi^k$ para todos os vértices e depois relaxava todas as arestas; \pause
 
-### Lema 24.15 - Propriedade de relaxamento de caminho
+- Na terceira versão (Bellman-Ford), usava apenas uma "versão" de $d$ e $\pi$ e relaxada todas as arestas; \pause
 
-Seja $p = \langle v_0, v_1, \dots, v_k \rangle$ o caminho mínimo de $s = v_0$ até $v_k$, se a função \proc{Relax} for chamada na ordem $(v_0, v_1), (v_1, v_2), \dots, (v_{k-1}, v_k)$, mesmo que intercalada com outros relaxamentos, então $\attrib{v_k}{d} = \delta(s, v_k)$
+Porque o algoritmo de Bellman-Ford funciona?
+
+
+## Correture de Bellman-Ford
+
+Após \proc{Initialize-Single-Source}, qual é a única forma utilizada pelo algoritmo para mudar as estimativas de caminhos mínimos (atributo $d$)? \pause A função de relaxamento. \pause
+
+
+Vamos pensar em caminhos mínimos que estão sendo (ou já foram) construídos pelo algoritmo e o uso da função de relaxamento.
+
+## Correture de Bellman-Ford
+
+Se $s \leadsto v$ é um caminho mínimo e o algoritmo já encontrou esse caminho mínimo, o que acontece se a função de relaxamento for chamada para qualquer aresta desse caminho? \pause Nada. O caminho continua do jeito que está, ele já é mínimo! \pause
+
+Se $s \leadsto u \rightarrow v$ é um caminho mínimo e o algoritmo já encontrou o caminho mínimo $s \leadsto u$, isto é $\attrib{u}{d} = \delta(s, u)$, o que podemos afirmar após o relaxamento da aresta $(u, v)$? \pause Que $\attrib{v}{d} = \delta(s, v)$. \pause O relaxamento pode ou não mudar a estimativa para $v$: \pause
+
+- Se $\attrib{v}{d}$ já fosse $\delta(s, v)$, então o algoritmo já tinha encontrado um caminho mínimo para $v$ e o relaxamento não faz nada. \pause
+
+- Por outro lado, se $\attrib{v}{d} > \delta(s, v)$, então o relaxamento mudaria $\attrib{v}{d}$ para $\attrib{u}{d} + w(u, v) = \delta(s, u) + w(u, v) = \delta(s, v)$. \pause
+
+Este é o Lema 24.14, propriedade de convergência, apresentado no livro.
+
+
+## Correture de Bellman-Ford
+
+
+Se $\langle v_0, v_1, \dots, v_k \rangle$ é uma caminho mínimo de $s = v_0$ até $v_k$ e: \pause
+
+- Em um momento qualquer, mesmo que após relaxamentos diversos, a aresta $(v_0, v_1)$ é relaxada; e \pause
+- Em um momento posterior, mesmo que após relaxamentos diversos, a a aresta $(v_1, v_2)$ é relaxada; e \pause
+- $\dots$ \pause
+- Em um momento posterior, mesmo que após relaxamentos diversos, a aresta $(v_{k-1}, v_k)$ é relaxada. \pause
+
+O que podemos afirmar sobre $\attrib{v_k}{d}$ no final desse processo? \pause Que $\attrib{v_k}{d} = \delta(s, v_k)$! \pause
+
+Este o Lema 24.15, propriedade de relaxamento de caminho, apresentado no livro.
 
 
 ## Correture de Bellman-Ford
 
 <div class="columns">
-<div class="column" width="50%">
+<div class="column" width="38%">
 \begin{codebox}
     \Procname{$\proc{Bellman-Ford}(G, w, s)$}
     \li $\proc{Initialize-Single-Source}(G, s)$
@@ -778,21 +813,20 @@ Seja $p = \langle v_0, v_1, \dots, v_k \rangle$ o caminho mínimo de $s = v_0$ a
     \li \Return \const{true}
 \end{codebox}
 </div>
-<div class="column" width="50%">
+<div class="column" width="62%">
+
+\small
 
 **Análise de corretude** \pause
 
-Cada iteração do laço da linha 2 relaxa todas as arestas
+Cada iteração do laço da linha 2 todas as arestas são relaxadas: \pause \vspace{-1em}
 
-- A primeira iteração relaxa $(v_0, v_1)$
-
-- A segunda iteração relaxa $(v_1, v_2)$
-
+- A primeira iteração relaxa todas as primeiras arestas de todos os caminhos mínimos que têm pelo menos uma aresta \pause
+- A segunda iteração relaxa todas as segundas arestas de todos os caminhos mínimos que têm pelo menos duas arestas \pause
 - ...
+- A $|V| - 1$-ésima iteração relaxa todas as $|V| - 1$-ésima arestas de todos os caminhos que têm $|V| - 1$ arestas \pause
 
-- A $k$-ésima iteração relaxa $(v_{k-1}, v_k)$
-
-Pela propriedade de relaxamento de caminho $\attrib{v}{d} = \attrib{v_k}{d} = \delta(s, v_k) = \delta(s, v)$
+Mesmo sem saber os caminhos mínimos, o algoritmo relaxa todas as arestas de todos os caminhos mínimos em sequência, garantindo, pela propriedade de relaxamento de caminho, que os caminhos mínimos serão calculados corretamente.
 
 <!-- TODO: e o valor true/false? !-->
 </div>
