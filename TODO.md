@@ -95,28 +95,25 @@
 - O termo subconjunto acíclico é estranho
 - A análise do Prim está esquisita, tem tempo de insert e create
 - Adicionar exercícios
-- Mostrar de forma explícita que os algoritmos funcionam
+- Mostrar de forma explícita que cada algoritmo funcionam e não apenas a "prova" geral
 
 
 ## 08 - Caminhos Mínimos de Única Origem
 
-- Aplicações e problemas reais?
+- Usar outra notação que não $\delta$ na modelagem de PD
 
 
 ## 09 - Caminhos Mínimos de Todos os Pares
 
 - Aplicações e problemas reais?
+- Detalhar o algoritmo baseado em multiplicação de matrizes?
+- Apresentar a modelagem do Floyd-Warshall com mais perguntas
 
-- Falar do algoritmos baseado em multiplicação de matrizes (quem é o autor?) e fazer um contraste com o algoritmo de Floyd-Warshall
 
 ## 10 - Fluxo em Redes
 
 - Uma demonstração do livro está errada, tem que ver na errata
-- Destacar a técnica de projeto utilizada:
-  - Greedy techniques iteratively construct an optimal solution by building optimal solutions from smaller problems.
-  - Iterative improvement techniques build an optimal solution by iterative refinement of a feasible solution for the complete problem.
-- Usar provas usando somatórios implícitos como em
-  https://www.youtube.com/watch?v=VYZGlgzr_As
+- Adicionar as provas usando somatórios implícitos como em https://www.youtube.com/watch?v=VYZGlgzr_As
 
 
 ## 11 - Ciclos Eulerianos
