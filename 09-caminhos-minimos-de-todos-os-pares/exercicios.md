@@ -9,6 +9,7 @@ title: 09 - Caminhos mínimos de todos os pares
 
 3. Exercício 25.2-6 do CLRS3 ou CLRS2. <!-- + !-->
 
+<!--
 4. Exercício 25.2-7 do CLRS3 ou CLRS2. <!-- + !-->
 
 # Referências
