@@ -239,7 +239,7 @@ m = sum(len(adjacentes) for adjacentes in g) / 2
 ## Implementação simples
 
 <div class="columns">
-<div class="column" width="55%">
+<div class="column" width="53%">
 \includegraphics[trim=0cm 0cm 35cm 0cm,clip,width=6.5cm]{imagens/Fig-22-2.pdf}
 \scriptsize
 
@@ -260,7 +260,7 @@ int* g[7] = {
 };
 ```
 </div>
-<div class="column" width="45%">
+<div class="column" width="47%">
 \scriptsize
 \pause
 Como fazer uma repetição passando por cada vértice? \pause

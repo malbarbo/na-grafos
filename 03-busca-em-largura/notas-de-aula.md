@@ -192,7 +192,7 @@ $v.d \ge \delta(s, v)$ para todo vértice $v \in V$.
 ## Corretude
 
 <div class="columns">
-<div class="column" width="35%">
+<div class="column" width="33%">
 
 \scriptsize
 
@@ -224,7 +224,7 @@ $v.d \ge \delta(s, v)$ para todo vértice $v \in V$.
 
 </div>
 
-<div class="column" width="65%">
+<div class="column" width="67%">
 
 \footnotesize
 

@@ -547,6 +547,8 @@ Como podemos implementar uma fila de prioridades? \pause
 
 ## Análise do algoritmo de Prim
 
+\small
+
 Tempos das operações
 
 Operação           | Arranjo  | Heap           | Heap de Fibonacci

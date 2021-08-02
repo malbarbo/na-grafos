@@ -6,6 +6,8 @@ header-includes: |
     \usepackage{clrscode3e}
     \captionsetup[figure]{labelformat=empty}
     \usepackage[super]{nth}
+    \makeatletter
+    \def\bbl@cs#1{\csname bbl@#1\endcsname}
 # Substitui a licença do arquivo metadata-ex.yml
 license:
 lang: pt-BR

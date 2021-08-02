@@ -379,7 +379,7 @@ Agora precisamos mostrar como a invariante é mantida quando um vértice é adic
 ## Algoritmo de Dijkstra
 
 <div class="columns">
-<div class="column" width="35%">
+<div class="column" width="33%">
 
 \small
 
@@ -397,7 +397,7 @@ Agora precisamos mostrar como a invariante é mantida quando um vértice é adic
         \End
 \end{codebox}
 </div>
-<div class="column" width="65%">
+<div class="column" width="67%">
 
 \small
 
@@ -608,7 +608,7 @@ Tem outra maneira? \pause Sim!
 ## Programação dinâmica
 
 <div class="columns">
-<div class="column" width="50%">
+<div class="column" width="47%">
 \small
 \begin{codebox}
     \zi \Comment Computar $\attrib{v}{d}^0$ e $\attrib{v}{\pi}^0$ para todo $v \in V$
@@ -626,7 +626,7 @@ Tem outra maneira? \pause Sim!
         \End
 \end{codebox}
 </div>
-<div class="column" width="50%">
+<div class="column" width="52%">
 Você consegue identificar algo familiar no código? \pause O relaxamento da aresta $(u, v)$. \pause
 
 Qual é o propósito do relaxamento? \pause Tentar melhorar a estimativa de caminho mínimo para $v$. \pause
@@ -796,7 +796,10 @@ Este o Lema 24.15, propriedade de relaxamento de caminho, apresentado no livro.
 ## Correture de Bellman-Ford
 
 <div class="columns">
-<div class="column" width="38%">
+<div class="column" width="35%">
+
+\small
+
 \begin{codebox}
     \Procname{$\proc{Bellman-Ford}(G, w, s)$}
     \li $\proc{Initialize-Single-Source}(G, s)$
@@ -813,7 +816,7 @@ Este o Lema 24.15, propriedade de relaxamento de caminho, apresentado no livro.
     \li \Return \const{true}
 \end{codebox}
 </div>
-<div class="column" width="62%">
+<div class="column" width="64%">
 
 \small
 

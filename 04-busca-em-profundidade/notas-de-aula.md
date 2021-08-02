@@ -209,7 +209,7 @@ Quando representamos a descoberta de um vértice $v$ por "$(v$" e o término por
 ## Estrutura de parênteses
 
 <div class="columns">
-<div class="column" width="40%">
+<div class="column" width="39.5%">
 \small
 
 ### Teorema 22.7 (Teorema do parênteses)
@@ -221,7 +221,7 @@ Para dois vértices quaisquer $u$ e $v$, exatamente uma das três condições a 
 - O intervalo $[\attrib{v}{d}, \attrib{v}{f}]$ está contido inteiramente no intervalo $[\attrib{u}{d}, \attrib{u}{f}]$ e $v$ é descendente de $u$ em uma árvore DFS \pause
 </div>
 
-<div class="column" width="57%">
+<div class="column" width="58.5%">
 \small
 
 ### Prova

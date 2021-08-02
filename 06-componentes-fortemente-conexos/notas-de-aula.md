@@ -243,6 +243,8 @@ Vamos discutir a ideia da prova. Para a prova formal, veja o livro.
 
 ## Corretude do \proc{strongly-connected-components}
 
+\small
+
 A segunda execução do $\proc{DFS}$ começa por um vértice em uma SCC $C$ tal que $f(C)$ é máximo. Seja $x$ este vértice. \pause
 
 A execução do $\proc{DFS}$ iniciada em $x$ visita pelo menos todos os vértices de $C$. \pause Algum outro vértice de alguma outra componente $C' \not = C$ é visitado nessa execução? \pause Pelo corolário 22.15, se existisse alguma aresta de um vértice de $C$ para um vértice de $C'$, então $f(C) < f(C')$, mas como $f(C) > f(C')$, então esta aresta não existe e portando nenhum vértice de outra componente é descoberto. \pause Logo, esta execução do $\proc{DFS}$ visita apenas os vértices de $C$, descobrindo este SCC. \pause

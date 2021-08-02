@@ -308,7 +308,7 @@ Os **componentes fortemente conexos** de um grafo orientado são as classes de e
 Quais os componentes fortemente conexos da figura B-2-a? \pause \newline $\{1, 2, 4, 5\}$ \pause , $\{3\}$ e $\{6\}$. \pause
 
 - Todos os pares de vértices em $\{1, 2, 4, 5\}$ são mutuamente acessíveis. \pause
-- Os vértices $\{3, 6\}$ não formam um componente fortemente conexo por quê? \pause O vértice 6 não é acessível a partir do vértice 3; \pause
+- Os vértices $\{3, 6\}$ não formam um componente fortemente conexo por quê? \pause O vértice 6 não é acessível a partir do 3; \pause
 
 Um grafo orientado é fortemente conexo se ele só tem um componente fortemente conexo.
 </div>
