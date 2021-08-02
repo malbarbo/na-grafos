@@ -7,7 +7,7 @@ institute: |
     \newline
     \href{http://www.uem.br}{Universidade Estadual de Maringá}
 lang: pt-BR
-# Usa as vontes disponíveis no tectonic
+# Usa as fontes disponíveis no tectonic
 # Evita warnings no slide de título (devido a informação da licensa)
 # Evita problemas com o polyglossia (https://github.com/reutenauer/polyglossia/issues/400)
 # Diminui a barra de título
@@ -22,7 +22,7 @@ header-includes: |
       UprightFont    = *-Light,
       ItalicFont     = *-LightItalic,
       BoldFont       = *-Regular,
-      BoldItalicFont = *-RegularItalic
+      BoldItalicFont = *-BoldItalic
     ]{FiraSans}
     \setmonofont[
       Extension   = .otf,
@@ -39,7 +39,7 @@ header-includes: |
 
     \def\bbl@cs#1{\csname bbl@#1\endcsname}
 
-    \setlength{\metropolis@frametitle@padding}{1.3ex}
+    \setlength{\metropolis@frametitle@padding}{1.2ex}
 
     \setbeamertemplate{footline}{%
       \begin{beamercolorbox}[wd=\textwidth, ht=1mm, sep=0mm]{footline}
