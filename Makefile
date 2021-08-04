@@ -17,7 +17,7 @@ EXS_ZIP=$(addprefix $(DEST_ZIP)/, $(addsuffix -exemplos.zip, $(EXS)))
 TECTONIC=$(DEST)/bin/tectonic
 TECTONIC_VERSION=0.7.1
 PANDOC=$(DEST)/bin/pandoc
-PANDOC_VERSION=2.11.3.2
+PANDOC_VERSION=2.14.1
 PANDOC_CMD=$(PANDOC) \
 		-V mathspec \
 		--from markdown-auto_identifiers \
