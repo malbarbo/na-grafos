@@ -1,12 +1,11 @@
-.PHONY: default all pdf handout tex clean
+.PHONY: default all pdf handout tex clean clean-bin clean-all
 
 SHELL=bash
 DEST=target
 DEST_PDF=$(DEST)/pdfs
 DEST_PDF_HANDOUT=$(DEST)/pdfs/handout
-DEST_ZIP=$(DEST)/zips
 DEST_TEX=$(DEST)/tex
-IGNORAR=README.md
+DEST_ZIP=$(DEST)/zips
 NA=$(patsubst %/,%,$(dir $(shell find * -wholename '*/notas-de-aula.md')))
 NA_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix .pdf, $(NA)))
 NA_PDF_HANDOUT=$(addprefix $(DEST_PDF_HANDOUT)/, $(addsuffix .pdf, $(NA)))
@@ -59,7 +58,7 @@ $(DEST_PDF_HANDOUT)/%.pdf: %/notas-de-aula.md $(wildcard %/imagens/) templates/d
 		-V classoption:handout \
 		-o ../$@ notas-de-aula.md
 
-$(DEST_TEX)/%.tex: %/notas-de-aula.md $(wildcard %/imagens/) templates/default.latex metadata.yml $(PANDOC)
+$(DEST_TEX)/%.tex: %/notas-de-aula.md templates/default.latex metadata.yml $(PANDOC)
 	@mkdir -p $(DEST_TEX)
 	@echo $@
 	@cd $$(dirname $<) && \
@@ -93,5 +92,13 @@ $(TECTONIC):
 		| tar xz -C $(DEST)/bin/
 
 clean:
-	@echo Removendo $(DEST_PDF) $(DEST_TEX)
-	@rm -rf $(DEST_PDF) $(DEST_TEX)
+	@echo Removendo $(DEST_PDF) $(DEST_TEX) $(DEST_ZIP)
+	@rm -rf $(DEST_PDF) $(DEST_TEX) $(DEST_ZIP)
+
+clean-bin:
+	@echo Removendo $(DEST)/bin
+	@rm -rf $(DEST)/bin
+
+clean-all:
+	@echo Removendo $(DEST)
+	@rm -rf $(DEST)
