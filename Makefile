@@ -10,6 +10,7 @@ IGNORAR=README.md
 NA=$(patsubst %/,%,$(dir $(shell find * -wholename '*/notas-de-aula.md')))
 NA_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix .pdf, $(NA)))
 NA_PDF_HANDOUT=$(addprefix $(DEST_PDF_HANDOUT)/, $(addsuffix .pdf, $(NA)))
+NA_TEX=$(addprefix $(DEST_TEX)/, $(addsuffix .tex, $(NA)))
 EX=$(patsubst %/,%,$(dir $(shell find * -wholename '*/exercicios.md')))
 EX_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix -exercicios.pdf, $(EX)))
 EXS=$(patsubst %/,%,$(dir $(shell find * -type d -wholename '*/exemplos')))
@@ -31,9 +32,11 @@ default:
 	@echo Executando make em paralelo [$(shell nproc) tarefas]
 	@make -s -j $(shell nproc) all
 
-all: pdf handout ex zip
+all: tex pdf handout ex zip
 
 pdf: $(NA_PDF)
+
+tex: $(NA_TEX)
 
 handout: $(NA_PDF_HANDOUT)
 
@@ -54,6 +57,13 @@ $(DEST_PDF_HANDOUT)/%.pdf: %/notas-de-aula.md $(wildcard %/imagens/) templates/d
 	@cd $$(dirname $<) && \
 		../$(PANDOC_CMD) \
 		-V classoption:handout \
+		-o ../$@ notas-de-aula.md
+
+$(DEST_TEX)/%.tex: %/notas-de-aula.md $(wildcard %/imagens/) templates/default.latex metadata.yml $(PANDOC)
+	@mkdir -p $(DEST_TEX)
+	@echo $@
+	@cd $$(dirname $<) && \
+		../$(PANDOC_CMD) \
 		-o ../$@ notas-de-aula.md
 
 $(DEST_PDF)/%-exercicios.pdf: %/exercicios.md templates/default.latex metadata-ex.yml $(PANDOC) $(TECTONIC)
@@ -83,5 +93,5 @@ $(TECTONIC):
 		| tar xz -C $(DEST)/bin/
 
 clean:
-	@echo Removendo $(DEST_PDF)
-	@rm -rf $(DEST_PDF)
+	@echo Removendo $(DEST_PDF) $(DEST_TEX)
+	@rm -rf $(DEST_PDF) $(DEST_TEX)
