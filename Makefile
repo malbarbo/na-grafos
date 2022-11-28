@@ -15,9 +15,9 @@ EX_PDF=$(addprefix $(DEST_PDF)/, $(addsuffix -exercicios.pdf, $(EX)))
 EXS=$(patsubst %/,%,$(dir $(shell find * -type d -wholename '*/exemplos')))
 EXS_ZIP=$(addprefix $(DEST_ZIP)/, $(addsuffix -exemplos.zip, $(EXS)))
 TECTONIC=$(DEST)/bin/tectonic
-TECTONIC_VERSION=0.7.1
+TECTONIC_VERSION=0.9.0
 PANDOC=$(DEST)/bin/pandoc
-PANDOC_VERSION=2.14.1
+PANDOC_VERSION=2.19.2
 PANDOC_CMD=$(PANDOC) \
 		-V mathspec \
 		--from markdown-auto_identifiers \
