@@ -60,6 +60,7 @@ $E = \{(1,2), (1,5), (2,5), (3,6)\}$
 Em grafos orientados são permitidos **laços** (arestas de um vértice para ele mesmo -- _autoloop_ em inglês). Exemplo: aresta $(2, 2)$ da figura B-2-a. \pause
 
 Um grafo orientado sem laços é chamado de **grafo simples**.
+
 </div>
 </div>
 
@@ -201,8 +202,19 @@ Um **caminho** de **comprimento** $k$ de um vértice $u$ até um vértice $u'$ e
 
 O comprimento do caminho ($k$) é a quantidade de aresta no caminho. \pause
 
-O caminho **contém** os vértice $v_0, v_1, \dots, v_k$ e as arestas $(v_0, v_1), (v_1, v_2), \dots, (v_{k-1}, v_k)$. \pause
+O caminho **contém** os vértice $v_0, v_1, \dots, v_k$ e as arestas $(v_0, v_1), (v_1, v_2), \dots, (v_{k-1}, v_k)$.
+</div>
+</div>
 
+
+## Caminhos e ciclos
+
+<div class="columns">
+<div class="column" width="30%">
+\includegraphics[trim=0cm 0cm 91cm 0cm,clip,width=3cm]{imagens/Fig-B-2.pdf}
+\includegraphics[trim=45.5cm 0cm 45.5cm 0cm,clip,width=3.0cm]{imagens/Fig-B-2.pdf}
+</div>
+<div class="column" width="70%">
 Se existe um caminho $p$ de $u$ até $u'$, dizemos que $u'$ é **acessível** a partir de $u$ via $p$, ou $u \stackrel{p}{\leadsto} u'$ se o grafo é orientado. \pause
 
 Sempre existe um caminho de comprimento 0 de $u$ para $u$. \pause
@@ -250,7 +262,7 @@ Em um grafo orientado
 
 Dois caminhos $\langle v_0, v_1, \dots, v_{k-1}, v_0 \rangle$ e $\langle v_0', v_1', \dots, v_{k-1}', v_0' \rangle$ formam o mesmo ciclo se existe um inteiro $j$ tal que $v_i' = v_{(i + j) \mod k}$ para $i = 0, 1, \dots, k - 1$.
 
-- Considerando a figura B-2-a, dê dois caminhos que formam o mesmo ciclo que o caminho $\langle 1, 2, 4, 1 \rangle$ \pause \newline $\langle 2, 4, 1, 2 \rangle$ e $\langle 4, 1, 2, 4 \rangle$.
+- Considerando a figura B-2-a, dê dois caminhos que formam o mesmo ciclo que o caminho $\langle 1, 2, 4, 1 \rangle$. \pause \newline $\langle 2, 4, 1, 2 \rangle$ e $\langle 4, 1, 2, 4 \rangle$.
 </div>
 </div>
 
@@ -303,8 +315,19 @@ Um grafo não orientado é conexo se tem exatamente um componente conexo.
 <div class="column" width="70%">
 Um grafo orientado é **fortemente conexo** se para cada par de vértices $(u, v)$, $v$ é acessível a partir de $u$. \pause
 
-Os **componentes fortemente conexos** de um grafo orientado são as classes de equivalência de vértices sob a relação “são mutuamente acessíveis”. \pause
+Os **componentes fortemente conexos** de um grafo orientado são as classes de equivalência de vértices sob a relação “são mutuamente acessíveis”.
+</div>
+</div>
 
+
+## Conectividade
+
+<div class="columns">
+<div class="column" width="30%">
+\includegraphics[trim=0cm 0cm 91cm 0cm,clip,width=3cm]{imagens/Fig-B-2.pdf}
+\includegraphics[trim=45.5cm 0cm 45.5cm 0cm,clip,width=3.0cm]{imagens/Fig-B-2.pdf}
+</div>
+<div class="column" width="70%">
 Quais os componentes fortemente conexos da figura B-2-a? \pause \newline $\{1, 2, 4, 5\}$ \pause , $\{3\}$ e $\{6\}$. \pause
 
 - Todos os pares de vértices em $\{1, 2, 4, 5\}$ são mutuamente acessíveis. \pause
@@ -484,4 +507,4 @@ Semelhantes a grafos não orientados
 
 ## Referências
 
-- Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo B.4.
+Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo B.4.
