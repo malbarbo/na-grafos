@@ -21,11 +21,12 @@ title: 01 - Conceitos e definições
 
 9.  Desenhe um grafo não orientado com 6 vértices e três componentes usando o número mínimo possível de arestas.
 
-10. Construa um grafo orientado para representar as dependências dos conceitos relacionados com grafos orientados visto em sala (palavras em negrito no  material). Cada vértice deve representar um conceito. Para cada par de conceitos $a$ e $b$, deve existir uma aresta $a \rightarrow b$ se o conceito $b$ depende do conceito $a$. Por exemplo, deve existir uma aresta do vértice que representa o conceito "caminho" para o vértice que representa o conceito "subcaminho", pois o conceito de subcaminho depende do conceito de caminho. Baseado neste grafo, responda:
+10. Criar definições que de fato descrevam o conceito que queremos pode ser difícil. Além da imprecisão, podemos cometer dois erros em uma definições: generalizar demais e permitir que coisas que não gostaríamos se enquadre na definição; restringir demais e excluir coisas que gostaríamos que se enquadrasse na definição. Considere a seguinte definição que aparece em algumas versões do livro CLRS:
 
-    a. Pode existir ciclos neste grafo? Explique.
+    - Um caminho $\langle v_0, v_1, \dots, v_k \rangle$ forma um **ciclo** se $k \ge 3$ e $v_0 = v_k$.
 
-    b. Qual o conceito que tem mais dependências? Considere que se existem três conceitos $a$, $b$ e $c$, e duas dependências $a \rightarrow b$ e $b \rightarrow c$, então $a$ não tem dependência, $b$ tem uma dependência, e $c$ tem duas dependências.
+    Contraste essa definição com a que vimos em sala e diga (explique) se você acha que esta definição descreve de forma apropriada a noção de ciclo para grafo orientado.
+
 
 
 \newpage
@@ -33,6 +34,6 @@ title: 01 - Conceitos e definições
 
 # Soluções
 
-1. Na definição é dito que um caminho de um vértice $u$ até um vértice $u'$ é uma sequência de vértices $\langle v_0, v_1, v_2, \dots, v_k \rangle$, tal que, $u = v_0$ e $u' = v_k$ e para $i = 1, 2, \dots, k$ existe a aresta $(v_{i - 1}, v_i)$ no grafo. Quando consideramos a sequência $\langle v_0 \rangle$, podemos notar que ela forma um caminho de $v_0$ a até $v_0$, pois o vértice inicial e o vértice final da sequência é $v_0$, e o conjunto de restrições de existência de arestas $(v_{i - 1}, v)$ no grafo para $i = 1, 2, \dots, k$ é vazio (pois $k = 0$), e portanto todas as restrições são satisfeitas. Desta forma, para qualquer vértices $u$, sempre existe o caminho $\langle u \rangle$ de tamanho $0$ de $u$ para $u$.
+1. Na definição é dito que um caminho de um vértice $u$ até um vértice $u'$ é uma sequência de vértices $\langle v_0, v_1, v_2, \dots, v_k \rangle$, tal que, $u = v_0$ e $u' = v_k$ e para $i = 1, 2, \dots, k$ existe a aresta $(v_{i - 1}, v_i)$ no grafo. Quando consideramos a sequência $\langle v_0 \rangle$, podemos notar que ela forma um caminho de $v_0$ até $v_0$, pois o vértice inicial e o vértice final da sequência é $v_0$, e o conjunto de restrições de existência de arestas $(v_{i - 1}, v)$ no grafo para $i = 1, 2, \dots, k$ é vazio (pois $k = 0$), e portanto todas as restrições são satisfeitas. Desta forma, para qualquer vértices $u$, sempre existe o caminho $\langle u \rangle$ de tamanho $0$ de $u$ para $u$.
 
 2. Subcaminhos de tamanho 0: $\langle 1 \rangle$, $\langle 2 \rangle$, $\langle 5 \rangle$. Subcaminhos de tamanho 1: $\langle 1, 2 \rangle$, $\langle 2, 2 \rangle$, $\langle 2, 5 \rangle$. Subcaminhos de tamanho 2: $\langle 1, 2, 2 \rangle$, $\langle 2, 2, 5 \rangle$ Subcaminhos de tamanho 3: $\langle 1,  2, 2, 5 \rangle$.
