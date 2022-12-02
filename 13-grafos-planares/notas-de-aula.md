@@ -228,13 +228,10 @@ NP-difícies.
 
 ## Referências
 
-- [Grafos planares](http://mfleck.cs.illinois.edu/building-blocks/version-1.3/planargraphs.pdf).
-    Livro Building Blocks for Theoretical Computer Science. Margaret M. Fleck.
-    Capítulo 21.
+[Grafos planares](http://mfleck.cs.illinois.edu/building-blocks/version-1.3/planargraphs.pdf). Livro Building Blocks for Theoretical Computer Science. Margaret M. Fleck. Capítulo 21.
 
-- [Vídeo Planar Graphs](https://www.youtube.com/watch?v=xBkTIp6ajAg).
+[Vídeo Planar Graphs](https://www.youtube.com/watch?v=xBkTIp6ajAg).
 
-- Grafos planares. Wikipédia. <https://en.wikipedia.org/wiki/Planar_graph>
+Grafos planares. Wikipédia. <https://en.wikipedia.org/wiki/Planar_graph>
 
-- Teste de planaridade. Wikipédia.
-    <https://en.wikipedia.org/wiki/Planarity_testing>
+Teste de planaridade. Wikipédia. <https://en.wikipedia.org/wiki/Planarity_testing>

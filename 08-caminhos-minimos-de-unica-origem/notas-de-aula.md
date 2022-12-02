@@ -962,4 +962,4 @@ Podemos encontrar um caminho crítico de duas maneiras: \pause
 
 ## Referências
 
-- Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 24.
+Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 24.

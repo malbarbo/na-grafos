@@ -15,7 +15,7 @@
 
 - Usar menos listas (preferir parágrafos sem itemização)
 
-- Atualizar os termos utilizando a tradução da 3a. edição
+- Atualizar os termos utilizando a tradução da 3a. edição. Quais?
 
 - Os atributos devem ser escritos em português ou inglês?
 

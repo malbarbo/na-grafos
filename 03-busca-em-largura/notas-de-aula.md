@@ -567,6 +567,6 @@ Veja a lista completa de exercícios e algumas soluções na página da discipli
 
 ## Referências
 
-- Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.2.
+Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.2.
 
-- [Rascunho da prova de corretude do BFS](http://www.cs.toronto.edu/~krueger/csc263h/lectures/BFS.pdf).
+[Rascunho da prova de corretude do BFS](http://www.cs.toronto.edu/~krueger/csc263h/lectures/BFS.pdf).

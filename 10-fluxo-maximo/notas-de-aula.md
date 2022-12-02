@@ -672,4 +672,4 @@ O algoritmo de Edmonds-Karp utiliza a busca em largura para encontrar o caminho 
 
 ## Referências
 
-- Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 26.
+Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 26.

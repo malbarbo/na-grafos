@@ -348,4 +348,4 @@ Veja a lista completa de exercícios e algumas soluções na página da discipli
 
 ## Referências
 
-- Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.3.
+Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.3.

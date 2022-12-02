@@ -302,17 +302,12 @@ Mesmo princípio do 2-opt, mas seleciona 3 arestas
 - Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo
   35.2.1.
 
-- Caminho hamiltoniano. Wikipédia.
-    <https://pt.wikipedia.org/wiki/Caminho_hamiltoniano>
+Caminho hamiltoniano. Wikipédia. <https://pt.wikipedia.org/wiki/Caminho_hamiltoniano>
 
-- Problema do caminho hamiltoniano. Wikipédia
-    <https://en.wikipedia.org/wiki/Hamiltonian_path_problem>
+Problema do caminho hamiltoniano. Wikipédia. <https://en.wikipedia.org/wiki/Hamiltonian_path_problem>
 
-- Problema do caixeiro viajante. Wikipédia.
-    <https://en.wikipedia.org/wiki/Travelling_salesman_problem>
+Problema do caixeiro viajante. Wikipédia. <https://en.wikipedia.org/wiki/Travelling_salesman_problem>
 
-- Algoritmo vizinho mais próximo. Wikipédia.
-    <https://en.wikipedia.org/wiki/Nearest_neighbour_algorithm>
+Algoritmo vizinho mais próximo. Wikipédia. <https://en.wikipedia.org/wiki/Nearest_neighbour_algorithm>
 
-- Algoritmo de Christofides. Wikipédia.
-    <https://en.wikipedia.org/wiki/Christofides_algorithm>
+Algoritmo de Christofides. Wikipédia. <https://en.wikipedia.org/wiki/Christofides_algorithm>

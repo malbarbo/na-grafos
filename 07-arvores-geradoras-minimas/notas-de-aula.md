@@ -665,4 +665,4 @@ Veja a lista de exercícios e algumas soluções na página da disciplina.
 
 ## Referências
 
-- Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 23.
+Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 23.

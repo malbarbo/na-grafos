@@ -391,4 +391,4 @@ Antes de fazer a análise do tempo de execução é necessário escrever o pseud
 
 ## Referências
 
-- Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.1.
+Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 22.1.

@@ -519,4 +519,4 @@ Considerando o exercício 25.2-4 e acrescentando o calculo de $\Pi$, podemos ree
 
 ## Referências
 
-- Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 25.
+Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 25.

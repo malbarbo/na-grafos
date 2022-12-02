@@ -242,7 +242,6 @@ Se o grafo tiver 4 ou mais vértices de grau ímpar
 
 ## Referências
 
-- Caminho euleriano. Wikipédia. <https://en.wikipedia.org/wiki/Eulerian_path>
+Caminho euleriano. Wikipédia. <https://en.wikipedia.org/wiki/Eulerian_path>
 
-- Problema do carteiro chinês. Wikipédia.
-    <https://en.wikipedia.org/wiki/Route_inspection_problem>
+Problema do carteiro chinês. Wikipédia. <https://en.wikipedia.org/wiki/Route_inspection_problem>
