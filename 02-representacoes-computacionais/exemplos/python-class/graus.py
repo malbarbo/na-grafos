@@ -1,8 +1,7 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # Este programa calcula o grau de entrada de cada vértices de um grafo.
 
-from typing import List
 from grafo import *
 
 

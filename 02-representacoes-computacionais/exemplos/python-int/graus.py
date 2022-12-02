@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # Este programa calcula os graus de entrada e os graus de saida dos vértices de
 # um grafo.
