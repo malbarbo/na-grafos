@@ -180,7 +180,7 @@ Como podemos implementar a representação de lista de adjacências? \pause
 
 - De muitas formas, depende da linguagem, do algoritmo, etc \pause
 
-- Uma forma simples é representar os vértices com inteiros no intervalo de $0$ a $V - 1$ é a lista de adjacências com lista de listas (arranjo de arranjos), sem criar nenhum abstração \pause
+- Uma forma simples é representar os vértices com inteiros no intervalo de $0$ a $V - 1$ e a lista de adjacências com lista de listas (arranjo de arranjos), sem criar nenhum abstração \pause
 
 - Ou criar uma abstração simples para deixar o código mais legível e evitar que o grafo seja alterado de forma inconsistente \pause
 
@@ -318,7 +318,7 @@ Como estes atributos podem ser implementados? \pause
 
 - Os atributos da arestas podem ser armazenados diretamente na lista ou matriz de adjacência \pause
 
-- Se os vértices são enumerados de $1..|V|$ os atributos podem ser representados em arranjos, tais como $d[1..|V|]$ \pause
+- Se os vértices são enumerados de $1..|V|$ os atributos podem ser representados em arranjos, tal como $d[1..|V|]$ \pause
 
 - Atributos de vértices podem ficar nos registros que representam os vértices \pause
 
