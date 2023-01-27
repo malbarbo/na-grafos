@@ -1,6 +1,11 @@
 ---
 # vim: set spell spelllang=pt_br:
 title: Componentes fortemente conexos
+# TODO: Fazer a relação entre o teorema 22.12 e o lema 22.14
+# TODO: explicar como identificar o vértice que será usado para encontrar a primeira componente e como encontrar a componente
+# TODO: mostrar um algoritmo incremental simples, que remove um componente e aplica o dfs novamente
+# TODO: mostrar que o componente com maior tempo de término só tem arestas saindo
+# TODO: adicionar a demostração de corretude do algoritmo
 ---
 
 ## Introdução
@@ -21,7 +26,6 @@ A criação e utilização de modelos é uma ferramente bastante útil na resolu
 De fato, para muitos problemas o principal passo na sua resolução é a modelagem. \pause Isto porque a modelagem pode ter sido feita em termos de um problema já conhecido e para o qual já existem algoritmos eficientes. \pause
 
 Por isso é importante estudar problemas e algoritmos em grafos! Quanto mais problemas e algoritmos você conhecer, melhor preparado você estará para resolver problemas do mundo real.
-
 
 
 ## Componente fortemente conexo
