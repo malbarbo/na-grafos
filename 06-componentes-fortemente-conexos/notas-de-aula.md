@@ -28,11 +28,17 @@ Por isso é importante estudar problemas e algoritmos em grafos! Quanto mais pro
 
 <!-- TODO: adicionar aplicações !-->
 
-Um **componente fortemente conexo** (SCC) de um grafo orientado $G = (V, E)$ é um conjunto máximo de vértices $C \subseteq V$, tal que, para todo par de vértice $u$ e $v \in C$, existe um caminho de $u$ para $v$ e um caminho de $v$ para $u$, isto é $u \leadsto v$ e $v \leadsto u$.
+
+\includegraphics[trim=0pt 1450pt 0pt 0pt,clip,width=8cm]{imagens/Fig-22-9.pdf}
 
 \pause
 
-\includegraphics[trim=0pt 1450pt 0pt 0pt,clip,width=8cm]{imagens/Fig-22-9.pdf}
+Um **componente fortemente conexo** (SCC) de um grafo orientado $G = (V, E)$ é um conjunto máximo de vértices $C \subseteq V$, tal que, para todo par de vértice $u$ e $v \in C$, existe um caminho de $u$ para $v$ e um caminho de $v$ para $u$, isto é $u \leadsto v$ e $v \leadsto u$.
+
+
+## Componente fortemente conexo
+
+Projete um algoritmo que receba como entrada um grafo orientado e encontre os seus componentes fortemente conexo.
 
 
 ## Grafo de componentes
@@ -211,7 +217,7 @@ No segundo caso $d(C') < d(C)$. Seja $y$ o primeiro vértice descoberto de $C'$:
 
 - Existe um caminho de vértices branco de $y$ para todos os vértices de $C'$. \pause Então todos os vértices de $C'$ se tornam descendentes de $y$ e portanto $\attrib{y}{f} = f(C')$. \pause
 
-- E os vértices de $C$ serão descendentes de $y$? \pause Não. Como existe a aresta $(u, v)$ de $C$ para $C'$, não pode existir uma aresta de $C'$ para $C$ (Lema 22.13) e portanto os vértices de $C$ não são acessíveis a partir de $y$ e não serão seu descendentes. \pause
+- E os vértices de $C$ serão descendentes de $y$? \pause Não. Como existe a aresta $(u, v)$ de $C$ para $C'$, não pode existir uma aresta de $C'$ para $C$ (Lema 22.13) e portanto os vértices de $C$ não são acessíveis a partir de $y$ e não serão descendentes de $y$. \pause
 
 - Logo, no tempo $\attrib{y}{f}$ todos os vértices de $C$ ainda são brancos, então para qualquer vértices $w \in C$, $\attrib{w}{f} > \attrib{y}{f}$ e portanto $f(C) > f(C')$. $\qed$
 
