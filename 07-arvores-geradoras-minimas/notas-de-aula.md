@@ -219,7 +219,7 @@ Baseia-se diretamente no algoritmo genérico
 
 Qual é o "desafio" para implementar este algoritmo de forma eficiente? \pause É o gerenciamento das árvores: verificar se dois vértices estão na mesma árvore e juntar duas árvores. \pause
 
-Esta situação é comum em outros contexto e pode ser resolvida com um estrutura de dados para conjuntos disjuntos. \pause Três operações são definidas para este tipo de estrutura: \pause
+Esta situação é comum em outros contextos e pode ser resolvida com um estrutura de dados para conjuntos disjuntos. \pause Três operações são definidas para este tipo de estrutura: \pause
 
 - \proc{Mark-Set($v$)}, coloca o vértice $v$ no seu próprio conjunto (árvore) \pause
 
