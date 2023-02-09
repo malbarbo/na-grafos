@@ -2,6 +2,8 @@
 # vim: set spell spelllang=pt_br:
 # TODO: falar da implementação de conjuntos disjuntos
 # TODO: falar das implementações das filas de prioridades
+# TODO: colocar imagens para inserção e remoção seguras
+# TODO: remover vspace
 title: Árvores geradoras mínimas
 ---
 
@@ -59,12 +61,10 @@ No contexto de árvores geradoras, vamos usar $T$ para nos referir tanto ao conj
 
 ## Tipo do problema
 
-Agora que entendemos o problema, vamos construir exemplos e pensar no processo que utilizamos para encontrar as respostas. \pause Conhecer o tipo do problema que estamos lidando pode nos ajudar nesta etapa. \pause
+Agora que entendemos o problema, vamos construir exemplos e pensar no processo que utilizamos para encontrar as respostas. \pause Conhecer o tipo do problema que estamos lidando pode nos ajudar nesta etapa.
 
 
-### Tipos de problemas computacionais
-
-\pause
+## Tipos de problemas computacionais
 
 Decisão (sim ou não). \pause Exemplo: Verificar se existe um caminho simples entre dois vértices em um grafo. \pause
 
@@ -95,35 +95,106 @@ Vamos tentar utilizar estas técnicas para derivar hipóteses de algoritmos.
 
 ## Ideias de algoritmos
 
-Veja o vídeo da aula para entender como chegamos nessas ideias. \pause
+Discutimos em sala como chegamos nessas ideias. \pause
 
 Melhoramento iterativo
 
-- Começar como uma árvore geradora qualquer
+- Iniciar como uma árvore geradora qualquer e tentar derivar uma árvore com peso menor substituindo uma aresta que está na árvore por outra que não está \pause
 
-- Tentar encontrar uma árvore com custo menor substituindo uma aresta que está na árvore por outra que não está \pause
+    - Inserir uma aresta formando um ciclo na árvore e remover a aresta de maior peso do ciclo
 
+    - Remover uma aresta da árvore desconectando a árvore e inserir uma aresta de menor peso que reconecta a árvore
 
-Algoritmo Guloso 1
+\pause
 
-- Adicionar arestas na solução (deste que não criem ciclos) em ordem crescente de peso \pause
+Algoritmo Guloso 0
 
-
-Algoritmo Guloso 2
-
-- Começar com um vértice na árvore e ir "ligando" novos vértices à árvore usando as arestas de menor peso
+- Tentar remover as arestas do grafo em ordem decrescente de peso evitando remover as arestas que desconectam o grafo
 
 
 ## Ideias de algoritmos
 
-A ideia do Algoritmo Guloso 1 foi proposta primeiramente por Kruskal e a a ideia do Algoritmo Guloso 2 por Prim. \pause
+Algoritmo Guloso 1
 
-As duas abordagens podem ser analisadas usando as mesmas propriedades. \pause Vamos ver como o livro apresenta esta análise.
+- Iniciar sem nenhuma aresta e ir adicionando arestas em ordem crescente de peso evitando formar ciclos \pause
+
+
+Algoritmo Guloso 2
+
+- Iniciar com um vértice na árvore e ir ligando novos vértices à árvore usando as arestas de menor peso
+
+
+## Ideias de algoritmos
+
+A ideia do Algoritmo Guloso 1 foi proposta primeiramente por Kruskal e a ideia do Algoritmo Guloso 2 por Prim. \pause
+
+Todos os algoritmos funcionam fazendo repetidamente a inserção e/ou remoção de arestas. \pause
+
+Dessa forma, é interessante se perguntar quando é "seguro" inserir ou remover uma aresta da AGM.
+
+
+## Inserção e remoção seguras
+
+Vamos ver novamente as duas forma de melhorar uma árvore no algoritmo melhorativo que descrevemos: \pause
+
+- Inserir uma aresta formando um ciclo na árvore e remover a aresta de maior peso do ciclo
+
+- Remover uma aresta da árvore desconectando a árvore e inserir uma aresta de menor peso que reconecta a árvore
+
+\pause
+
+### Hipóteses
+
+Se todos os pesos forem diferentes, então
+
+- a aresta de maior peso de um ciclo não pertence a AGM;
+
+- a aresta de menor peso que conecta um vértice de $S \subset V$ e um vértice de $V - S$ pertence a AGM;
+
+
+## Remoção segura
+
+\small
+
+A aresta de maior peso de um ciclo não pertence a AGM. \pause
+
+Prova por contradição. \pause
+
+Seja $(u, v)$ a aresta de maior peso de um ciclo $C$ qualquer e suponha que ela esteja na AGM $T$. \pause
+
+O que acontece se removermos $(u, v)$ de $T$? \pause Separamos a árvore em duas componentes, onde $u$ está em uma componente e $v$ está em outra. \pause
+
+Existe uma forma de reconectar as duas componentes com uma outra aresta que não seja $(u, v)$? \pause Sim. Para encontrarmos a aresta seguimos o ciclo $C$, mas ao invés de seguir a aresta $(u, v)$, começamos com $u$ e vamos para a outra "direção" do ciclo. Para alguma aresta $(x, y)$ em $C$, $x$ vai estar no mesmo componente de $u$ e $y$ no mesmo componente de $v$. Usamos essa aresta para criar uma nova árvore $T' = T \cup \{(x, y)\} - \{(u, v)\}$. \pause
+
+Quem tem menor peso, $(x, y)$ ou $(u, v)$? \pause $(x, y)$, pois $(u, v)$ é a aresta de maior de $C$. \pause Quem tem menor peso, $T'$ ou $T$? \pause $T'$. Então $T$ não pode ser um AGM, o que é uma contradição.
+
+
+## Inserção segura
+
+\small
+
+A aresta de menor peso que conecta um vértice de $S \subset V$ e um vértice de $V - S$ pertence a AGM. \pause
+
+Prova por contradição. \pause
+
+Seja $(u, v)$ uma aresta com $u \in S$ e $v \in (V - S)$ e seja $T$ uma AGM que não contenha $(u, v)$. \pause
+
+Existem um caminho de $u$ para $v$ em $T$? \pause Sim. \pause Seja $(x, y)$ uma aresta qualquer desse caminho de maneira que $x \in S$ e $y \in (V - S)$. \pause
+
+A aresta $(x, y)$ pode ser aresta $(u, v)$? \pause Não, pois $(u, v)$ não está em $T$ e $(x, y)$ está. \pause
+
+O que acontece se removermos a aresta $(x, y)$ de $T$? \pause Separamos a árvore em duas componentes, um componente com os vértices de $S$ e outra com os vértices de $V - S$. \pause Podemos reconectar a árvore com a aresta $(u, v)$? \pause Sim. Obtemos uma árvore $T' = T \cup \{(u, v)\} - \{(x, y)\}$. \pause
+
+Quem tem menor peso, $(x, y)$ ou $(u, v)$? \pause $(u, v)$, pois é aresta de menor peso que conecta um vértice de $S$ e outro de $V - S$. \pause Quem tem menor peso, $T'$ ou $T$? \pause $T'$. Então $T$ não pode ser um AGM, o que é uma contradição.
 
 
 ## Como construir uma árvore geradora mínima?
 
-Construímos uma árvore geradora mínima uma aresta por vez. \pause
+O livro CLRS apresenta os algoritmos de Kruskal e Prim em uma abordagem unificada. Além disso, para desenvolver o conceito de aresta segura, ele não requer que todas as arestas do grafo tenha pesos distintos. \pause
+
+Vamos ver como o livro apresenta esse assunto. \pause
+
+Como construir uma árvore geradora mínima? \pause Uma aresta por vez. \pause
 
 Começamos com um conjunto vazio $A$. \pause Em cada iteração determinamos um aresta $(u, v)$ que pode ser adicionada a $A$, de forma a manter a seguinte invariante: \pause
 
@@ -146,7 +217,7 @@ No final, temos uma árvore geradora mínima!
 
 \pause
 
-Agora vamos ver com detalhes como os algoritmo de Krukal e Prim constroem um AGM uma aresta por vez.
+Agora vamos ver com detalhes como os algoritmo de Krukal e Prim constroem uma AGM uma aresta por vez.
 
 
 ## Algoritmo de Kruskal
@@ -516,12 +587,12 @@ Baseado no exemplo de funcionamento e nas operações de fila de prioridades, va
 **Análise do tempo de execução** \vspace{-1em}
 \pause
 
-- A inicialização nas linhas de 1 a 3 tem tempo $O(V)$
-- A inicialização da fila na linha 4 requer $|V|$ operações \proc{insert} na fila (ou pode ser feito com uma única operação \proc{create})
-- A operação \proc{extract-min} é executada uma vez para cada vértice
-- O laço for das linhas 8 a 11 é executado no total $O(E)$ vezes
+- A inicialização nas linhas de 1 a 3 tem tempo $O(V)$ \pause
+- A inicialização da fila na linha 4 requer $|V|$ operações \proc{insert} na fila (ou pode ser feito com uma única operação \proc{create}) \pause
+- A operação \proc{extract-min} é executada uma vez para cada vértice \pause
+- O laço for das linhas 8 a 11 é executado no total $O(E)$ vezes \pause
     - \footnotesize O teste de pertinência da linha 9 pode ser implementa em tempo constante usando um atributo no vértice
-    - A atribuição na linha 11 envolve uma operação implícita de \proc{decrease-key}
+    - A atribuição na linha 11 envolve uma operação implícita de \proc{decrease-key} \pause
 - Portanto, o tempo de execução total é $O(V) \times O(\proc{insert}) + O(V) \times O(\proc{extract-min)} + O(E) \times O(\proc{decrease-key})$
 </div>
 </div>
@@ -532,12 +603,12 @@ Baseado no exemplo de funcionamento e nas operações de fila de prioridades, va
 Como podemos implementar uma fila de prioridades? \pause
 
 - Usando um arranjo simples \pause
-    - \proc{create} inicializa um arranho com todos os vértices, $O(V)$ \pause
+    - \proc{create} inicializa um arranjo com todos os vértices, $O(V)$ \pause
     - \proc{extract-min}, faz uma busca linear no arranjo e remove o vértice com menor chave, tempo $O(V)$ \pause
     - \proc{decrease-key} não faz nada, portanto $O(1)$ \pause
 
 - Usando um Heap (Seção 6.5) \pause
-    - \proc{create} inicializa um arranho com todos os vértices, $O(V)$ \pause
+    - \proc{create} inicializa um arranjo com todos os vértices, $O(V)$ \pause
     - \proc{extract-min}, faz uma busca linear no arranjo e remove o vértice com menor chave, tempo $O(\lg V)$ \pause
     - \proc{decrease-key} não faz nada, portanto $O(\lg V)$ \pause
 
@@ -595,11 +666,11 @@ Seja $G = (V, E)$ um grafo conexo não orientado com uma função peso $w$ de va
 
 Prova por construção. \pause
 
-Seja $T$ uma AGM que contém $A$
+Seja $T$ uma AGM que contém $A$. $T$ contém $(u, v)$? \pause
 
-- Se $T$ contém $(u, v)$, é claro que $(u, v)$ é segura para $A$
+- Se sim, é claro que $(u, v)$ é segura para $A$ \pause
 
-- Se $T$ não contém $(u, v)$, construímos outra AGM $T'$ que contem $A \cup \{(u, v)\}$
+- Senão, construímos outra AGM $T'$ que contém $A \cup \{(u, v)\}$
 
 ## Prova
 
@@ -611,9 +682,17 @@ Seja $T$ uma AGM que contém $A$
 
 $T$ é a AGM que inclui $A$.
 
+\vspace{-0.05cm}
+
 $(S, V - S)$ é qualquer corte que respeita $A$.
 
+\vspace{-0.05cm}
+
 $(u, v)$ é uma aresta leve cruzando o corte.
+
+\vspace{-0.05cm}
+
+Temos que mostrar que $(u, v)$ é segura para $A$ construindo uma árvore $T'$.
 
 </div>
 <div class="column" width="65%">
@@ -621,15 +700,23 @@ $(u, v)$ é uma aresta leve cruzando o corte.
 
 \small
 
-Temos que mostrar que $(u, v)$ é segura para $A$.
-
 A aresta $(u, v)$ forma um ciclo com as arestas no caminho simples $p$ de $u$ para $v$ em $T$. \pause Tem alguma aresta do caminho $p$ que cruza o corte? \pause Sim! \pause Porque $u$ e $v$ estão em lados opostos do corte. \pause Seja $(x, y)$ esta aresta. \pause
 
-A aresta $(x, y)$ está em $A$? \pause Não, \pause pois o corte respeita $A$. \pause
+\vspace{-0.05cm}
 
-Removendo a aresta $(x, y)$ quebra $T$ em dois componentes, adicionando $(u, v)$ reconecta os componentes formando a nova árvore geradora $T' = (T - \{(x, y)\}) \cup \{(u, v)\}$. \pause
+A aresta $(x, y)$ está em $A$? \pause Não, \pause pois o corte respeita $A$.
 
-Qual é a relação entre os pesos de $(x, y)$ e $(u, v)$? \pause Tanto $(x, y)$ e $(u, v)$ cruzam o corte $(S, V - S)$, como $(u, v)$ é uma aresta leve para este corte, então $w(u, v) \le w(x, y)$. Logo $w(T') = w(T) - w(x, y) + w(u, v) \le w(T)$. Como $T$ é uma AGM então $w(T) \le w(T')$, então $w(T) = w(T')$. Então $T'$ também é uma AGM.
+\vspace{-0.05cm}
+
+\pause Como criar a árvore $T'$? \pause Removendo a aresta $(x, y)$ quebra $T$ em dois componentes, adicionando $(u, v)$ reconecta os componentes formando a nova árvore geradora $T' = (T - \{(x, y)\}) \cup \{(u, v)\}$. \pause
+
+\vspace{-0.05cm}
+
+Qual é a relação entre os pesos de $(x, y)$ e $(u, v)$? \pause Tanto $(x, y)$ e $(u, v)$ cruzam o corte $(S, V - S)$, como $(u, v)$ é uma aresta leve para este corte, então $w(u, v) \le w(x, y)$. \pause
+
+\vspace{-0.05cm}
+
+Qual é a relação entre os pesos de $T$ e $T'$? \pause Como $w(u, v) \le w(x, y)$, então $w(T') = w(T) - w(x, y) + w(u, v) \le w(T)$. \pause Além disso, como $T$ é uma AGM então $w(T) \le w(T')$, \pause então $w(T) = w(T')$. \pause Então $T'$ também é uma AGM.
 
 </div>
 </div>
