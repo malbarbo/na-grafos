@@ -125,7 +125,7 @@ Vamos tentar utilizar estas técnicas para derivar hipóteses de algoritmos.
 
 Como produzir árvores de caminhos mínimos a partir da entrada? \pause
 
-Veja os vídeos das aulas para entender como derivamos a hipóteses a seguir.
+Discutimos em sala como derivamos as hipóteses a seguir.
 
 
 ## Pensando em um algoritmo
@@ -267,7 +267,7 @@ Usamos a seguinte função de inicialização em diversos algoritmos:
     \Procname{$\proc{Initialize-Single-Source}(G, s)$}
     \li \For $v \in \attrib{G}{V}$ \Do
     \li     $\attrib{v}{d} = \infty$
-    \li     $\attrib{v}{\pi} = \const{nil}$\
+    \li     $\attrib{v}{\pi} = \const{nil}$
         \End
     \li $\attrib{s}{d} = 0$
 \end{codebox}
