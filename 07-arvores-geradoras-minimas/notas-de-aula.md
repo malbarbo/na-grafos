@@ -684,11 +684,7 @@ $T$ é a AGM que inclui $A$.
 
 \vspace{-0.05cm}
 
-$(S, V - S)$ é qualquer corte que respeita $A$.
-
-\vspace{-0.05cm}
-
-$(u, v)$ é uma aresta leve cruzando o corte.
+$(S, V - S)$ é qualquer corte que respeita $A$. $(u, v)$ é uma aresta leve cruzando o corte.
 
 \vspace{-0.05cm}
 
@@ -733,11 +729,6 @@ Seja $G = (V, E)$ um grafo conexo não orientado com uma função peso $w$ de va
 ### Prova
 
 Tomamos $S = V_C$ no Teorema 23.1.
-
-
-## Exercícios
-
-23.1-1 Seja $(u, v)$ uma aresta de peso mínimo em um grafo conexo $G$. Mostre que $(u, v)$ pertence a alguma árvore geradora mínima de $G$.
 
 
 ## Exercícios
