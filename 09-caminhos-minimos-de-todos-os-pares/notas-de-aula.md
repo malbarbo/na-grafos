@@ -149,7 +149,7 @@ Vamos escrever o algoritmo e verificar!
 \pause
 
 \begin{codebox}
-    \Procname{$\proc{Alg}(W)$}
+    \Procname{$\proc{Slow-All-Pairs-Shortest-Paths}(W)$}
     \li $n$ = $\attrib{W}{linhas}$
     \li $D^{1} = \left ( d_{ij}^1 = w_{ij} \right )$ uma matriz $n \times n$.
     \li \For $k \gets 2$ \To $n - 1$ \Do
