@@ -2,6 +2,7 @@ author:
     - Marco A L Barbosa
     - \href{http://malbarbo.pro.br}{malbarbo.pro.br}
 header-includes: |
+    \usepackage{graphicx}
     \usepackage{caption}
     \usepackage{clrscode3e}
     \captionsetup[figure]{labelformat=empty}
