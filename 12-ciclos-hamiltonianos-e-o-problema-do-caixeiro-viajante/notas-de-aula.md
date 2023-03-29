@@ -178,7 +178,7 @@ Ideia
 \begin{codebox}
     \Procname{\proc{TSP-NN}$(G, c)$}
     \li selecionar um vértice inicial $v_0 \in \attrib{G}{V}$
-    \li $C = \langle v_0 \rangle$ \Comment caminho contendo $v_0$\
+    \li $C = \langle v_0 \rangle$ \Comment caminho contendo $v_0$
     \li $v = v_0$
     \li \While $C$ não incluí todos os vértices de $G$ \Do
     \li     $u =$ vértice mais próximo de $v$ \\ \hspace{2cm} que não está em $C$
@@ -248,22 +248,17 @@ Ideia
 
 ## Heurística 2-opt
 
-- Seja $w$ a função de custo e $t$ um percurso
+Seja $w$ a função de custo e $t$ um percurso.
 
-- Vamos supor que o percurso $t$ é representado por um vetor (índices $1..|V|)$
-  de vértices. A aresta $(t_{|V|}, t_1)$ está implícita nesta representação
+Vamos supor que o percurso $t$ é representado por um vetor (índices $1..|V|)$ de vértices. A aresta $(t_{|V|}, t_1)$ está implícita nesta representação.
 
-- Seja $(t_a, t_b)$ e $(t_c, t_d)$ duas arestas não adjacentes de $t$ ($a, b,
-  c, d$ são os índices em $t$)
+Seja $(t_a, t_b)$ e $(t_c, t_d)$ duas arestas não adjacentes de $t$ ($a, b, c, d$ são os índices em $t$).
 
-- Seja $t'$ o percurso (válido) obtido a partir de $t$ trocando a aresta
-  $(t_a, t_b)$ por $(t_a, t_c)$ e $(t_c, t_d)$ por $(t_b, t_d)$
+Seja $t'$ o percurso (válido) obtido a partir de $t$ trocando a aresta $(t_a, t_b)$ por $(t_a, t_c)$ e $(t_c, t_d)$ por $(t_b, t_d)$.
 
-- Seja $\delta = w(t_a, t_b) + w(t_c, t_d) - w(t_a, t_c) - w(t_b, t_d)$ a
-  diferença do custo de $t$ e $t'$ (quando maior a diferença, maior a melhoria)
+Seja $\delta = w(t_a, t_b) + w(t_c, t_d) - w(t_a, t_c) - w(t_b, t_d)$ a diferença do custo de $t$ e $t'$ (quando maior a diferença, maior a melhoria).
 
-- Seja $\delta_{\max}$ o maior valor entre os $\delta$’s de todas as trocas de
-  arestas
+Seja $\delta_{\max}$ o maior valor entre os $\delta$’s de todas as trocas de arestas.
 
 
 ## Heurística 2-opt
@@ -299,8 +294,7 @@ Mesmo princípio do 2-opt, mas seleciona 3 arestas
 
 ## Referências
 
-- Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo
-  35.2.1.
+Thomas H. Cormen et al. Introduction to Algorithms. \nth{3} edition. Capítulo 35.2.1.
 
 Caminho hamiltoniano. Wikipédia. <https://pt.wikipedia.org/wiki/Caminho_hamiltoniano>
 
