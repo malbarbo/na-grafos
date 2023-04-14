@@ -93,7 +93,7 @@ $G$.
     \li $v_0 =$ um vértice de $G$
     \li $C =$ caminho contendo apenas $v_0$
     \li \While $\attrib{G'}{E} \not = \emptyset$ \Do
-    \li     $u =$ vértice em $C$ tal que $d(u) > 0$ em $G$
+    \li     $u =$ vértice em $C$ tal que $d(u) > 0$ em $G'$
     \li     $U =$ ciclo em $G'$ que contém $u$
     \li     $C = C$ substituindo $u$ por $U$
     \li     $\attrib{G'}{E} = E$ - $\{$ arestas de $U \}$
